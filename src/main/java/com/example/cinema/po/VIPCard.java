@@ -71,8 +71,12 @@ public class VIPCard {
         this.joinDate = joinDate;
     }
 
-    public double calculate(double amount) {
-        return (int)(amount/200)*30+amount;
+    /**
+     * 计算充值赠送的金额,VIP优惠政策发生变动,本方法也发生变动
+     * Modified by sun in 2019/05/28
+     */
+    public double calculateOffer(double amount) {
+        return (int)(amount/200)*30;
 
     }
 }

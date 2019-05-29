@@ -34,7 +34,22 @@ public class VIPCardController {
         return vipService.charge(vipCardForm);
     }
 
+    /**
+     * Created by sun on 2019/05/28
+     */
+    @PostMapping("/add/record")
+    public ResponseVO addOneChargeRecord(@RequestBody VIPCardForm vipCardForm){
+        return vipService.addChargeRecord(vipCardForm);
+    }
 
+    @PostMapping("get/record/{userId}")
+    public ResponseVO getChargeRecordByUserId(@PathVariable int userId){
+        return vipService.getChargeRecordByUserId(userId);
+    }
 
+    @PostMapping("record/{id}")
+    public ResponseVO getChargeRecordById(@PathVariable int id){
+        return vipService.getChargeRecordById(id);
+    }
 
 }

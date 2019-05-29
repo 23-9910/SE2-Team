@@ -342,6 +342,63 @@ INSERT INTO `vip_card` VALUES (1,15,375,'2019-04-21 13:54:38'),(2,12,660,'2019-0
 UNLOCK TABLES;
 
 --
+-- Table structure for table `consuming_record` ; By sun in 2019/05/28
+--
+
+DROP TABLE IF EXISTS `consuming_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `consuming_record` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) DEFAULT NULL,
+    `payment` float DEFAULT NULL,
+    `pay_form` int(11) DEFAULT NULL,
+    `pay_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `schedule_id` int(11) DEFAULT NULL,
+    `ticket_amount` int(11) DEFAULT NULL,
+    `coupon_id` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `consuming_record`
+--
+
+LOCK TABLES `consuming_record` WRITE;
+/*!40000 ALTER TABLE `consuming_record` DISABLE KEYS */;
+INSERT INTO `consuming_record` VALUES (1,1,100,0,'2019-05-28 19:05:00',0,2,0);
+/*!40000 ALTER TABLE `consuming_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vip_charge_record` ; By sun in 2019/05/28
+--
+
+DROP TABLE IF EXISTS `vip_charge_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vip_charge_record` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) DEFAULT NULL,
+    `vip_id` int(11) DEFAULT NULL,
+    `charge_amount` float DEFAULT NULL,
+    `offer_amount` float DEFAULT NULL,
+    `charge_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `vip_charge_record`
+--
+LOCK TABLES `vip_charge_record` WRITE;
+/*!40000 ALTER TABLE `vip_charge_record` DISABLE KEYS */;
+INSERT INTO `vip_charge_record` VALUES (1,1,1,0,0,'2019-05-28 20:29:00');
+/*!40000 ALTER TABLE `vip_charge_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'cinema'
 --
 

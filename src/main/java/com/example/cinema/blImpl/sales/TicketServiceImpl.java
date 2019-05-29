@@ -13,14 +13,9 @@ import com.example.cinema.po.VIPCard;
 import com.example.cinema.po.*;
 import com.example.cinema.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.cinema.blImpl.management.schedule.ScheduleServiceImpl;
-import com.example.cinema.blImpl.promotion.CouponServiceImpl;
 import com.example.cinema.data.promotion.ActivityMapper;
-
 import com.example.cinema.vo.SeatForm;
 
 import java.sql.Timestamp;
@@ -85,29 +80,12 @@ public class TicketServiceImpl implements TicketService {
     @Transactional
     public ResponseVO completeTicket(List<Integer> id, int couponId) {
         try {
-            double firstTotal = 0;
             double finalTotal = 0;
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
-            int userId = 0;
-            for (int i = 0; i < id.size(); i++) {
-                Ticket ticket = ticketMapper.selectTicketById(id.get(i));
-                TicketVO ticketVO = ticket.getVO();
-                int scheduleId = ticketVO.getScheduleId();
-                ScheduleItem scheduleItem = scheduleService.getScheduleItemById(scheduleId);
-                double fare = scheduleItem.getFare();
-                firstTotal += fare;
-                userId = ticket.getUserId();
-                ticketMapper.updateTicketState(id.get(i),1);
+            int userId = ticketMapper.selectTicketById(id.get(0)).getUserId();
 
-            }
-            if (couponId != 0) {
-                Coupon coupon = couponMapper.selectById(couponId);
-                finalTotal = firstTotal - coupon.getDiscountAmount();
-                couponMapper.deleteCouponUser(couponId,userId);
-            } else {
-                finalTotal = firstTotal;
-            }
+            finalTotal = getPayment(id,couponId);
 
             Ticket ticket = ticketMapper.selectTicketById(id.get(0));
             int scheduleId = ticket.getScheduleId();
@@ -135,7 +113,6 @@ public class TicketServiceImpl implements TicketService {
             //根据优惠活动赠送优惠券
         }
     }
-
 
     @Override
     public ResponseVO getBySchedule(int scheduleId) {
@@ -183,27 +160,12 @@ public class TicketServiceImpl implements TicketService {
     @Transactional
     public ResponseVO completeByVIPCard(List<Integer> id, int couponId) {
         try {
-            double firstTotal = 0;
             double finalTotal = 0;
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
-            int userId = 0;
-            for (int i = 0; i < id.size(); i++) {
-                Ticket ticket = ticketMapper.selectTicketById(id.get(i));
-                TicketVO ticketVO = ticket.getVO();
-                int scheduleId = ticketVO.getScheduleId();
-                ScheduleItem scheduleItem = scheduleService.getScheduleItemById(scheduleId);
-                double fare = scheduleItem.getFare();
-                firstTotal += fare;
-                userId = ticket.getUserId();
-            }
-            if (couponId != 0) {
-                Coupon coupon = couponMapper.selectById(couponId);
-                finalTotal = firstTotal - coupon.getDiscountAmount();
-                couponMapper.deleteCouponUser(couponId,userId);
-            } else {
-                finalTotal = firstTotal;
-            }
+            int userId = ticketMapper.selectTicketById(id.get(0)).getUserId();
+
+            finalTotal = getPayment(id,couponId);
 
             //支付的实现
             VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
@@ -239,6 +201,7 @@ public class TicketServiceImpl implements TicketService {
             return ResponseVO.buildFailure("失败");
         }
     }
+
     @Override
     public ResponseVO cancelTicket(List<Integer> id) {
         try {
@@ -313,6 +276,78 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /**
+     * Modified by sun on 2019/05/28
+     */
+
+    @Override
+    public ResponseVO addOneConsumingRecord(List<Integer> ticketId,int couponId, int payForm){
+        try {
+            double payment = getPayment(ticketId,couponId);
+            ConsumingRecord consumingRecord = new ConsumingRecord();
+            consumingRecord.setCouponId(couponId);
+            consumingRecord.setPayForm(payForm);
+            consumingRecord.setTicketAmount(ticketId.size());
+            consumingRecord.setPayment(payment);
+
+            Ticket ticket = ticketMapper.selectTicketById(ticketId.get(0));
+            int userId = ticket.getUserId();
+            consumingRecord.setUserId(userId);
+            int scheduleId = ticket.getScheduleId();
+            consumingRecord.setScheduleId(scheduleId);
+
+            ticketMapper.insertOneConsumingRecord(consumingRecord);
+            return ResponseVO.buildSuccess();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO getConsumingRecordByUserId(int userId){
+        try {
+            List<ConsumingRecord> consumingRecordList = ticketMapper.selectConsumingRecordByUser(userId);
+            return ResponseVO.buildSuccess(consumingRecordList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO getConsumingRecordById(int id) {
+        try {
+            ConsumingRecord consumingRecord = ticketMapper.selectConsumingRecordById(id);
+            return ResponseVO.buildSuccess(consumingRecord);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    public double getPayment(List<Integer> ticketId, int couponId){
+        double firstTotal = 0;
+        double payment = 0;
+        int userId = 0;
+        for (int i = 0; i < ticketId.size(); i++) {
+            Ticket ticket = ticketMapper.selectTicketById(ticketId.get(i));
+            TicketVO ticketVO = ticket.getVO();
+            int scheduleId = ticketVO.getScheduleId();
+            ScheduleItem scheduleItem = scheduleService.getScheduleItemById(scheduleId);
+            double fare = scheduleItem.getFare();
+            firstTotal += fare;
+            userId = ticket.getUserId();
+        }
+        if (couponId != 0) {
+            Coupon coupon = couponMapper.selectById(couponId);
+            payment = firstTotal - coupon.getDiscountAmount();
+            couponMapper.deleteCouponUser(couponId,userId);
+        } else {
+            payment = firstTotal;
+        }
+        return payment;
+    }
 
 
 }

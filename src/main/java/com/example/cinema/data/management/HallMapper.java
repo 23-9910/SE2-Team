@@ -23,4 +23,16 @@ public interface HallMapper {
      * @return
      */
     Hall selectHallById(@Param("hallId") int hallId);
+
+    /**
+     * 添加影厅(影厅信息录入)
+     * By sun on 2019/05/28
+     */
+    int insertOneHall(Hall hall);
+
+    /**
+     * 修改影厅信息
+     * By sun on 2019/05/28
+     */
+    int updateHallById(Hall hall);
 }

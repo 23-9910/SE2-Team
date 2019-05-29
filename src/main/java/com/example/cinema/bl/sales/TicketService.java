@@ -66,5 +66,15 @@ public interface TicketService {
      * @return
      */
     ResponseVO getTicketWithCoupon(List<Integer> ticketId,int userId);
+
+    /**
+     * Modified by sun on 2019/05/28
+     */
+
+    ResponseVO addOneConsumingRecord(List<Integer> ticketId, int couponId, int payForm);
+
+    ResponseVO getConsumingRecordByUserId(int userId);
+
+    ResponseVO getConsumingRecordById(int id);
 }
 
