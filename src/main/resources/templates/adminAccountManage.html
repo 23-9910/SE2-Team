@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>账户管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminPromotion.css"/>
+
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/adminAccountManage.js"></script>
+</head>
+<!-- 以上为基本内容，引入css以及js文件-->
+<!-- 账户管理共有两个部分，首先一部分为查看已有的账户，默认显示，【账户类型/账户名】-->
+<!-- 账户的增加有一个专门的增加bot，点击会弹出向关内容-->
+<body>
+<div class="content-container">
+    <div id="movie-list" style="margin: 20px 50px;background-color: white">
+        <div style="font-size: 25px; margin: 20px">账户信息</div>
+        <div>
+            <table class="table" id="my-tickets-table" style="margin:0 auto">
+                <thead id="my-tickets-table-head" style="text-align: center">
+                <tr>
+                    <th>账户名</th>
+                    <th>账户类型</th>
+                </tr>
+                </thead>
+                <tbody id="my-tickets-table-body" style="text-align: center">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- 以上为模板，具体数据的插入应在adminAccountManage.js中实现 -->
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增账户</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="account-input"><span class="error-text">*</span>账户名称</label>
+                        <div class="col-sm-10">
+                            <input id="account-input" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="type-input"><span class="error-text">*</span>账户类型</label>
+                        <div class="col-sm-10">
+                            <select id="type-input" class="form-control">
+                                <option value="manager">经理</option>
+                                <option value="seller">售票员</option>
+                                <option value="audience">观众</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="password-input"><span class="error-text">*</span>密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" id="password-input" class="form-control" maxlength="30"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="schedule-form-btn" onclick="addAccount()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 新增加账户，点击bot 后弹出框框，账户名，账户类型（下拉列表），密码 三项都是必须填写的内容，点击确认会触发adminAccountManage.html中的提交函数 -->
+</body>
+</html>

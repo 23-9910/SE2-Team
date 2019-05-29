@@ -39,7 +39,7 @@ $(document).ready(function() {
                 "</div>" +
                 "<div class='cinema-seat'>" + seat +
                 "</div>" +
-                "</div>";
+                "</div>" ;
             hallDomStr+=hallDom;
         });
         $('#hall-card').append(hallDomStr);
@@ -63,6 +63,16 @@ $(document).ready(function() {
        $("#canview-set-input").val(canSeeDate);
        $("#canview-set-input").show();
        $("#canview-confirm-btn").show();
+    });
+//增加影厅设置
+    $('#hall-modify-btn').click(function () {
+        $("#hall-modify-btn").hide();
+        $("#hall-column-set-input").val(canSeeDate);
+        $("#hall-column-set-input").show();
+        $("#hall-row-set-input").val(canSeeDate);
+        $("#hall-row-set-input").show();
+        $("#hall-name-set-input").show();
+        $("#hall-confirm-btn").show();
     });
 
     $('#canview-confirm-btn').click(function () {
@@ -88,3 +98,13 @@ $(document).ready(function() {
         );
     })
 });
+
+
+//增加影厅的内容
+function addNewHallConfirm(){
+   var hallName = $("#hall-name-input").val();
+   var row = $("#hall-row-input").val();
+   var column = $("#hall-column-input").val();
+   //这里需要做表单验证
+
+}

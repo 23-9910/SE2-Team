@@ -122,7 +122,7 @@ $(document).ready(function() {
         $('#scheduleEditModal')[0].dataset.scheduleId = schedule.id;
         console.log(schedule);
     });
-    
+    //提交增加
     $('#schedule-form-btn').click(function () {
         var form = {
             hallId: $("#schedule-hall-input").children('option:selected').val(),
@@ -162,7 +162,7 @@ $(document).ready(function() {
 
 
     });
-
+//提交时获取信息
     $('#schedule-edit-form-btn').click(function () {
         var form = {
             id: Number($('#scheduleEditModal')[0].dataset.scheduleId),
@@ -192,7 +192,7 @@ $(document).ready(function() {
 
 
     });
-
+//删除
     $("#schedule-edit-remove-btn").click(function () {
         var r=confirm("确认要删除该排片信息吗")
         if (r) {
