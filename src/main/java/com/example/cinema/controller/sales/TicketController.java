@@ -47,6 +47,24 @@ public class TicketController {
         return ticketService.cancelTicket(ticketId);
     }
 
+    /**
+     * Modified by sun on 2019/05/28
+     */
+
+    @PostMapping("/add/record")
+    public ResponseVO addOneConsumingRecord(@RequestBody List<Integer> ticketId, @RequestParam int couponId, @RequestParam int payForm){
+        return ticketService.addOneConsumingRecord(ticketId,couponId,payForm);
+    }
+
+    @GetMapping("/get/record/{userId}")
+    public ResponseVO getConsumingRecordByUserId(@PathVariable int userId){
+        return ticketService.getConsumingRecordByUserId(userId);
+    }
+
+    @GetMapping("/record/{id}")
+    public ResponseVO getConsumingRecordById(@PathVariable int id){
+        return ticketService.getConsumingRecordById(id);
+    }
 
 
 

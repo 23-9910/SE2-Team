@@ -41,6 +41,46 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
 
     }
 
+    /**
+     * By sun on 2019/05/28
+     */
+    @Override
+    public ResponseVO addHall(HallVO hallVO){
+        try {
+            Hall hall = new Hall();
+            String name = hallVO.getName();
+            int row = hallVO.getRow();
+            int column = hallVO.getColumn();
+            hall.setName(name);
+            hall.setRow(row);
+            hall.setColumn(column);
+            hallMapper.insertOneHall(hall);
+            return ResponseVO.buildSuccess();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * By sun on 2019/05/28
+     */
+    @Override
+    public ResponseVO updateHall(HallVO hallVO){
+        try {
+            Hall hall = new Hall();
+            hall.setName(hallVO.getName());
+            hall.setRow(hallVO.getRow());
+            hall.setColumn(hallVO.getColumn());
+            hall.setId(hallVO.getId());
+            hallMapper.updateHallById(hall);
+            return ResponseVO.buildSuccess();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private List<HallVO> hallList2HallVOList(List<Hall> hallList){
         List<HallVO> hallVOList = new ArrayList<>();
         for(Hall hall : hallList){

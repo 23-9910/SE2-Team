@@ -52,6 +52,9 @@
         <result column="time" property="time"></result>
     </resultMap>
 
+    <resultMap id="ConsumingRecord" type="com.example.cinema.po.ConsumingRecord">
+        <result column=""></result>
+    </resultMap>
     <update id="cleanExpiredTicket">
         update ticket SET  state =2 WHERE minute(timediff(now(),time))>15 and state=0;
     </update>
