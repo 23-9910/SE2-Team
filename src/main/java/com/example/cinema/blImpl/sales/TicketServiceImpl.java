@@ -114,6 +114,10 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /**
+     * 重写了getOccupiedSeats方法，前端只显示‘0‘，‘1’两种状态的票的占座信息
+     * Modified by sun on 2019/05/30
+     */
     @Override
     public ResponseVO getBySchedule(int scheduleId) {
         try {
@@ -121,9 +125,11 @@ public class TicketServiceImpl implements TicketService {
             ScheduleItem schedule=scheduleService.getScheduleItemById(scheduleId);
             Hall hall=hallService.getHallById(schedule.getHallId());
             int[][] seats=new int[hall.getRow()][hall.getColumn()];
-            tickets.stream().forEach(ticket -> {
-                seats[ticket.getRowIndex()][ticket.getColumnIndex()]=1;
-            });
+            for(Ticket ticket : tickets) {
+                if(ticket.getState() == 0 || ticket.getState() == 1) {
+                    seats[ticket.getRowIndex()][ticket.getColumnIndex()] = 1;
+                }
+            }
             ScheduleWithSeatVO scheduleWithSeatVO=new ScheduleWithSeatVO();
             scheduleWithSeatVO.setScheduleItem(schedule);
             scheduleWithSeatVO.setSeats(seats);
@@ -326,6 +332,39 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /**
+     * TODO:退票
+     */
+    @Override
+    public ResponseVO refundTicket(int ticketId) {
+        try {
+            Ticket ticket = ticketMapper.selectTicketById(ticketId);
+            int userId = ticket.getUserId();
+            int scheduleId = ticket.getScheduleId();
+            ScheduleItem scheduleItem = scheduleMapper.selectScheduleById(scheduleId);
+            double fare = scheduleItem.getFare();
+            VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
+            double balance = vipCard.getBalance();
+            vipCardMapper.updateCardBalance(vipCard.getId(),balance + fare * 0.6);
+            ticketMapper.updateTicketState(ticketId,3);
+            return ResponseVO.buildSuccess("退票成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO getTicketByConsumingRecord(int consumingRecordId) {
+        try {
+            List<Ticket> tickets = ticketMapper.selectTicketsByConsumingRecord(consumingRecordId);
+            return ResponseVO.buildSuccess(tickets);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
     public double getPayment(List<Integer> ticketId, int couponId){
         double firstTotal = 0;
         double payment = 0;
@@ -348,6 +387,5 @@ public class TicketServiceImpl implements TicketService {
         }
         return payment;
     }
-
 
 }

@@ -14,11 +14,14 @@
     </insert>
 
     <update id="updateHallById" parameterType="com.example.cinema.po.Hall">
-        update hall set name = #{name}, row = #{row}, column = #{column}
-            where id = #{id}
+        update hall set name = #{name}, row = #{row}, column = #{column} where id = #{id}
     </update>
 
     <resultMap id="Hall" type="com.example.cinema.po.Hall">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="column" property="column"></result>
+        <result column="row" property="row"></result>
     </resultMap>
 
 </mapper>

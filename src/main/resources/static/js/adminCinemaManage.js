@@ -132,7 +132,6 @@ $(document).ready(function() {
             name:hallName,
             row : parseInt(row),
             column : parseInt(column),
-            id : 0
         };
         postRequest(
             "/hall/add",
