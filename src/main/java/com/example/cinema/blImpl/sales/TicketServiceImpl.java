@@ -303,6 +303,7 @@ public class TicketServiceImpl implements TicketService {
             consumingRecord.setScheduleId(scheduleId);
 
             ticketMapper.insertOneConsumingRecord(consumingRecord);
+
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();

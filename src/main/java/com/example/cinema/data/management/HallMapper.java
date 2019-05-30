@@ -3,7 +3,7 @@ package com.example.cinema.data.management;
 import com.example.cinema.po.Hall;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
+import com.example.cinema.vo.HallVO;
 import java.util.List;
 
 /**
@@ -28,11 +28,11 @@ public interface HallMapper {
      * 添加影厅(影厅信息录入)
      * By sun on 2019/05/28
      */
-    int insertOneHall(Hall hall);
+    int insertOneHall(HallVO hallVO);
 
     /**
      * 修改影厅信息
      * By sun on 2019/05/28
      */
-    int updateHallById(Hall hall);
+    int updateHallById(HallVO hallVO);
 }
