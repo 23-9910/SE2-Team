@@ -97,5 +97,6 @@ public interface TicketService {
      * 通过消费记录id获得票
      */
     ResponseVO getTicketByConsumingRecord (int consumingRecordId);
+
 }
 
