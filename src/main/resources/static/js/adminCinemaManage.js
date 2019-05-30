@@ -39,7 +39,7 @@ $(document).ready(function() {
             var hallDom =
                 "<div class='cinema-hall'>" +
                 "<div>" +
-                "<span class='cinema-hall-name'>"+ hall.name +"</span>" + "<button type='button' class='btn btn-primary-edit' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#scheduleModalEdit' id="+ hall.id + " onclick='addId("+ hall.id + ")'>修改影厅 </button>" +
+                "<span class='cinema-hall-name'>"+ hall.name +"</span>" + "<button type='button' class='btn btn-primary' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#scheduleModalEdit' id="+ hall.id + " onclick='addId("+ hall.id + ")'>修改影厅 </button>" +
                 "<span class='cinema-hall-size'>"+ hall.column +'*'+ hall.row +"</span>" +
                 "</div>" +
                 "<div class='cinema-seat'>" + seat +
@@ -204,6 +204,6 @@ function addId(id2){
     $("#hall-name-edit-input").empty();
     $("#hall-row-edit-input").empty();
     $("#hall-column-edit-input").empty();
-    $("#edit-film-id").append(id2);
+    $("#edit-film-id").append("<p style='padding:5px 5px 5px 5px'>" + id2 + "</p>");
 }
 
