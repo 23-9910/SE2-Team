@@ -19,6 +19,11 @@ $(document).ready(function() {
         );
     }
 
+    /**
+     * By yyf on 2019/05/30
+     * 在每个影厅后添加了修改按键
+     * @param halls
+     */
     function renderHall(halls){
         $('#hall-card').empty();
         var hallDomStr = "";
@@ -34,7 +39,7 @@ $(document).ready(function() {
             var hallDom =
                 "<div class='cinema-hall'>" +
                 "<div>" +
-                "<span class='cinema-hall-name'>"+ hall.name +"</span>" +
+                "<span class='cinema-hall-name'>"+ hall.name +"</span>" + "<button type='button' class='btn btn-primary-edit' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#scheduleModalEdit' id="+ hall.id + " onclick='addId("+ hall.id + ")'>修改影厅 </button>" +
                 "<span class='cinema-hall-size'>"+ hall.column +'*'+ hall.row +"</span>" +
                 "</div>" +
                 "<div class='cinema-seat'>" + seat +
@@ -64,7 +69,10 @@ $(document).ready(function() {
        $("#canview-set-input").show();
        $("#canview-confirm-btn").show();
     });
-//增加影厅设置
+
+    /**
+     * By yyf on 2019/05/29
+     */
     $('#hall-modify-btn').click(function () {
         $("#hall-modify-btn").hide();
         $("#hall-column-set-input").val(canSeeDate);
@@ -74,6 +82,19 @@ $(document).ready(function() {
         $("#hall-name-set-input").show();
         $("#hall-confirm-btn").show();
     });
+    /**
+     * By yyf on 2019/05/29
+     */
+    $('#hall-modify-edit-btn').click(function () {
+        $("#hall-modify-edit-btn").hide();
+        $("#hall-column-set-input").val(canSeeDate);
+        $("#hall-column-set-input").show();
+        $("#hall-row-set-input").val(canSeeDate);
+        $("#hall-row-set-input").show();
+        $("#hall-name-set-input").show();
+        $("#hall-confirm-btn").show();
+    });
+
 
     $('#canview-confirm-btn').click(function () {
         var dayNum = $("#canview-set-input").val();
@@ -97,14 +118,92 @@ $(document).ready(function() {
             }
         );
     })
+
+    /**
+     * By yyf on 2019/05/29
+     * 添加影厅
+     */
+    $('#schedule-form-btn').click( function(){
+        var hallName = $("#hall-name-input").val();
+        var row = $("#hall-row-input").val();
+        var column = $("#hall-column-input").val();
+        //这里需要做表单验证
+        var form = {
+            name:hallName,
+            row : parseInt(row),
+            column : parseInt(column),
+            id : 0
+        };
+        postRequest(
+            "/hall/add",
+            form,
+            function (res) {
+                if(res.success){
+                    getCinemaHalls();
+                    $("#modal-content").modal('hide');
+                } else {
+                    alert(res.message);
+                }
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        )
+
+    })
+
+    /**
+     * By yang on 2019/05/29
+     * 修改影厅信息
+     */
+    $('#schedule-form-btn-edit').click( function(){
+        var hallName = $("#hall-name-edit-input").val();
+        var row = $("#hall-row-edit-input").val();
+        var column = $("#hall-column-edit-input").val();
+        var id = $("#edit-film-id").text();
+        //这里需要做表单验证
+        var form = {
+            name: hallName,
+            row : parseInt(row),
+            column : parseInt(column),
+            id : parseInt(id)
+        };
+        postRequest(
+            "/hall/update",
+            form,
+            function (res) {
+                if(res.success){
+                    getCinemaHalls();
+                    $("#modal-content").modal('hide');
+                } else {
+                    alert(res.message);
+                }
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        )
+        $("#modal-content").modal('hide');
+
+    })
+    /**
+     * By yyf 2019/05/30
+     * 删除影厅
+     */
+    $("#schedule-edit-remove-btn").click( function(){
+        var deleteId = $("#edit-film-id").text();
+
+    })
 });
-
-
-//增加影厅的内容
-function addNewHallConfirm(){
-   var hallName = $("#hall-name-input").val();
-   var row = $("#hall-row-input").val();
-   var column = $("#hall-column-input").val();
-   //这里需要做表单验证
-
+/**
+ * By yyf 2019/05/2
+ * 根据不同的点击，填充ID
+ */
+function addId(id2){
+    $("#edit-film-id").empty();
+    $("#hall-name-edit-input").empty();
+    $("#hall-row-edit-input").empty();
+    $("#hall-column-edit-input").empty();
+    $("#edit-film-id").append(id2);
 }
+
