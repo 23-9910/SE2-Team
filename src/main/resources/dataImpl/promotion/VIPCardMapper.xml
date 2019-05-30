@@ -15,13 +15,6 @@
         select * from vip_card where user_id=#{userId}
     </select>
 
-    <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
-        <result column="join_time" property="joinDate"></result>
-        <result column="id" property="id"></result>
-        <result column="user_id" property="userId"></result>
-        <result column="balance" property="balance"></result>
-    </resultMap>
-
     <update id="updateCardBalance" >
         update vip_card set balance = #{balance} where id=#{id}
     </update>
@@ -32,13 +25,27 @@
         values(#{userId},#{vipId},#{chargeAmount},#{offerAmount})
     </insert>
 
-    <select id="selectChargeRecordByUserId" resultType="com.example.cinema.po.VIPChargeRecord">
+    <select id="selectChargeRecordByUserId" resultMap="VIPChargeRecord">
         select * from vip_charge_record where user_id = #{userId}
     </select>
 
-    <select id="selectChargeRecordById" resultType="com.example.cinema.po.VIPChargeRecord">
+    <select id="selectChargeRecordById" resultMap="VIPChargeRecord">
         select * from vip_charge_record where id = #{id}
     </select>
 
+    <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
+        <result column="join_time" property="joinDate"></result>
+        <result column="id" property="id"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="balance" property="balance"></result>
+    </resultMap>
 
+    <resultMap id="VIPChargeRecord" type="com.example.cinema.po.VIPChargeRecord">
+        <id column="id" property="id"></id>
+        <result column="user_id" property="userId"></result>
+        <result column="vip_id" property="vipId"></result>
+        <result column="charge_amount" property="chargeAmount"></result>
+        <result column="offer_amount" property="offerAmount"></result>
+        <result column="charge_time" property="chargeTime"></result>
+    </resultMap>
 </mapper>

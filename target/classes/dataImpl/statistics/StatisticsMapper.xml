@@ -24,4 +24,5 @@
               (select id from schedule where start_time between #{date} and #{nextDate}) and state = 1) t
         on schedule.id = schedule_id group by user_id
     </select>
+
 </mapper>

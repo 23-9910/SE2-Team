@@ -71,10 +71,31 @@ public interface TicketService {
      * Modified by sun on 2019/05/28
      */
 
+    /**
+     * 添加一条消费记录
+     */
     ResponseVO addOneConsumingRecord(List<Integer> ticketId, int couponId, int payForm);
 
+    /**
+     * 获得用户的所有消费记录
+     */
     ResponseVO getConsumingRecordByUserId(int userId);
 
+    /**
+     * 通过id获得消费记录
+     */
     ResponseVO getConsumingRecordById(int id);
+
+    /**
+     * 退票
+     * 退一张票，只有操作时间早于电影开始时间才能退票
+     * 退票返回用户原票价的60%费用，已使用的优惠券和已发放的优惠券不再进行操作
+     */
+    ResponseVO refundTicket(int ticketId);
+
+    /**
+     * 通过消费记录id获得票
+     */
+    ResponseVO getTicketByConsumingRecord (int consumingRecordId);
 }
 
