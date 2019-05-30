@@ -14,7 +14,7 @@
     </insert>
 
     <update id="updateHallById" parameterType="com.example.cinema.vo.HallVO">
-        update hall set name = #{name}, row = #{hall_row}, column = #{hall_column} where id = #{id}
+        update hall set name = #{name}, hall_row = #{row}, hall_column = #{column} where id = #{id}
     </update>
 
     <resultMap id="Hall" type="com.example.cinema.po.Hall">
