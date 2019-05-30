@@ -8,12 +8,12 @@
         select * from hall where id = #{hallId}
     </select>
     <!--By sun In 2019/05/28-->
-    <insert id="insertOneHall" parameterType="com.example.cinema.po.Hall" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertOneHall" parameterType="com.example.cinema.vo.HallVO" useGeneratedKeys="true" keyProperty="id">
         insert into hall(name,row,column)
         values(#{name},#{row},#{column})
     </insert>
 
-    <update id="updateHallById" parameterType="com.example.cinema.po.Hall">
+    <update id="updateHallById" parameterType="com.example.cinema.vo.HallVO">
         update hall set name = #{name}, row = #{row}, column = #{column} where id = #{id}
     </update>
 
