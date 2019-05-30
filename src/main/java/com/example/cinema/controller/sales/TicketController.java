@@ -59,6 +59,11 @@ public class TicketController {
         return ticketService.addOneConsumingRecord(ticketId,couponId,payForm);
     }
 
+    @PostMapping("add/recordId")
+    public ResponseVO addRecordIdOnTicket(@RequestBody List<Integer> ticketId){
+        return ticketService.addRecordIdOnTicket(ticketId);
+    }
+
     @GetMapping("/get/user/record/{userId}")
     public ResponseVO getConsumingRecordByUserId(@PathVariable int userId){
         return ticketService.getConsumingRecordByUserId(userId);
