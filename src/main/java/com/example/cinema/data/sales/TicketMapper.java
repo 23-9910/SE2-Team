@@ -43,5 +43,7 @@ public interface TicketMapper {
     ConsumingRecord selectConsumingRecordById(int id);
 
     List<Ticket> selectTicketsByConsumingRecord(int consumingRecordId);
+
+    void updateRecordId(int recordId, int ticketId);
 }
 

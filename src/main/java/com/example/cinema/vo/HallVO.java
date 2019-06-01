@@ -12,6 +12,10 @@ public class HallVO {
     private Integer row;
     private Integer column;
 
+    public HallVO(){
+
+    }
+
     public HallVO(Hall hall){
         this.id = hall.getId();
         this.name = hall.getName();

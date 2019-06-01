@@ -27,3 +27,6 @@ hs_err_pid*
 
 #.DS_Store
 .DS_Store
+.idea/workspace.xml
+target/classes/application.yml
+src/main/resources/application.yml

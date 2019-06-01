@@ -98,5 +98,9 @@ public interface TicketService {
      */
     ResponseVO getTicketByConsumingRecord (int consumingRecordId);
 
+    /**
+     * 为买的票添加消费记录id
+     */
+    ResponseVO addRecordIdOnTicket(List<Integer> ticketId);
 }
 

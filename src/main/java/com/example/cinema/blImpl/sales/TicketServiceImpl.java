@@ -303,7 +303,6 @@ public class TicketServiceImpl implements TicketService {
             consumingRecord.setScheduleId(scheduleId);
 
             ticketMapper.insertOneConsumingRecord(consumingRecord);
-
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();
@@ -361,6 +360,23 @@ public class TicketServiceImpl implements TicketService {
             List<Ticket> tickets = ticketMapper.selectTicketsByConsumingRecord(consumingRecordId);
             return ResponseVO.buildSuccess(tickets);
         } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO addRecordIdOnTicket(List<Integer> ticketId) {
+        try {
+            Ticket ticket = ticketMapper.selectTicketById(ticketId.get(0));
+            int userId = ticket.getUserId();
+            List<ConsumingRecord> records = ticketMapper.selectConsumingRecordByUser(userId);
+            int recordId = records.get(records.size() - 1).getId();
+            for (Integer id : ticketId) {
+                ticketMapper.updateRecordId(recordId, id);
+            }
+            return ResponseVO.buildSuccess();
+        }catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }

@@ -33,6 +33,9 @@
         select * from ticket where user_id=#{userId}
     </select>
 
+    <update id="updateRecordId">
+        update ticket set consuming_record_id = #{recordId} where id = #{ticketId}
+    </update>
 
     <update id="updateTicketState">
         update ticket set state = #{state} where id=#{ticketId}
