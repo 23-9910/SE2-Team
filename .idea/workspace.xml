@@ -3,20 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b893b526-6db7-4c6d-80dc-b0bbf1f57368" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/cinema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/cinema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/bl/sales/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/bl/sales/TicketService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/TicketServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/TicketServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/promotion/VIPCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/promotion/VIPCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/sales/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/sales/TicketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/po/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/po/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dataImpl/promotion/VIPCardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dataImpl/promotion/VIPCardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/management/HallMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/management/HallMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/promotion/VIPCardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/promotion/VIPCardMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/sales/TicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/sales/TicketMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,122 +42,47 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="cinema: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="cinema@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="collations" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="ExecutionTargetDialog">
+    <checked>
+      <node key="f156b0ab-7472-443a-974f-2a69a253a56f">
+        <node key="cinema" />
+      </node>
+    </checked>
+    <expanded>
+      <node key="f156b0ab-7472-443a-974f-2a69a253a56f" />
+    </expanded>
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/HallController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminCinemaManage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="47" column="34" lean-forward="true" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/ScheduleController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/router/ViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="133" column="38" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminCinemaStatistic.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/user/AccountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="30" column="77" lean-forward="true" selection-start-line="30" selection-start-column="77" selection-end-line="30" selection-end-column="77" />
+            <state relative-caret-position="180">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminAccountManage.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/user/AccountServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="48" column="101" selection-start-line="48" selection-start-column="101" selection-end-line="48" selection-end-column="101" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#thead#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminAccountManage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/promotion/VIPCardMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-266">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+            <state relative-caret-position="60">
+              <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -189,7 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminCinemaStatistic.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminMovieDetail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminPromotionManage.html" />
@@ -200,12 +113,20 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/adminScheduleManage.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminScheduleManage.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminCinemaManage.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/bl/sales/TicketService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/TicketServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/sales/TicketController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/vo/HallVO.java" />
+        <option value="$PROJECT_DIR$/sql/cinema.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="-310" />
     <option name="y" value="15" />
     <option name="width" value="1270" />
@@ -217,120 +138,86 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="sql" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dataImpl" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dataImpl" type="462c0819:PsiDirectoryNode" />
-              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dataImpl" type="462c0819:PsiDirectoryNode" />
-              <item name="promotion" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dataImpl" type="462c0819:PsiDirectoryNode" />
-              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="dataImpl" type="462c0819:PsiDirectoryNode" />
-              <item name="statistics" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
               <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SE2-Team" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SE2-Team" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -349,7 +236,21 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.applicationServers" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8080/index" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -363,7 +264,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="HTTP Request.CinemaApplication#27">
+    <configuration name="CinemaApplication#27" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/CinemaApplication.http" index="27">
+      <method v="2" />
+    </configuration>
     <configuration name="CinemaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="cinema" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cinema.CinemaApplication" />
@@ -371,6 +275,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.CinemaApplication#27" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -390,17 +299,18 @@
       <workItem from="1559182186724" duration="6215000" />
       <workItem from="1559194066273" duration="5740000" />
       <workItem from="1559209215043" duration="5266000" />
+      <workItem from="1559561972968" duration="1346000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44979000" />
+    <option name="totallyTimeSpent" value="52818000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24597855" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22889842" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -410,12 +320,12 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32577905" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19759037" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26385543" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
@@ -430,7 +340,7 @@
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="6" weight="0.24177396" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
@@ -476,494 +386,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/userHome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/CinemaApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-671" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminMovieDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="37" column="110" selection-start-line="37" selection-start-column="110" selection-end-line="37" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminMovieManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="36" column="110" selection-start-line="36" selection-start-column="110" selection-end-line="36" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/userBuy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminCinemaStatistic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2508">
-          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminPromotionManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/promotion/VIPCardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userMovieBuy.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminVipManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/userMovieBuy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="85" column="94" lean-forward="true" selection-start-line="85" selection-start-column="94" selection-end-line="85" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-733">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://5ed05fc3-c7f3-4f79-89af-277ae6da036e/schema/cinema/table/hall">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://5ed05fc3-c7f3-4f79-89af-277ae6da036e/schema/cinema/table/activity_movie">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/5ed05fc3-c7f3-4f79-89af-277ae6da036e">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>5ed05fc3-c7f3-4f79-89af-277ae6da036e</OriginalElement>
-          <nodes>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.cond_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_FOREIGN</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$processlist</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.session</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.socket_summary_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.variables_by_thread</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.setup_instruments</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary_by_statement_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.procs_priv</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.engine_cost</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.time_zone</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_applier_status_by_coordinator</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.KEY_COLUMN_USAGE</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.payment</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.COLUMN_PRIVILEGES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_group_member_stats</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.server_cost</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.slave_relay_log_info</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.ticket</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_TABLES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statement_analysis</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.innodb_lock_waits</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_summary_global_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$io_by_thread_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMP</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.innodb_table_stats</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMP_PER_INDEX_RESET</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_summary_by_thread_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.columns_priv</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.actor_info</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.metadata_locks</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.rental</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_global_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$memory_by_host_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.staff_list</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.gtid_executed</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary_by_statement_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_history_long</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statements_with_errors_or_warnings</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:world.countrylanguage</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_LOCKS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statements_with_temp_tables</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.ndb_binlog_index</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_summary_by_user_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.TABLE_PRIVILEGES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.event</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_summary_global_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.memory_summary_by_user_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_history_long</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:world.country</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.status_by_host</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.memory_summary_by_host_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.performance_timers</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_history</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.objects_summary_global_by_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary_by_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.waits_by_user_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.help_category</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_COLUMNS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sys.sys_config</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.time_zone_transition</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.film</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.PROFILING</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.actor</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.innodb_buffer_stats_by_schema</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.time_zone_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.func</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.GLOBAL_VARIABLES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.inventory</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$waits_global_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.vip_card</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.setup_timers</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.memory_global_total</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.rwlock_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary_by_statement_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_account_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.setup_consumers</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.film_category</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.memory_global_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.memory_by_host_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_by_account_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.activity_movie</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.customer_list</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.status_by_thread</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.session_variables</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.slave_worker_info</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$io_global_by_file_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.address</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.store</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$wait_classes_global_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_group_members</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.SESSION_STATUS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.innodb_index_stats</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.memory_summary_global_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.SCHEMA_PRIVILEGES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_unused_indexes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.io_global_by_file_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$waits_by_host_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.PARAMETERS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.hall</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_by_instance</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_index_statistics</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.innodb_buffer_stats_by_table</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary_by_statement_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$io_global_by_wait_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.user_variables_by_thread</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary_by_statement_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$ps_digest_95th_percentile_by_avg_us</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$ps_digest_avg_latency_distribution</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_TEMP_TABLE_INFO</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_table_statistics_with_buffer</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_table_statistics</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$innodb_lock_waits</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.io_global_by_wait_by_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.schedule</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_current</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary_by_file_io_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$memory_by_thread_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_host_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.general_log</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.coupon</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_summary_by_account_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.GLOBAL_STATUS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_by_host_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_CONFIG</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.ROUTINES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_BUFFER_PAGE</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.db</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.table_lock_waits_summary_by_table</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary_by_file_io_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$innodb_buffer_stats_by_schema</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.plugin</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.memory_summary_by_account_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.COLLATION_CHARACTER_SET_APPLICABILITY</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$memory_by_user_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_current</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.setup_objects</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_applier_status_by_worker</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.file_summary_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_history</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.customer</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_tables_with_full_table_scans</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_user_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.user</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.coupon_user</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_connection_configuration</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.servers</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.PARTITIONS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.user</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_table_statistics</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_by_user_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.view</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_BUFFER_PAGE_LRU</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_history</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.movie_like</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.city</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.status_by_account</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary_by_statement_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statements_with_runtimes_in_95th_percentile</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.processlist</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_flattened_keys</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_LOCK_WAITS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMPMEM_RESET</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:world.city</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.mutex_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.wait_classes_global_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.STATISTICS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.users</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$ps_schema_table_statistics_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.threads</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.help_topic</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_TRX</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMP_PER_INDEX</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.memory_by_thread_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.time_zone_transition_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_index_statistics</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.status_by_user</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_DEFAULT_STOPWORD</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_global_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.tables_priv</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.EVENTS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.movie</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.OPTIMIZER_TRACE</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statements_with_temp_tables</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$io_global_by_wait_by_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.SESSION_VARIABLES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.waits_by_host_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_applier_status</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.memory_by_user_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.PLUGINS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.metrics</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.io_global_by_wait_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.io_global_by_file_by_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_BUFFER_POOL_STATS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.sales_by_store</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$memory_global_total</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_current</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.COLUMNS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.prepared_statements_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.SCHEMATA</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.session_account_connect_attrs</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.proxies_priv</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_BEING_DELETED</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_digest</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_METRICS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.accounts</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.version</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_TABLESPACES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary_by_statement_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_summary_by_user_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.TABLES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statements_with_full_table_scans</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_object_overview</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.TRIGGERS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.PROCESSLIST</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary_by_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.global_status</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.CHARACTER_SETS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.hosts</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary_by_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.ENGINES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.table_io_waits_summary_by_index_usage</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_applier_configuration</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.FILES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_DELETED</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.help_keyword</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$user_summary_by_stages</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.replication_connection_status</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_summary_by_thread_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.table_io_waits_summary_by_table</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_DATAFILES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_INDEXES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.file_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.film_text</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.memory_summary_by_thread_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.socket_summary_by_instance</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_summary_by_thread_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statement_analysis</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary_by_file_io_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary_by_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_tables_with_full_table_scans</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.country</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.table_handles</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.TABLESPACES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary_by_stages</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_thread_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.help_relation</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMP_RESET</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.session_connect_attrs</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.socket_instances</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$latest_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statements_with_sorting</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_FOREIGN_COLS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$io_global_by_file_by_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$session</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.sales_by_film_category</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary_by_statement_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.staff</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.TABLE_CONSTRAINTS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.nicer_but_slower_film_list</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_VIRTUAL</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_redundant_indexes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statements_with_errors_or_warnings</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.file_summary_by_instance</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.waits_global_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_table_statistics_with_buffer</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$host_summary_by_stages</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.session_status</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.USER_PRIVILEGES</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_summary_by_host_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:cinema.activity</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.user_summary</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_INDEX_CACHE</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$innodb_buffer_stats_by_table</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.time_zone_leap_second</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_waits_history_long</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.statements_with_full_table_scans</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.session_ssl_status</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_CMPMEM</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.wait_classes_global_by_avg_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_stages_history_long</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.category</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary_by_file_io_type</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$wait_classes_global_by_avg_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sakila.film_list</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$waits_by_user_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_summary_by_account_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_history</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_auto_increment_columns</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$memory_global_by_current_bytes</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.host_summary_by_stages</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.slave_master_info</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.REFERENTIAL_CONSTRAINTS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.slow_log</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statements_with_runtimes_in_95th_percentile</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.global_variables</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_FIELDS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$statements_with_sorting</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.schema_table_lock_waits</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.latest_file_io</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_FT_INDEX_TABLE</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.io_by_thread_by_latency</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.COLLATIONS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_summary_by_program</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.film_actor</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.INNODB_SYS_TABLESTATS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.setup_actors</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.host_cache</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_statements_current</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:information_schema.VIEWS</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:performance_schema.events_transactions_summary_by_host_by_event_name</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:sakila.language</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.ps_check_lost_instrumentation</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.TABLE:mysql.proc</node>
-            <node x="" y="">5ed05fc3-c7f3-4f79-89af-277ae6da036e.VIEW:sys.x$schema_table_lock_waits</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="315.0" y="212.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5ed05fc3-c7f3-4f79-89af-277ae6da036e/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql/cinema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="354" column="36" selection-start-line="354" selection-start-column="36" selection-end-line="354" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/vo/HallVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/MovieController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-923">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminScheduleManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="134" column="41" lean-forward="true" selection-start-line="134" selection-start-column="41" selection-end-line="134" selection-end-column="41" />
-          <folding>
-            <element signature="e#3632#3639#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminScheduleManage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-614">
@@ -975,28 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2204">
           <caret line="1099" column="10" lean-forward="true" selection-start-line="1099" selection-start-column="10" selection-end-line="1099" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminCinemaManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="47" column="34" lean-forward="true" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/HallController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1036,24 +436,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminAccountManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-266">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="76">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/movie/MovieServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        <state relative-caret-position="178">
+          <caret line="115" column="49" selection-start-line="115" selection-start-column="49" selection-end-line="115" selection-end-column="49" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/bl/management/HallService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
+          <folding>
+            <element signature="e#2062#2063#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminAccountManage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" column="101" selection-start-line="48" selection-start-column="101" selection-end-line="48" selection-end-column="101" />
+        <state relative-caret-position="318">
+          <caret line="73" column="102" selection-start-line="73" selection-start-column="102" selection-end-line="73" selection-end-column="102" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1062,21 +497,239 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminAccountManage.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/HallController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        <state relative-caret-position="240">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/management/MovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="28" column="96" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/HallMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/sales/TicketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/sales/TicketMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/bl/sales/TicketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminVipManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminScheduleManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="134" column="41" selection-start-line="134" selection-start-column="41" selection-end-line="134" selection-end-column="41" />
+          <folding>
+            <element signature="e#3632#3639#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminMovieManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="110" selection-start-line="36" selection-start-column="110" selection-end-line="36" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://f156b0ab-7472-443a-974f-2a69a253a56f/schema/cinema/table/hall">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/management/HallMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/vo/HallVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminCinemaManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1238">
+          <caret line="86" column="81" lean-forward="true" selection-start-line="86" selection-start-column="81" selection-end-line="86" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/adminPromotionManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="28" column="97" selection-start-line="28" selection-start-column="97" selection-end-line="28" selection-end-column="97" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/TicketServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="381" column="9" selection-start-line="381" selection-start-column="9" selection-end-line="381" selection-end-column="9" />
+          <folding>
+            <element signature="method#getTicketWithCoupon#0;class#TicketServiceImpl#0" />
+            <element signature="method#getConsumingRecordByUserId#0;class#TicketServiceImpl#0" />
+            <element signature="method#getConsumingRecordById#0;class#TicketServiceImpl#0" />
+            <element signature="method#refundTicket#0;class#TicketServiceImpl#0" />
+            <element signature="method#getPayment#0;class#TicketServiceImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/dataImpl/management/MovieMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-61" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/vo/ActivityVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/cinema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4027">
+          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="133" column="38" selection-start-line="133" selection-start-column="38" selection-end-line="133" selection-end-column="38" />
+        <state relative-caret-position="420">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/signUp.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.5.RELEASE/spring-webmvc-5.1.5.RELEASE.jar!/org/springframework/web/servlet/handler/HandlerInterceptorAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/userMovieBuy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-558" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1331" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/CinemaApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/interceptor/SessionInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/user/AccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/user/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/controller/router/ViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
         </state>
       </provider>
     </entry>
