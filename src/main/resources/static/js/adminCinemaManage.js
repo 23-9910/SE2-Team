@@ -204,5 +204,6 @@ function addId(id2){
     $("#hall-row-edit-input").val("");
     $("#hall-column-edit-input").val("");
     $("#edit-film-id").append("<p style='padding:5px 5px 5px 5px'>" + id2 + "</p>");
+
 }
 

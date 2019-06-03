@@ -1,5 +1,10 @@
 $(document).ready(function() {
     //加载时会向后端请求所有的用户内容
+    //获取账户信息
+    //每个账户后都添加一个修改buttonn
+    function renderAccount(){
+
+    }
 });
 
 function addAccount(){
