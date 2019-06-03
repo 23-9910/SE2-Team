@@ -138,8 +138,8 @@ $(document).ready(function() {
             form,
             function (res) {
                 if(res.success){
+                    $("#scheduleModal").modal('hide');
                     getCinemaHalls();
-                    $("#modal-content").modal('hide');
                 } else {
                     alert(res.message);
                 }
@@ -173,7 +173,7 @@ $(document).ready(function() {
             function (res) {
                 if(res.success){
                     getCinemaHalls();
-                    $("#modal-content").modal('hide');
+                    $("#scheduleModalEdit").modal('hide');
                 } else {
                     alert(res.message);
                 }
@@ -200,9 +200,10 @@ $(document).ready(function() {
  */
 function addId(id2){
     $("#edit-film-id").empty();
-    $("#hall-name-edit-input").empty();
-    $("#hall-row-edit-input").empty();
-    $("#hall-column-edit-input").empty();
+    $("#hall-name-edit-input").val("");
+    $("#hall-row-edit-input").val("");
+    $("#hall-column-edit-input").val("");
     $("#edit-film-id").append("<p style='padding:5px 5px 5px 5px'>" + id2 + "</p>");
+
 }
 
