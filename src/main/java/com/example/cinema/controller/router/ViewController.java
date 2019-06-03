@@ -77,4 +77,13 @@ public class ViewController {
     public String getUserMember() {
         return "userMember";
     }
+
+    @RequestMapping(value = "/admin/vip/manage")
+    public String getAdminVIPManage(){ return "adminVipManage"; }
+
+    @RequestMapping(value = "/admin/account/manage")
+    public String getAdminAccountManage(){ return "adminAccountManage"; }
+
+    @RequestMapping(value = "user/history")
+    public String getUserHistory(){ return "userHistory";}
 }

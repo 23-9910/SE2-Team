@@ -8,6 +8,7 @@ import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.*;
 
 /**
  * @author huwen
@@ -36,6 +37,65 @@ public class AccountServiceImpl implements AccountService {
             return null;
         }
         return new UserVO(user);
+    }
+
+    @Override
+    public ResponseVO searchAllManager(int userId) {
+        try {
+            if(userId == 8){
+                List<User> userList = accountMapper.getAllManagers();
+                return ResponseVO.buildSuccess(userList);
+            }else {
+                return ResponseVO.buildSuccess("您没有访问权限");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO searchOneManager(int userId) {
+        try {
+            User user = accountMapper.getManagerById(userId);
+            return ResponseVO.buildSuccess(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO updateOneManager(User user) {
+        try {
+            accountMapper.updateOneManager(user);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO deleteOneManager(int userId) {
+        try {
+            accountMapper.deleteOneManager(userId);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO addOneManager(User user) {
+        try {
+            accountMapper.insertOneManager(user);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
     }
 
 
