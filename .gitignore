@@ -30,3 +30,4 @@ hs_err_pid*
 .idea/workspace.xml
 target/classes/application.yml
 src/main/resources/application.yml
+.idea/workspace.xml
