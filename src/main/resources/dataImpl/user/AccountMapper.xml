@@ -9,6 +9,31 @@
         select * from user where username=#{username}
     </select>
 
+    <select id="getAllManagers" resultMap="User">
+        select * from user where state=1
+    </select>
+
+    <select id="getManagerById" resultMap="User">
+        select * from user where id=#{userId}
+    </select>
+
+    <insert id="insertOneManager" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username,password,state)
+        values(#{username},#{password},#{state})
+    </insert>
+
+    <delete id="deleteOneManager">
+        delete from user where id=#{userId}
+    </delete>
+
+    <update id="updateOneManager" parameterType="com.example.cinema.po.User">
+        update user set username=#{username}, password=#{username},state=#{state} where id=#{id}
+    </update>
+
     <resultMap id="User" type="com.example.cinema.po.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="state" property="state"></result>
     </resultMap>
 </mapper>
