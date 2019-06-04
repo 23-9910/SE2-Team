@@ -61,6 +61,10 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
     @Override
     public ResponseVO updateHall(HallVO hallVO){
         try {
+            ResponseVO responseVO = preCheck(hallVO);
+            if(!responseVO.getSuccess()){
+                return responseVO;
+            }
             hallMapper.updateHallById(hallVO);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
@@ -75,5 +79,9 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
             hallVOList.add(new HallVO(hall));
         }
         return hallVOList;
+    }
+
+    public ResponseVO preCheck(HallVO hallVO){
+        return ResponseVO.buildSuccess();
     }
 }
