@@ -38,6 +38,20 @@
     <div class="content-container">
     <!-- 选择消费额度筛选，选择赠送的优惠券选择-->
         <!-- 会员卡编号，用户名，历史消费总额，是否赠送优惠券（格子，打勾赠送-->
+        <div class="card" style="margin:20px 0;padding:20px;">
+            <div style="display: flex;justify-content: space-between">
+                <div>
+                    <span>选择赠送的优惠券  </span>
+                    <select id="hall-select" class="form-control" style="display: inline-block;width: 180px;">
+                        <!--查询插入-->
+                    </select>
+                </div>
+                <div>
+                    <span>选择消费额度  </span>
+                    <input type="date" class="form-control" id="schedule-date-input" style="display: inline-block;width: 180px;">
+                </div>
+            </div>
+        </div>
         <div id="movie-list" style="margin: 20px 50px;background-color: white">
             <div style="font-size: 25px; margin: 20px">优惠券管理</div>
             <table class="table" id="my-tickets-table" style="margin:0 auto">
