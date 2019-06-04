@@ -326,6 +326,39 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /**
+     * 。。。
+     * @param ticketId
+     * @return
+     */
+    @Override
+    public ResponseVO returnTickets(List<Integer> ticketId) {
+        try {
+            List<Integer> ticketId1=null;
+            //电影开始前两小时可以退票
+            for(int i = 0;i < ticketId.size();i++){
+                Ticket ticket = ticketMapper.selectTicketById(ticketId.get(i));
+                if (ticket.getState()!=1) {
+                    continue;
+                }else{
+                    ScheduleItem scheduleItem=scheduleMapper.selectScheduleById(ticket.getScheduleId());
+                    //比较电影开始时间与现在时间，在比较电影开始时间与实际购买时间
+                    Timestamp filmStart = new Timestamp(scheduleItem.getStartTime().getTime());
+                    if(filmStart.before(new Timestamp(new Date().getTime()))){
+                        long k =(filmStart.getTime()-ticket.getTime().getTime())/(1000*60*60);
+                        if (k>2){
+                            ticketId1.add(ticket.getId());
+                        }
+                    }
+                }
+            }
+            return ResponseVO.buildSuccess(ticketId1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
     public double getPayment(List<Integer> ticketId, int couponId){
         double firstTotal = 0;
         double payment = 0;

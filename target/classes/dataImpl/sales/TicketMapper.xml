@@ -52,11 +52,21 @@
         <result column="time" property="time"></result>
     </resultMap>
 
-    <resultMap id="ConsumingRecord" type="com.example.cinema.po.ConsumingRecord">
-        <result column=""></result>
-    </resultMap>
     <update id="cleanExpiredTicket">
         update ticket SET  state =2 WHERE minute(timediff(now(),time))>15 and state=0;
     </update>
+
+    <insert id="insertOneConsumingRecord" parameterType="com.example.cinema.po.ConsumingRecord">
+        insert into consuming_record(user_id,payment,pay_form,movie_name,ticket_amount,coupon_id)
+        values(#{userId},#{payment},#{payForm},#{movieName},#{ticketAmount},#{counponId})
+    </insert>
+
+    <select id="selectConsumingRecordByUser" resultType="com.example.cinema.po.ConsumingRecord">
+        select * from consuming_record where user_id = #{userId}
+    </select>
+
+    <select id="selectConsumingRecordById" resultType="com.example.cinema.po.ConsumingRecord">
+        select * from consuming_record where id = #{id}
+    </select>
 
 </mapper>

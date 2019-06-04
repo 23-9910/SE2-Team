@@ -76,5 +76,9 @@ public interface TicketService {
     ResponseVO getConsumingRecordByUserId(int userId);
 
     ResponseVO getConsumingRecordById(int id);
+    /**
+     *...
+     */
+    ResponseVO returnTickets(List<Integer> ticketId);
 }
 

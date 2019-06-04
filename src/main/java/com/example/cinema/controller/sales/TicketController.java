@@ -66,7 +66,13 @@ public class TicketController {
         return ticketService.getConsumingRecordById(id);
     }
 
-
+    /**
+     * 。。。
+     */
+    @PostMapping("/return")
+    public ResponseVO returnTickets(@RequestBody List<Integer> ticketId){
+        return ticketService.returnTickets(ticketId);
+    }
 
 
 }
