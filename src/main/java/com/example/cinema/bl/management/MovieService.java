@@ -45,6 +45,7 @@ public interface MovieService {
 
     /**
      * 批量下架电影
+     * 。。。
      * @param movieBatchOffForm
      * @return
      */
@@ -52,6 +53,8 @@ public interface MovieService {
 
     /**
      * 更新电影信息
+     * 。。。
+     *
      * @param updateMovieForm
      * @return
      */

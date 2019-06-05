@@ -35,9 +35,19 @@ public class Ticket {
 
     /**
      * 订单状态：
-     * 0：未完成 1：已完成 2:已失效
+     * 0：未完成 1：已完成 2:已失效 3:已退票
      */
     private int state;
+
+    /**
+     * 消费记录id
+     */
+    private int consumingRecordId;
+
+    /**
+     * 优惠策略
+     */
+    private double discount;
 
     private Timestamp time;
 
@@ -71,6 +81,9 @@ public class Ticket {
             case 2:
                 stateString = "已失效";
                 break;
+            case 3:
+                stateString = "已退票";
+                break;
             default:
                 stateString = "未完成";
         }
@@ -98,6 +111,9 @@ public class Ticket {
                 break;
             case 2:
                 stateString = "已失效";
+                break;
+            case 3:
+                stateString = "已退票";
                 break;
             default:
                 stateString = "未完成";
@@ -156,4 +172,12 @@ public class Ticket {
     public void setState(int state) {
         this.state = state;
     }
+
+    public int getConsumingRecordId() {return this.consumingRecordId;}
+
+    public void setConsumingRecordId(int recordId) {this.consumingRecordId = recordId;}
+
+    public double getDiscount(){return this.discount;}
+
+    public void setDiscount(double discount){this.discount = discount;}
 }

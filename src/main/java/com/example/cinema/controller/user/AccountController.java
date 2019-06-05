@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-
+import com.example.cinema.po.User;
 /**
  * @author huwen
  * @date 2019/3/23
@@ -41,4 +41,33 @@ public class AccountController {
         session.removeAttribute(InterceptorConfiguration.SESSION_KEY);
         return "index";
     }
+
+    /**
+     * Modified by sun on 2019/06/03
+     */
+    @PostMapping("/search/all/manager")
+    public ResponseVO searchAllManager(Integer userId){
+        return accountService.searchAllManager(userId);
+    }
+
+    @PostMapping("/search/one/manager")
+    public ResponseVO searchOneManager(Integer userId){
+        return accountService.searchOneManager(userId);
+    }
+
+    @PostMapping("/update/one/manager")
+    public ResponseVO updateOneManager(User user){
+        return accountService.updateOneManager(user);
+    }
+
+    @PostMapping("/delete/one/manager")
+    public ResponseVO deleteOneManager(Integer userId){
+        return accountService.deleteOneManager(userId);
+    }
+
+    @PostMapping("/add/one/manager")
+    public ResponseVO addOneManager(User user){
+        return accountService.addOneManager(user);
+    }
+
 }

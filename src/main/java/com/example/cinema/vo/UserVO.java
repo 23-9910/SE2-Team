@@ -10,11 +10,16 @@ public class UserVO {
     private Integer id;
     private String username;
     private String password;
+    /**
+     * 0:经理；1:管理员；2:用户
+     */
+    private int state;
 
     public UserVO(User user){
         this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.state = user.getState();
     }
 
     public Integer getId() {
@@ -40,4 +45,8 @@ public class UserVO {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getState(){return state;}
+
+    public void setState(int state){ this.state = state;}
 }

@@ -1,5 +1,6 @@
 package com.example.cinema.data.sales;
 
+import com.example.cinema.po.ConsumingRecord;
 import com.example.cinema.po.Ticket;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,5 +32,20 @@ public interface TicketMapper {
 
     @Scheduled(cron = "0/1 * * * * ?")
     void cleanExpiredTicket();
+
+    /**
+     * Modified by sun on 2019/05/29
+     */
+    int insertOneConsumingRecord(ConsumingRecord consumingRecord);
+
+    List<ConsumingRecord> selectConsumingRecordByUser(int userId);
+
+    ConsumingRecord selectConsumingRecordById(int id);
+
+    List<Ticket> selectTicketsByConsumingRecord(int consumingRecordId);
+
+    void updateRecordId(int recordId, int ticketId);
+
+    void changeDiscount(double discount);
 }
 

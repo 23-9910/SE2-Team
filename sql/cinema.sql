@@ -130,8 +130,8 @@ DROP TABLE IF EXISTS `hall`;
 CREATE TABLE `hall` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `column` int(11) DEFAULT NULL,
-  `row` int(11) DEFAULT NULL,
+  `hall_column` int(11) DEFAULT NULL,
+  `hall_row` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -247,6 +247,8 @@ CREATE TABLE `ticket` (
   `column_index` int(11) DEFAULT NULL,
   `row_index` int(11) DEFAULT NULL,
   `state` tinyint(4) DEFAULT NULL,
+  `consuming_record_id` int(11) DEFAULT NULL,
+  `discount` double DEFAULT 0.6,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -259,7 +261,12 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (12,50,5,3,2,1,'2019-04-23 13:50:52'),(12,50,5,3,2,2,'2019-04-23 13:50:52'),(12,50,5,3,2,3,'2019-04-23 13:50:52'),(12,50,5,3,2,4,'2019-04-23 13:50:52'),(12,50,5,3,0,5,'2019-04-23 13:50:52'),(15,50,4,3,0,6,'2019-04-23 13:50:52'),(15,58,0,0,1,15,'2019-04-23 13:50:52'),(15,58,2,0,1,16,'2019-04-23 13:50:52'),(15,58,1,1,1,17,'2019-04-23 13:50:52'),(15,58,11,7,1,18,'2019-04-23 13:50:52'),(13,50,4,2,1,19,'2019-04-23 13:50:52'),(15,66,3,2,1,20,'2019-04-23 13:50:52'),(12,50,1,1,1,21,'2019-04-23 13:50:52'),(13,50,4,3,1,22,'2019-04-23 13:50:52'),(15,50,2,2,1,23,'2019-04-23 13:50:52'),(15,58,0,7,0,24,'2019-04-23 13:50:52'),(15,58,5,4,0,25,'2019-04-23 13:50:52'),(15,58,6,4,0,26,'2019-04-23 13:50:52'),(15,58,6,2,0,27,'2019-04-23 13:50:52'),(15,58,7,2,0,28,'2019-04-23 13:50:52'),(15,58,0,4,0,29,'2019-04-23 13:50:52'),(15,58,0,3,0,30,'2019-04-23 13:50:52'),(15,58,0,2,0,31,'2019-04-23 13:50:52'),(15,58,10,0,0,32,'2019-04-23 13:50:52'),(15,58,11,0,0,33,'2019-04-23 13:50:52'),(15,58,8,0,0,34,'2019-04-23 13:50:52'),(15,58,9,0,0,35,'2019-04-23 13:50:52'),(15,58,5,0,0,36,'2019-04-23 13:50:52'),(15,58,6,0,0,37,'2019-04-23 13:50:52'),(15,58,6,7,0,38,'2019-04-23 13:50:52'),(15,58,7,7,0,39,'2019-04-23 13:50:52'),(15,58,8,7,0,40,'2019-04-23 13:50:52'),(15,58,11,4,0,41,'2019-04-23 13:50:52'),(15,58,11,5,0,42,'2019-04-23 13:50:52'),(15,58,9,6,0,43,'2019-04-23 13:50:52'),(15,58,10,6,0,44,'2019-04-23 13:50:52'),(15,58,11,6,0,45,'2019-04-23 13:50:52'),(15,58,3,5,1,46,'2019-04-23 13:50:52'),(15,58,4,5,1,47,'2019-04-23 13:50:52'),(15,58,5,5,1,48,'2019-04-23 13:50:52'),(15,58,11,2,0,49,'2019-04-23 13:50:52'),(15,58,11,3,0,50,'2019-04-23 13:50:52'),(15,58,9,4,0,51,'2019-04-23 13:50:52'),(15,58,9,3,1,52,'2019-04-23 13:50:52'),(15,58,10,3,1,53,'2019-04-23 13:50:52'),(15,65,7,4,0,54,'2019-04-23 13:50:52'),(15,65,8,4,0,55,'2019-04-23 13:50:52'),(15,65,9,4,0,56,'2019-04-23 13:50:52'),(15,65,7,3,0,57,'2019-04-23 13:50:52'),(15,65,8,3,0,58,'2019-04-23 13:50:52'),(15,65,9,3,0,59,'2019-04-23 13:50:52'),(15,65,0,0,1,60,'2019-04-23 13:50:52'),(15,65,0,1,1,61,'2019-04-23 13:50:52'),(15,65,0,2,1,62,'2019-04-23 13:50:52');
+INSERT INTO `ticket` VALUES (12,50,5,3,2,1,0.6,1,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,2,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,3,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,4,'2019-04-23 13:50:52'),
+                            (12,50,5,3,1,1,0.6,5,'2019-04-23 13:50:52'),
+                            (15,50,4,3,0,1,0.6,6,'2019-05-28 20:00:00');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,6 +281,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `state` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_uindex` (`id`),
   UNIQUE KEY `user_username_uindex` (`username`)
@@ -286,7 +294,15 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'testname','123456'),(3,'test','123456'),(5,'test1','123456'),(7,'test121','123456'),(8,'root','123456'),(10,'roottt','123123'),(12,'zhourui','123456'),(13,'abc123','abc123'),(15,'dd','123');
+INSERT INTO `user` VALUES (1,'testname','123456',1),
+                          (3,'test','123456',1),
+                          (5,'test1','123456',1),
+                          (7,'test121','123456',1),
+                          (8,'root','123456',0),
+                          (10,'roottt','123123',1),
+                          (12,'zhourui','123456',1),
+                          (13,'abc123','abc123',1),
+                          (15,'dd','123',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,6 +355,63 @@ LOCK TABLES `vip_card` WRITE;
 /*!40000 ALTER TABLE `vip_card` DISABLE KEYS */;
 INSERT INTO `vip_card` VALUES (1,15,375,'2019-04-21 13:54:38'),(2,12,660,'2019-04-17 18:47:42');
 /*!40000 ALTER TABLE `vip_card` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `consuming_record` ; By sun in 2019/05/28
+--
+
+DROP TABLE IF EXISTS `consuming_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `consuming_record` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) DEFAULT NULL,
+    `payment` float DEFAULT NULL,
+    `pay_form` int(11) DEFAULT NULL,
+    `pay_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `schedule_id` int(11) DEFAULT NULL,
+    `ticket_amount` int(11) DEFAULT NULL,
+    `coupon_id` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `consuming_record`
+--
+
+LOCK TABLES `consuming_record` WRITE;
+/*!40000 ALTER TABLE `consuming_record` DISABLE KEYS */;
+INSERT INTO `consuming_record` VALUES (1,1,100,0,'2019-05-28 19:05:00',0,2,0);
+/*!40000 ALTER TABLE `consuming_record` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vip_charge_record` ; By sun in 2019/05/28
+--
+
+DROP TABLE IF EXISTS `vip_charge_record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vip_charge_record` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `user_id` int(11) DEFAULT NULL,
+    `vip_id` int(11) DEFAULT NULL,
+    `charge_amount` float DEFAULT NULL,
+    `offer_amount` float DEFAULT NULL,
+    `charge_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `vip_charge_record`
+--
+LOCK TABLES `vip_charge_record` WRITE;
+/*!40000 ALTER TABLE `vip_charge_record` DISABLE KEYS */;
+INSERT INTO `vip_charge_record` VALUES (1,1,1,0,0,'2019-05-28 20:29:00');
+/*!40000 ALTER TABLE `vip_charge_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

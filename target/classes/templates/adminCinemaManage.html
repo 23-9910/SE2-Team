@@ -18,7 +18,7 @@
 <div class="main-container">
     <div class="nav-left-container">
         <div class="nav-user-container" style="margin-bottom: 50px;">
-            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg"/>
             <p class="title">Admin</p>
         </div>
         <ul class="nav nav-pills nav-stacked">
@@ -26,11 +26,19 @@
             <li role="presentation"><a href="/admin/session/manage"><i class="icon-calendar"></i> 排片管理</a></li>
             <li role="presentation"><a href="/admin/promotion/manage"><i class="icon-gift"></i> 活动管理</a></li>
             <li role="presentation" class="active"><a href="#"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/vip/manage"><i class="icon-vip"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/account/manage"><i class="icon-account"></i> 账户管理</a></li>
+            <li role="presentation"><a href="/admin/coupon/give"><i class="icon-coupons"></i> 优惠券管理</a></li>
+            <li role="presentation"><a href="/admin/refund/manage"><i class="icon-refund"></i> 电影票管理</a></li>
             <li role="presentation"><a href="/admin/cinema/statistic"><i class="icon-bar-chart"></i> 影院统计</a></li>
         </ul>
     </div>
     <div class="content-container">
         <div class="content-item">
+            <!--这边是那个新增排片按钮 -->
+            <button type="button" class="btn btn-primary " data-backdrop="static" style="float:right" data-toggle="modal"
+                    data-target="#scheduleModal"><i class="icon-plus-sign"></i> 新增影厅
+            </button>
             <span class="title gray-text">常规设置</span>
             <div class="content-card card">
                 <span class="">用户可见排片日期：</span><span id="can-see-num"></span>
@@ -41,7 +49,104 @@
         </div>
         <div class="content-item">
             <span class="title gray-text">影厅管理</span>
+            <!--新增电影的跳出表单-->
+            <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">新增影厅</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-name-input"><span
+                                            class="error-text">*</span>影厅名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="hall-name-input"
+                                               placeholder="请输入名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-row-input"><span class="error-text">*</span>行</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="hall-row-input"
+                                               placeholder="请输入行数">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-column-input"><span
+                                            class="error-text">*</span>列</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="hall-column-input"
+                                               placeholder="请输入列数">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="schedule-form-btn">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--修改影厅-->
+            <div class="modal fade" id="scheduleModalEdit" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" id="edit-container">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">修改影厅信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-name-edit-input">影厅ID</label>
+                                    <div class="col-sm-10" id="edit-film-id">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-name-edit-input">影厅名</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="hall-name-edit-input"
+                                               placeholder="请输入名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-row-edit-input">行</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="hall-row-edit-input"
+                                               placeholder="请输入行数">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="hall-column-edit-input">列</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="hall-column-edit-input"
+                                               placeholder="请输入列数">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="schedule-edit-remove-btn">删除</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="schedule-form-btn-edit">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="addHall" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel">
+                <div class="modal-dialog" role="document">
+                </div>
+            </div>
             <div class="content-card card" id="hall-card">
+
             </div>
         </div>
     </div>

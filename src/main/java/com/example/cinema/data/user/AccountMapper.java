@@ -3,6 +3,7 @@ package com.example.cinema.data.user;
 import com.example.cinema.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import java.util.*;
 
 /**
  * @author huwen
@@ -25,4 +26,17 @@ public interface AccountMapper {
      * @return
      */
     public User getAccountByName(@Param("username") String username);
+
+    /**
+     * Modified by sun on 2019/06/03
+     */
+    List<User> getAllManagers();
+
+    User getManagerById(int userId);
+
+    int updateOneManager(User user);
+
+    int deleteOneManager(int userId);
+
+    int insertOneManager(User user);
 }

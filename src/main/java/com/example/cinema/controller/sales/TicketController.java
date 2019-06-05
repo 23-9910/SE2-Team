@@ -20,6 +20,7 @@ public class TicketController {
     @PostMapping("/get/withCoupon")
     public ResponseVO getTicketWithCoupon(@RequestBody List<Integer> TicketId,@RequestParam int userId){
         return ticketService.getTicketWithCoupon(TicketId,userId);}
+
     @PostMapping("/vip/buy")
     public ResponseVO buyTicketByVIPCard(@RequestBody List<Integer> ticketId, @RequestParam int couponId){
         return ticketService.completeByVIPCard(ticketId,couponId);
@@ -29,6 +30,7 @@ public class TicketController {
     public ResponseVO lockSeat(@RequestBody TicketForm ticketForm){
         return ticketService.addTicket(ticketForm);
     }
+
     @PostMapping("/buy")
     public ResponseVO buyTicket(@RequestBody List<Integer> ticketId,@RequestParam int couponId){
         return ticketService.completeTicket(ticketId,couponId);
@@ -42,13 +44,55 @@ public class TicketController {
     public ResponseVO getOccupiedSeats(@RequestParam int scheduleId){
         return ticketService.getBySchedule(scheduleId);
     }
+
     @PostMapping("/cancel")
     public ResponseVO cancelTicket(@RequestParam List<Integer> ticketId){
         return ticketService.cancelTicket(ticketId);
     }
 
+    /**
+     * Modified by sun on 2019/05/28
+     */
 
+    @PostMapping("/add/record")
+    public ResponseVO addOneConsumingRecord(@RequestBody List<Integer> ticketId, @RequestParam int couponId, @RequestParam int payForm){
+        return ticketService.addOneConsumingRecord(ticketId,couponId,payForm);
+    }
 
+    @PostMapping("add/recordId")
+    public ResponseVO addRecordIdOnTicket(@RequestBody List<Integer> ticketId){
+        return ticketService.addRecordIdOnTicket(ticketId);
+    }
 
+    @GetMapping("/get/user/record/{userId}")
+    public ResponseVO getConsumingRecordByUserId(@PathVariable int userId){
+        return ticketService.getConsumingRecordByUserId(userId);
+    }
+
+    @GetMapping("/get/record/{id}")
+    public ResponseVO getConsumingRecordById(@PathVariable int id){
+        return ticketService.getConsumingRecordById(id);
+    }
+
+    @PostMapping("/refund")
+    public ResponseVO refundTicket(@RequestParam int ticketId){
+        return ticketService.refundTicket(ticketId);
+    }
+
+    @GetMapping("/get/consumed/{consumingRecordId}")
+    public ResponseVO getTicketsByConsumingRecord(@PathVariable int consumingRecordId){
+        return ticketService.getTicketByConsumingRecord(consumingRecordId);
+    }
+    /**
+     * By jyt
+     */
+    @PostMapping("/return")
+    public ResponseVO returnTickets(@RequestBody List<Integer> ticketId){
+        return ticketService.returnTickets(ticketId);
+    }
+    @PostMapping("/discount")
+    public ResponseVO changeDiscount(@RequestBody double discount){
+        return ticketService.changeDiscount(discount);
+    }
 
 }

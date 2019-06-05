@@ -8,6 +8,7 @@ public class User {
     private Integer id;
     private String username;
     private String password;
+    private int state;
 
     public Integer getId() {
         return id;
@@ -32,4 +33,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getState(){return this.state;}
+
+    public void setState(int state){this.state = state;}
 }

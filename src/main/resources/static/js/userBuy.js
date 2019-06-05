@@ -38,6 +38,8 @@ $(document).ready(function () {
                 + '<th>' + stateStr + '</th>'
                 + '</tr>';
             if(stateStr !== "未完成"){
+
+
                 $('#my-tickets-table-body').append(ticketStr);
             }
         }

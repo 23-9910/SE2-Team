@@ -3,7 +3,10 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
+.icon-coupons:before{content:"\f02c";}
+.icon-refund:before{content:"\f0d6";}
+.icon-vip:before{content:"\f09d";}
+.icon-account:before{content:"\f0c0";}
 /*!
  * Generated using the Bootstrap Customizer (<none>)
  * Config saved to config.json and <none>
