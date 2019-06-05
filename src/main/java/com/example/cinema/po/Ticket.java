@@ -44,6 +44,11 @@ public class Ticket {
      */
     private int consumingRecordId;
 
+    /**
+     * 优惠策略
+     */
+    private double discount;
+
     private Timestamp time;
 
     public Timestamp getTime() {
@@ -171,4 +176,8 @@ public class Ticket {
     public int getConsumingRecordId() {return this.consumingRecordId;}
 
     public void setConsumingRecordId(int recordId) {this.consumingRecordId = recordId;}
+
+    public double getDiscount(){return this.discount;}
+
+    public void setDiscount(double discount){this.discount = discount;}
 }

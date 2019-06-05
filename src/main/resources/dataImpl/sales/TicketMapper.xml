@@ -76,6 +76,10 @@
         select * from consuming_record where id = #{id}
     </select>
 
+    <update id="changeDiscount">
+        alter table ticket alter discount set default #{discount}
+    </update>
+
     <resultMap id="ConsumingRecord" type="com.example.cinema.po.ConsumingRecord">
         <id column="id" property="id"></id>
         <result column="user_id" property="userId"></result>

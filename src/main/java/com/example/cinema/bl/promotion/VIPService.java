@@ -30,4 +30,6 @@ public interface VIPService {
     ResponseVO getChargeRecordByUserId(int userId);
 
     ResponseVO getChargeRecordById(int id);
+    //...
+    ResponseVO changeDescription(String description);
 }
