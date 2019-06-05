@@ -65,12 +65,12 @@ public class MovieController {
     public ResponseVO getMovieByKeyword(@RequestParam String keyword){
         return movieService.getMovieByKeyword(keyword);
     }
-
+    //。。。
     @RequestMapping(value = "/movie/off/batch",method = RequestMethod.POST)
     public ResponseVO pullOfBatchOfMovie(@RequestBody MovieBatchOffForm movieBatchOffForm){
         return movieService.pullOfBatchOfMovie(movieBatchOffForm);
     }
-
+    //。。。
     @RequestMapping(value = "/movie/update",method = RequestMethod.POST)
     public ResponseVO updateMovie(@RequestBody MovieForm updateMovieForm){
         return movieService.updateMovie(updateMovieForm);

@@ -139,5 +139,11 @@ public class VIPServiceImpl implements VIPService {
         }
     }
 
+    @Override
+    public ResponseVO changeDescription(String description) {
+        VIPCard.description = description;
+        return ResponseVO.buildSuccess();
+    }
+
 
 }

@@ -83,5 +83,12 @@ public class TicketController {
     public ResponseVO getTicketsByConsumingRecord(@PathVariable int consumingRecordId){
         return ticketService.getTicketByConsumingRecord(consumingRecordId);
     }
+    /**
+     * 。。。
+     */
+    @PostMapping("/return")
+    public ResponseVO returnTickets(@RequestBody List<Integer> ticketId){
+        return ticketService.returnTickets(ticketId);
+    }
 
 }
