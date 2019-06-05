@@ -46,5 +46,6 @@ public interface TicketMapper {
 
     void updateRecordId(int recordId, int ticketId);
 
+    void changeDiscount(double discount);
 }
 

@@ -414,6 +414,17 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    @Override
+    public ResponseVO changeDiscount(double discount){
+        try {
+            ticketMapper.changeDiscount(discount);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
     public double getPayment(List<Integer> ticketId, int couponId){
         double firstTotal = 0;
         double payment = 0;

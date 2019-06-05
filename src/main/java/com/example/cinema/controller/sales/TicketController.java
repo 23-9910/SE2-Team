@@ -84,11 +84,15 @@ public class TicketController {
         return ticketService.getTicketByConsumingRecord(consumingRecordId);
     }
     /**
-     * 。。。
+     * By jyt
      */
     @PostMapping("/return")
     public ResponseVO returnTickets(@RequestBody List<Integer> ticketId){
         return ticketService.returnTickets(ticketId);
+    }
+    @PostMapping("/discount")
+    public ResponseVO changeDiscount(@RequestBody double discount){
+        return ticketService.changeDiscount(discount);
     }
 
 }

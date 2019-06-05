@@ -29,7 +29,7 @@
     <update id="updateOneManager" parameterType="com.example.cinema.po.User">
         update user set username=#{username}, password=#{username},state=#{state} where id=#{id}
     </update>
-    
+
     <resultMap id="User" type="com.example.cinema.po.User">
         <id column="id" property="id"></id>
         <result column="username" property="username"></result>
