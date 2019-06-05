@@ -46,7 +46,7 @@ public class AccountServiceImpl implements AccountService {
                 List<User> userList = accountMapper.getAllManagers();
                 return ResponseVO.buildSuccess(userList);
             }else {
-                return ResponseVO.buildSuccess("您没有访问权限");
+                return ResponseVO.buildFailure("您没有访问权限");
             }
         }catch (Exception e){
             e.printStackTrace();

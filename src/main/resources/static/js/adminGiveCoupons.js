@@ -38,5 +38,12 @@ function renderAllVIP(){
  * 后端添加方法
  */
 function renderVIP(){
-
+   //后端方法
 }
+
+/**
+ * 点击确认按钮，会将优惠卷赠送
+ */
+$("").click(function () {
+    //后端方法
+})

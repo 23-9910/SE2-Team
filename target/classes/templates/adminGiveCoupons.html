@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <titl>优惠券管理</titl></title>
+    <title>优惠券管理</title>
 
     <link rel="stylesheet" type="text/css" href="/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
@@ -26,16 +26,17 @@
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation"><a href="/admin/movie/manage"><i class="icon-film"></i> 电影管理</a></li>
             <li role="presentation"><a href="/admin/session/manage"><i class="icon-calendar"></i> 排片管理</a></li>
-            <li role="presentation" class="active"><a href="#"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage"><i class="icon-gift"></i> 活动管理</a></li>
             <li role="presentation"><a href="/admin/cinema/manage"><i class="icon-cogs"></i> 影院管理</a></li>
             <li role="presentation"><a href="/admin/vip/manage"><i class="icon-vip"></i> 会员管理</a></li>
             <li role="presentation"><a href="/admin/account/manage"><i class="icon-account"></i> 账户管理</a></li>
-            <li role="presentation"><a href="/admin/coupon/give"><i class="icon-coupons"></i> 优惠券管理</a></li>
+            <li role="presentation"  class="active"><a href="/admin/coupon/give"><i class="icon-coupons"></i> 优惠券管理</a></li>
             <li role="presentation"><a href="/admin/refund/manage"><i class="icon-refund"></i> 电影票管理</a></li>
             <li role="presentation"><a href="/admin/cinema/statistic"><i class="icon-bar-chart"></i> 影院统计</a></li>
         </ul>
     </div>
     <div class="content-container">
+        <span class="title gray-text">优惠券管理</span>
     <!-- 选择消费额度筛选，选择赠送的优惠券选择-->
         <!-- 会员卡编号，用户名，历史消费总额，是否赠送优惠券（格子，打勾赠送-->
         <div class="card" style="margin:20px 0;padding:20px;">
@@ -48,12 +49,9 @@
                 </div>
                 <div>
                     <span>选择消费额度  </span>
-                    <input type="date" class="form-control" id="schedule-date-input" style="display: inline-block;width: 180px;">
+                    <input type="number" class="form-control" id="vip-history-input" style="display: inline-block;width: 180px;">
                 </div>
             </div>
-        </div>
-        <div id="movie-list" style="margin: 20px 50px;background-color: white">
-            <div style="font-size: 25px; margin: 20px">优惠券管理</div>
             <table class="table" id="my-tickets-table" style="margin:0 auto">
                 <thead id="my-tickets-table-head" style="text-align: center">
                 <tr>
