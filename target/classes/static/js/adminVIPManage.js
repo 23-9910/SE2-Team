@@ -4,7 +4,7 @@ $(document).ready(function () {
     
     function getVIPs() {
         getRequest(
-            '/get',
+            "",
             function (res) {
                 var vips = res.content;
                 renderVIPs(vips);
@@ -47,7 +47,7 @@ $(document).ready(function () {
         };
 
         postRequest(
-            '/publish',
+            "",
             form,
             function (res) {
                 if(res.success){
