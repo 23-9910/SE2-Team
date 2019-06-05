@@ -6,10 +6,10 @@ $(document).ready(function() {
     //加载时会向后端请求所有的用户内容
     //获取账户信息
     //每个账户后都添加一个修改buttonn
-    var id = sessionStorage.getItem("id");
-    var useId = parseInt(id);
+    var id = window.sessionStorage.getItem('id');
+    var useId = {userId:parseInt(id)};
     postRequest("/search/all/manager",
-        {userId:useId},
+        useId,
         function(res){
             if(res.success){
                 getAllAccount(res.content);
