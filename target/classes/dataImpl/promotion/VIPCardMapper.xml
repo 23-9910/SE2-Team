@@ -33,7 +33,6 @@
         select * from vip_charge_record where id = #{id}
     </select>
 
-
     <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
         <result column="join_time" property="joinDate"></result>
         <result column="id" property="id"></result>

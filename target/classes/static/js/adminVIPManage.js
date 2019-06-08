@@ -30,8 +30,7 @@ $(document).ready(function () {
                 "    </div>" +
                 "    <div class='vip-coupon primary-bg'>" +
                 "        <span class='title'>充值优惠："+vip.name+"</span>" +
-                "        <span class='title'>买"+vip.price+"送<span class='error-text title'>"+vip.gift+"</span></span>" +
-                "        <span class='gray-text'>"+vip.description+"</span>" +
+                "        <span class='title'>充"+vip.price+"送<span class='error-text title'>"+vip.gift+"</span></span>" +
                 "    </div>" +
                 "</div>";
         });
