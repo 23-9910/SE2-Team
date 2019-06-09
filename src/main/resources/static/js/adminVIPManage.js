@@ -61,4 +61,30 @@ $(document).ready(function () {
             }
         );
     })
+
+    $("#vip-change-btn").click(function(){
+        var change = {
+            name: $("#vip-new-name-input").val(),
+            description: $("#vip-new-description-input").val(),
+            price: $("#vip-price-input").val(),
+            gift: $("#vip-gift-input").val()
+        };
+
+        postRequest(
+            "",
+            change,
+            function (res) {
+                if(res.success){
+                    getVIPs();
+                    $("#VIPChangeModal").modal('hide');
+                } else {
+                    alert(res.message);
+                }
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        );
+
+    })
 })
