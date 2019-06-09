@@ -1,14 +1,12 @@
 package com.example.cinema.controller.user;
 
-import com.example.cinema.blImpl.user.AccountServiceImpl;
+import com.example.cinema.bl.user.AccountService;
 import com.example.cinema.config.InterceptorConfiguration;
 import com.example.cinema.vo.UserForm;
 import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import com.example.cinema.po.User;
@@ -19,8 +17,10 @@ import com.example.cinema.po.User;
 @RestController()
 public class AccountController {
     private final static String ACCOUNT_INFO_ERROR="用户名或密码错误";
+
     @Autowired
-    private AccountServiceImpl accountService;
+    AccountService accountService;
+
     @PostMapping("/login")
     public ResponseVO login(@RequestBody UserForm userForm, HttpSession session){
         UserVO user = accountService.login(userForm);
@@ -45,28 +45,28 @@ public class AccountController {
     /**
      * Modified by sun on 2019/06/03
      */
-    @PostMapping("/search/all/manager")
-    public ResponseVO searchAllManager(Integer userId){
+    @GetMapping("/search/all/manager/{userId}")
+    public ResponseVO searchAllManager(@PathVariable int userId){
         return accountService.searchAllManager(userId);
     }
 
-    @PostMapping("/search/one/manager")
-    public ResponseVO searchOneManager(Integer userId){
+    @GetMapping("/search/one/manager/{userId}")
+    public ResponseVO searchOneManager(@PathVariable int userId){
         return accountService.searchOneManager(userId);
     }
 
     @PostMapping("/update/one/manager")
-    public ResponseVO updateOneManager(User user){
+    public ResponseVO updateOneManager(@RequestBody User user){
         return accountService.updateOneManager(user);
     }
 
-    @PostMapping("/delete/one/manager")
-    public ResponseVO deleteOneManager(Integer userId){
+    @GetMapping("/delete/one/manager/{userId}")
+    public ResponseVO deleteOneManager(@PathVariable int userId){
         return accountService.deleteOneManager(userId);
     }
 
     @PostMapping("/add/one/manager")
-    public ResponseVO addOneManager(User user){
+    public ResponseVO addOneManager(@RequestBody User user){
         return accountService.addOneManager(user);
     }
 

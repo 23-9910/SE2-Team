@@ -7,11 +7,8 @@ $(document).ready(function() {
     //获取账户信息
     //每个账户后都添加一个修改buttonn
     var id = window.sessionStorage.getItem('id');
-    console.log(id)
-    var userID = parseInt(id);
-    var useId = {userId:userID};
-    postRequest("/search/all/manager",
-        useId,
+    getRequest("/search/all/manager/" + id,
+
         function(res){
             if(res.success){
                 getAllAccount(res.content);
@@ -101,9 +98,11 @@ $("#newAdd").click(function(){
 
 $('#schedule-form-btn').click(function(){
     $("#addAccount").modal("hide");
+
     var password = $("#password-input").val();
     var username = $("#account-input").val();
     var state = $("#type-input").val();
+
     var user = {
         username:username,
         password:password,
