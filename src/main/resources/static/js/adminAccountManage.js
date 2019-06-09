@@ -105,11 +105,11 @@ $('#schedule-form-btn').click(function(){
     var username = $("#account-input").val();
     var state = $("#type-input").val();
     var user = {
-        id:0,
         username:username,
         password:password,
         state:parseInt(state)
     }
+    console.log(user)
     postRequest(
         "/add/one/manager",
         user,
