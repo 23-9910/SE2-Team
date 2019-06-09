@@ -30,4 +30,8 @@ public interface VIPCardMapper {
 
     VIPChargeRecord selectChargeRecordById(int id);
 
+    /**
+     * By sun on 2019/06/09
+     */
+    List<VIPCard> selectAllVIPCards();
 }
