@@ -400,6 +400,27 @@ function postVIPPayRequest() {
             $('#order-state').css("display", "none");
             $('#success-state').css("display", "");
             $('#buyModal').modal('hide');
+            //先往票内部插入记录Id  addRecordIdOnTicket
+            //addOneConsumingRecord
+            // postRequest(
+            //     "/ticket/add/record?couponId=" + couponId + "&payForm=1",
+            //     ticketId,
+            //     function(res){
+            //         postRequest(
+            //             "/ticket/add/recordId",
+            //             ticketId,
+            //             function(res){
+            //
+            //             },
+            //             function(error){
+            //                 alert(error);
+            //             }
+            //         )
+            //     },
+            //     function(error){
+            //         alert(error)
+            //     }
+            // )
         },
         function(error){
             alert(error);
