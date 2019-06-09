@@ -20,7 +20,7 @@ public interface TicketService {
 
     /**
      * TODO:完成购票【不使用会员卡】流程包括校验优惠券和根据优惠活动赠送优惠券
-     *
+     * TODO:购票后自动添加此订单的消费记录 - by sun
      * @param id
      * @param couponId
      * @return
@@ -45,7 +45,7 @@ public interface TicketService {
 
     /**
      * TODO:完成购票【使用会员卡】流程包括会员卡扣费、校验优惠券和根据优惠活动赠送优惠券
-     *
+     * TODO:购票后自动添加此订单的消费记录 - by sun
      * @param id
      * @param couponId
      * @return
@@ -69,14 +69,7 @@ public interface TicketService {
 
     /**
      * Modified by sun on 2019/05/28
-     */
-
-    /**
-     * 添加一条消费记录
-     */
-    ResponseVO addOneConsumingRecord(List<Integer> ticketId, int couponId, int payForm);
-
-    /**
+     * 2nd modified by sun on 2019/06/08
      * 获得用户的所有消费记录
      */
     ResponseVO getConsumingRecordByUserId(int userId);
@@ -88,9 +81,11 @@ public interface TicketService {
 
     /**
      * 退票
-     * 退一张票，只有操作时间早于电影开始时间才能退票
+     * 退一张票，只有操作时间早于电影开始时间前两小时才能退票(returnTickets 选择能进行退票的所有电影票)
      * 退票返回用户原票价的60%费用，已使用的优惠券和已发放的优惠券不再进行操作
      */
+    ResponseVO refundTicketToVIPCard(int ticketId);
+
     ResponseVO refundTicket(int ticketId);
 
     /**

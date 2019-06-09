@@ -3,27 +3,15 @@ package com.example.cinema.blImpl.statistics;
 import com.example.cinema.bl.statistics.StatisticsService;
 import com.example.cinema.data.management.HallMapper;
 import com.example.cinema.data.management.ScheduleMapper;
+import com.example.cinema.data.sales.TicketMapper;
 import com.example.cinema.data.statistics.StatisticsMapper;
 import com.example.cinema.po.*;
 import com.example.cinema.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-/**
- * Team 5/6
- */
-import com.example.cinema.blImpl.management.hall.HallServiceImpl;
-import com.example.cinema.blImpl.management.schedule.ScheduleServiceImpl;
-import com.example.cinema.blImpl.sales.TicketServiceImpl;
-import com.example.cinema.data.management.ScheduleMapper;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.text.DecimalFormat;
+import java.util.*;
+import com.example.cinema.data.management.MovieMapper;
 
 /**
  * @author fjj
@@ -34,15 +22,14 @@ public class StatisticsServiceImpl implements StatisticsService {
     @Autowired
     private StatisticsMapper statisticsMapper;
     @Autowired
-    private HallServiceImpl hallServiceImpl;
-    @Autowired
-    private ScheduleServiceImpl scheduleServiceImpl;
-    @Autowired
-    private TicketServiceImpl ticketServiceImpl;
-    @Autowired
     private ScheduleMapper scheduleMapper;
     @Autowired
     private HallMapper hallMapper;
+    @Autowired
+    private MovieMapper movieMapper;
+    @Autowired
+    private TicketMapper ticketMapper;
+
     @Override
     public ResponseVO getScheduleRateByDate(Date date) {
         try{
@@ -96,123 +83,113 @@ public class StatisticsServiceImpl implements StatisticsService {
     }
 
     /**
-     * 实现了StatisticsService接口的getMoviePlacingRateByDate方法，返回ResponseVO(String)
-     * @param date
-     * @return
+     * Modified by sun on 2019/06/08
+     * 上座率计算：该天某电影的所有售出票数量(audienceNum)/该天所有排片的影厅座位数之和(allSeats)
      */
     @Override
     public ResponseVO getMoviePlacingRateByDate(Date date) {
         try{
-            ResponseVO responseVOHall = hallServiceImpl.searchAllHall();
-            List<HallVO> listOfHallVO = (ArrayList<HallVO>)responseVOHall.getContent();
-            ResponseVO responseVOOneDaySchedule = new ResponseVO();
-            List<ScheduleVO> listOfOneDaySchedule= new ArrayList<ScheduleVO>();
-            List<ScheduleItemVO> listOfScheduleItemVO = new ArrayList<ScheduleItemVO>();
-            int n = listOfHallVO.size();
-            int m = 0;
+            List<MoviePlacingRate> moviePlacingRateList = new ArrayList<>();
+            List<Movie> movieList = movieMapper.selectAllMovie();
             int audienceNum = 0;
-            int scheduleNum = 0;
-            for(int i = 0;i < n;i++){
-                HallVO singleHall = listOfHallVO.get(i);
-                m += singleHall.getRow()*singleHall.getColumn();
-                int id = singleHall.getId();
-                responseVOOneDaySchedule = scheduleServiceImpl.searchScheduleOneDay(id,date);
-                listOfOneDaySchedule = (ArrayList<ScheduleVO>)responseVOOneDaySchedule.getContent();
-                ScheduleVO scheduleVO = listOfOneDaySchedule.get(0);
-                listOfScheduleItemVO = scheduleVO.getScheduleItemList();
-                int oneHallScheduleNum = listOfScheduleItemVO.size();
-                scheduleNum += oneHallScheduleNum;
-                for(int j = 0;j < oneHallScheduleNum;j++) {
-                    int scheduleId = listOfScheduleItemVO.get(j).getId();
-                    ResponseVO responseVOTicket = ticketServiceImpl.getBySchedule(scheduleId);
-                    int[][] seat = (int[][]) responseVOTicket.getContent();
-                    for (int k = 0; k < seat.length; k++) {
-                        for (int s = 0; s < seat[0].length; s++) {
-                            if (seat[k][s] == 1) {
-                                audienceNum++;
+            int allSeats = 0;
+
+            for(int i = 0;i < movieList.size();i++){
+                Movie movie = movieList.get(i);
+                int movieId = movie.getId();
+                String movieName = movie.getName();
+
+                List<ScheduleItem> scheduleItemList = scheduleMapper.selectScheduleByMovieId(movieId);
+                for(int j = 0;j < scheduleItemList.size();j++){
+                    ScheduleItem scheduleItem = scheduleItemList.get(j);
+                    int scheduleId = scheduleItem.getId();
+                    int hallId = scheduleItem.getHallId();
+                    Date startTime = scheduleItem.getStartTime();
+                    if(date == startTime){
+                        List<Ticket> ticketList = ticketMapper.selectTicketsBySchedule(scheduleId);
+                        List<Ticket> completedTickets = new ArrayList<>();
+                        for(Ticket ticket1 : ticketList){
+                            if(ticket1.getState()== 1){
+                                completedTickets.add(ticket1);
                             }
                         }
+                        audienceNum += completedTickets.size();
+                        Hall hallOnSchedule = hallMapper.selectHallById(hallId);
+                        allSeats += hallOnSchedule.getColumn() * hallOnSchedule.getRow();
+                    }else{
+                        audienceNum += 0;
+                        allSeats += 0;
                     }
                 }
+                double placingRate = (double)Math.round(audienceNum/allSeats * 100)/100;
+                MoviePlacingRate moviePlacingRate = new MoviePlacingRate(movieId,movieName,placingRate,date);
+                moviePlacingRateList.add(moviePlacingRate);
             }
-            float moviePlacingRateByDate = (audienceNum/scheduleNum/m/n)*100;
-            DecimalFormat decimalFormat = new DecimalFormat("0.###");
-            String getMoviePlacingRateByDate = decimalFormat.format(moviePlacingRateByDate);
-            return ResponseVO.buildSuccess(Float.parseFloat(getMoviePlacingRateByDate));
+            return ResponseVO.buildSuccess(moviePlacingRateList);
         }catch(Exception e){
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
     }
 
+    /**
+     * Modified by sun on 2019/06/08
+     */
     @Override
     public ResponseVO getPopularMovies(int days, int movieNum) {
         try{
-            List<Hall> hallList = hallMapper.selectAllHall();
-            Date today = new Date();
-            Date startDay = getNumDayBeforeDate(today,days);
-            ArrayList<String> movieList = new ArrayList();
-            ArrayList<Double> boxList = new ArrayList();
-            for(int i = 0;i < hallList.size();i++){
-                int hallId = hallList.get(i).getId();
-                List<ScheduleItem> scheduleItemList = this.getScheduleInDaysDay(hallId,startDay,days);
-                for(int j = 0;j < scheduleItemList.size();j++){
-                    int scheduleId = scheduleItemList.get(j).getId();
-                    double fare = scheduleItemList.get(j).getFare();
-                    String movieName = scheduleItemList.get(j).getMovieName();
-                    ResponseVO responseVO = ticketServiceImpl.getBySchedule(scheduleId);
-                    ScheduleWithSeatVO scheduleWithSeatVO = (ScheduleWithSeatVO)responseVO.getContent();
-                    int totalSeat = 0;
-                    double totalBox;
-                    int[][] seats = scheduleWithSeatVO.getSeats();
-                    int len1 = seats.length;
-                    int len2 = seats[0].length;
-                    for(int m = 0;m < len1;m++){
-                        for(int n = 0;n < len2;n++){
-                            if (seats[m][n] == 1){
-                                totalSeat++;
+            List<PopularMovie> popularMovies = new ArrayList<>();
+            List<Movie> movies = movieMapper.selectAllMovie();
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date today = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
+            Date startDate = getNumDayAfterDate(today, 0-days);
+
+            for(int i = 0;i < movies.size();i++){
+                Movie movie = movies.get(i);
+                int movieId = movie.getId();
+                String movieName = movie.getName();
+                double totalBox = 0;
+
+                List<ScheduleItem> scheduleItems = scheduleMapper.selectScheduleByMovieId(movieId);
+                for(int j = 0;j < scheduleItems.size();j++){
+                    ScheduleItem scheduleItem = scheduleItems.get(j);
+                    Date onDate = scheduleItem.getStartTime();//放映起始日期
+                    if(onDate.before(today) && onDate.after(startDate)) {
+                        int scheduleId = scheduleItem.getId();
+                        double fare = scheduleItem.getFare();
+                        List<Ticket> completedTickets = new ArrayList<>();
+                        List<Ticket> tickets = ticketMapper.selectTicketsBySchedule(scheduleId);
+                        for(Ticket ticket2 : tickets){
+                            if(ticket2.getState()== 1){
+                                completedTickets.add(ticket2);
                             }
                         }
-                    }
-                    totalBox = totalSeat * fare;
-                    for (int a = 0;a < movieList.size();a++){
-                        if( movieList.get(a)== movieName){
-                            double startBox = boxList.get(a);
-                            boxList.set(a,startBox + totalBox);
-                        }else{
-                            movieList.add(movieName);
-                            boxList.add(totalBox);
-                        }
+                        totalBox += completedTickets.size() * fare;
                     }
                 }
+                PopularMovie popularMovie = new PopularMovie(movieId,movieName,startDate,today,totalBox);
+                popularMovies.add(popularMovie);
             }
-            for(int i = 0;i < movieList.size() - 1;i++){
-                for(int j = i;j < movieList.size() - 1 - i;j++){
-                    if(boxList.get(j) < boxList.get(j+1)){
-                        String bigId = movieList.get(j+1);
-                        String smallId = movieList.get(j);
-                        movieList.set(j,bigId);
-                        movieList.set(j+1,smallId);
 
-                        double bigBox = boxList.get(j+1);
-                        double smallBox = boxList.get(j);
-                        boxList.set(j,bigBox);
-                        boxList.set(j+1,smallBox);
-                    }
-                }
-            }
-            ArrayList<String> movieNumMovieId = new ArrayList<>();
+            List<PopularMovie> topNumPopularMovie = new ArrayList<>();
+            int len = popularMovies.size();
             for(int i = 0;i < movieNum;i++){
-                movieNumMovieId.add(movieList.get(i));
+                for(int j = 0;j < len - 1 - i;j++){
+                    PopularMovie pm1 = popularMovies.get(j);
+                    PopularMovie pm2 = popularMovies.get(j+1);
+                    if(pm1.getBox() > pm2.getBox()){
+                        Collections.swap(popularMovies,j,j+1);
+                    }
+                }
+                topNumPopularMovie.add(popularMovies.get(len-1));
             }
-            return ResponseVO.buildSuccess(movieNumMovieId);
-
+            return ResponseVO.buildSuccess(topNumPopularMovie);
         }catch(Exception e){
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
     }
-
 
     /**
      * 获得num天后的日期
@@ -227,20 +204,6 @@ public class StatisticsServiceImpl implements StatisticsService {
         return calendarTime.getTime();
     }
 
-    /**
-     * 获得num天前的日期
-     * @param
-     * @return
-     */
-    Date getNumDayBeforeDate(Date nowDate, int num){
-        Calendar calendarTime = Calendar.getInstance();
-        calendarTime.setTime(nowDate);
-        calendarTime.add(Calendar.DAY_OF_YEAR, -num);
-        return calendarTime.getTime();
-    }
-
-
-
     private List<MovieScheduleTimeVO> movieScheduleTimeList2MovieScheduleTimeVOList(List<MovieScheduleTime> movieScheduleTimeList){
         List<MovieScheduleTimeVO> movieScheduleTimeVOList = new ArrayList<>();
         for(MovieScheduleTime movieScheduleTime : movieScheduleTimeList){
@@ -248,7 +211,6 @@ public class StatisticsServiceImpl implements StatisticsService {
         }
         return movieScheduleTimeVOList;
     }
-
 
     private List<MovieTotalBoxOfficeVO> movieTotalBoxOfficeList2MovieTotalBoxOfficeVOList(List<MovieTotalBoxOffice> movieTotalBoxOfficeList){
         List<MovieTotalBoxOfficeVO> movieTotalBoxOfficeVOList = new ArrayList<>();
@@ -258,19 +220,4 @@ public class StatisticsServiceImpl implements StatisticsService {
         return movieTotalBoxOfficeVOList;
     }
 
-    /**
-     * 获得最近days天内所有的排片计划
-     */
-    private List<ScheduleItem> getScheduleInDaysDay(int hallId, Date startDate,int days){
-        try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            startDate = simpleDateFormat.parse(simpleDateFormat.format(startDate));
-            Date endDate = getNumDayAfterDate(startDate, days);
-            List<ScheduleItem> scheduleItemList = scheduleMapper.selectSchedule(hallId, startDate, endDate);
-            return scheduleItemList;
-        }catch (ParseException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

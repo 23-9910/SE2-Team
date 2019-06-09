@@ -102,15 +102,14 @@ public class TicketServiceImpl implements TicketService {
                     couponMapper.insertCouponUser(coupon.getId(),userId);
                 }
             }
+            /**
+             * 添加消费记录
+             */
+            addOneConsumingRecord(id,couponId,0);
             return ResponseVO.buildSuccess();
         }catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
-            //获取票价
-            //judgeCoupon
-            //得到Coupon后的total票价
-            //支付
-            //根据优惠活动赠送优惠券
         }
     }
 
@@ -201,6 +200,10 @@ public class TicketServiceImpl implements TicketService {
                     couponMapper.insertCouponUser(coupon.getId(),userId);
                 }
             }
+            /**
+             * 添加消费记录
+             */
+            addOneConsumingRecord(id,couponId,1);
             return ResponseVO.buildSuccess();
         }catch (Exception e) {
             e.printStackTrace();
@@ -284,30 +287,23 @@ public class TicketServiceImpl implements TicketService {
 
     /**
      * Modified by sun on 2019/05/28
+     * 2nd modified by sun on 2019/06/08
      */
+    public void addOneConsumingRecord(List<Integer> ticketId,int couponId, int payForm){
+        double payment = getPayment(ticketId,couponId);
+        ConsumingRecord consumingRecord = new ConsumingRecord();
+        consumingRecord.setCouponId(couponId);
+        consumingRecord.setPayForm(payForm);
+        consumingRecord.setTicketAmount(ticketId.size());
+        consumingRecord.setPayment(payment);
 
-    @Override
-    public ResponseVO addOneConsumingRecord(List<Integer> ticketId,int couponId, int payForm){
-        try {
-            double payment = getPayment(ticketId,couponId);
-            ConsumingRecord consumingRecord = new ConsumingRecord();
-            consumingRecord.setCouponId(couponId);
-            consumingRecord.setPayForm(payForm);
-            consumingRecord.setTicketAmount(ticketId.size());
-            consumingRecord.setPayment(payment);
+        Ticket ticket = ticketMapper.selectTicketById(ticketId.get(0));
+        int userId = ticket.getUserId();
+        consumingRecord.setUserId(userId);
+        int scheduleId = ticket.getScheduleId();
+        consumingRecord.setScheduleId(scheduleId);
 
-            Ticket ticket = ticketMapper.selectTicketById(ticketId.get(0));
-            int userId = ticket.getUserId();
-            consumingRecord.setUserId(userId);
-            int scheduleId = ticket.getScheduleId();
-            consumingRecord.setScheduleId(scheduleId);
-
-            ticketMapper.insertOneConsumingRecord(consumingRecord);
-            return ResponseVO.buildSuccess();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
-        }
+        ticketMapper.insertOneConsumingRecord(consumingRecord);
     }
 
     @Override
@@ -334,9 +330,10 @@ public class TicketServiceImpl implements TicketService {
 
     /**
      * TODO:退票
+     * Modified by sun on 2019/06/08
      */
     @Override
-    public ResponseVO refundTicket(int ticketId) {
+    public ResponseVO refundTicketToVIPCard(int ticketId) {
         try {
             Ticket ticket = ticketMapper.selectTicketById(ticketId);
             int userId = ticket.getUserId();
@@ -346,6 +343,17 @@ public class TicketServiceImpl implements TicketService {
             VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
             double balance = vipCard.getBalance();
             vipCardMapper.updateCardBalance(vipCard.getId(),balance + fare * 0.6);
+            ticketMapper.updateTicketState(ticketId,3);
+            return ResponseVO.buildSuccess("退票成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO refundTicket(int ticketId){
+        try {
             ticketMapper.updateTicketState(ticketId,3);
             return ResponseVO.buildSuccess("退票成功！");
         } catch (Exception e) {

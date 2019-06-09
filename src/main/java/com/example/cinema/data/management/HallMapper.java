@@ -35,4 +35,10 @@ public interface HallMapper {
      * By sun on 2019/05/28
      */
     int updateHallById(HallVO hallVO);
+
+    /**
+     * 删除影厅
+     * By sun on 2019/06/08
+     */
+    int deleteHallById(int hallId);
 }
