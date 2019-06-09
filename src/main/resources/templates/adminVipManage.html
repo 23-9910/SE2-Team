@@ -8,14 +8,82 @@
     <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/adminPromotion.css"/>
 
-
     <script src="/js/jquery.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/request.js"></script>
+    <script src="/js/adminVIPManage.js"></script>
+
 </head>
 <body>
-<div>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container"  style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg">
+            <p class="title">admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/manage"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation" class="active"><a href="/admin/vip/manage"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/account/manage"><i class="icon-account"></i> 账户管理</a></li>
+            <li role="presentation"><a href="/admin/coupon/give"><i class="icon-coupons"></i> 优惠券管理</a></li>
+            <li role="presentation"><a href="/admin/refund/manage"><i class="icon-refund"></i> 电影票管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic"><i class="icon-bar-chart"></i> 影院统计</a></li>
+        </ul>
+    </div>
+    <div class="content-container">
+        <div class="content-header">
+            <span class="title gray-text">会员管理</span>
+            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#VIPModal"><i class="icon-plus-sign"></i>发布会员</button>
+        </div>
+        <div class="content-vip">
 
-</div>>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="VIPModal" tabindex="-1" role="dialog" aria-labelledby="VIPModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span> </button>
+                <h4 class="modal-title" id="VIPModalLabel">发布会员</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="vip-name-input"><span class="error-text">*</span>会员名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="vip-name-input" placeholder="请输入会员名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="vip-description-input">会员描述</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="vip-description-input" placeholder="请输入会员描述">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="vip-price-input"><span class="error-text">*</span>充值金额</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="vip-price-input" placeholder="请输入加入会员需充值金额">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="vip-gift-input"><span class="error-text">*</span>赠送金额</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="vip-gift-input" placeholder="请输入赠送金额">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="vip-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

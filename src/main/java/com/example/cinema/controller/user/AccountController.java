@@ -46,12 +46,12 @@ public class AccountController {
      * Modified by sun on 2019/06/03
      */
     @PostMapping("/search/all/manager")
-    public ResponseVO searchAllManager(int userId){
+    public ResponseVO searchAllManager(Integer userId){
         return accountService.searchAllManager(userId);
     }
 
     @PostMapping("/search/one/manager")
-    public ResponseVO searchOneManager(int userId){
+    public ResponseVO searchOneManager(Integer userId){
         return accountService.searchOneManager(userId);
     }
 
@@ -61,7 +61,7 @@ public class AccountController {
     }
 
     @PostMapping("/delete/one/manager")
-    public ResponseVO deleteOneManager(int userId){
+    public ResponseVO deleteOneManager(Integer userId){
         return accountService.deleteOneManager(userId);
     }
 
