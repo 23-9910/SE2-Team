@@ -21,33 +21,20 @@ $(document).ready(function () {
 
         vips.forEach(function(vip) {
             vipDomStr+=
-                "<div class='vip-container'>" +
-                "    <div class='vip-card card'>" +
-                "       <div class='vip-line'>" +
-                "           <span class='title'>"+vip.name+"</span>" +
-                "           <span class='gray-text'>"+vip.description+"</span>" +
-                "       </div>" +
-                "    </div>" +
-                "    <div class='vip-coupon primary-bg'>" +
-                "        <span class='title'>充值优惠："+vip.name+"</span>" +
-                "        <span class='title'>充"+vip.price+"送<span class='error-text title'>"+vip.gift+"</span></span>" +
-                "    </div>" +
-                "</div>";
+                "<span class='title'>充值优惠：</span>" +
+                "<span class='title'>"+vip.description +"</span>"
         });
-        $(".content-vip").append(vipDomStr);
+        $(".description-container").append(vipDomStr);
     }
 
     $("#vip-form-btn").click(function () {
-        var form = {
-            name: $("#vip-name-input").val(),
-            description: $("#vip-description-input").val(),
-            price: $("#vip-price-input").val(),
-            gift: $("#vip-gift-input").val()
-        };
+        var price = $("#vip-price-input").val();
+        var gift = $("#vip-gift-input").val();
+        var description = "充"+price+"送"+gift;
 
         postRequest(
             "",
-            form,
+            description,
             function (res) {
                 if(res.success){
                     getVIPs();
@@ -63,16 +50,12 @@ $(document).ready(function () {
     })
 
     $("#vip-change-btn").click(function(){
-        var change = {
-            name: $("#vip-new-name-input").val(),
-            description: $("#vip-new-description-input").val(),
-            price: $("#vip-price-input").val(),
-            gift: $("#vip-gift-input").val()
-        };
-
+        var priceNew = $("#vip-price-input").val();
+        var giftNew = $("#vip-gift-input").val();
+        var descriptionNew = "充"+priceNew+"送"+giftNew;
         postRequest(
             "",
-            change,
+            descriptionNew,
             function (res) {
                 if(res.success){
                     getVIPs();

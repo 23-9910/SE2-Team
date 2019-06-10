@@ -53,7 +53,7 @@ public class VIPCardController {
     }
     //。。。
     @PostMapping("/description")
-    public ResponseVO addVIPDESCRIPTION(@RequestBody String description){
+    public ResponseVO addVIPDescription(@RequestBody String description){
         return vipService.changeDescription(description);
     }
 }

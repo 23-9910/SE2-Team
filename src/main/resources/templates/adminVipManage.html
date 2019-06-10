@@ -34,27 +34,60 @@
         </ul>
     </div>
     <div class="content-container">
-        <div class="content-header">
-            <span class="title gray-text">会员管理</span>
-            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#VIPModal"><i class="icon-plus-sign"></i>发布会员</button>
-            <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#VIPChangeModal"><i class="icon-pencil"></i>修改会员</button>
+        <div class="vip-module">
+            <div class="content-header">
+                <span class="title gray-text">会员管理</span>
+            </div>
+            <div class="description-container">
+
+            </div>
+            <div class="content-card">
+                <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#VIPModal"><i class="icon-plus-sign"></i>发布会员</button>
+                <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#VIPChangeModal"><i class="icon-pencil"></i>修改会员</button>
+            </div>
         </div>
-        <div class="content-vip">
-            <div class="vip-container">
-                <div class="vip-card card">
-                    <div class="vip-line">
-                        <span class="title">金牌会员</span>
-                        <span class="gray-text">最牛逼的会员，只有土豪才配拥有</span>
+        <div class="coupon-module">
+            <span class="title gray-text">优惠券赠送</span>
+            <!-- 选择消费额度筛选，选择赠送的优惠券选择-->
+            <!-- 会员卡编号，用户名，历史消费总额，是否赠送优惠券（格子，打勾赠送-->
+            <div class="card" style="margin:20px 0;padding:20px;">
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <span>选择赠送的优惠券  </span>
+                        <select id="hall-select" class="form-control" style="display: inline-block;width: 180px;">
+                            <!--查询插入-->
+                        </select>
                     </div>
-                    <div class="vip-coupon primary-bg">
-                        <span class="title">充值优惠：金牌会员</span>
-                        <span class="title">充1000送<span class="error-text">500</span></span>
+                    <div>
+                        <span>选择消费额度  </span>
+                        <input type="number" class="form-control" id="vip-history-input" style="display: inline-block;width: 180px;">
                     </div>
                 </div>
+                <table class="table" id="my-tickets-table" style="margin:0 auto">
+                    <thead id="my-tickets-table-head" style="text-align: center">
+                    <tr>
+                        <th>会员卡编号</th>
+                        <th>用户名</th>
+                        <th>历史消费总额</th>
+                        <th>是否赠送优惠券</th>
+                    </tr>
+                    </thead>
+                    <tbody id="my-tickets-table-body" style="text-align: center">
+                    <!-- 此处插入符合条件的会员-->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 <div class="modal fade" id="VIPModal" tabindex="-1" role="dialog" aria-labelledby="VIPModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,18 +97,6 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="vip-name-input"><span class="error-text">*</span>会员名称</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="vip-name-input" placeholder="请输入会员名称">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="vip-description-input">会员描述</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="vip-description-input" placeholder="请输入会员描述">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="vip-price-input"><span class="error-text">*</span>充值金额</label>
                         <div class="col-sm-10">
@@ -106,18 +127,6 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="vip-new-name-input"><span class="error-text">*</span>修改名称</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="vip-new-name-input" placeholder="请输入修改的会员名称">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="vip-new-description-input">修改描述</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="vip-new-description-input" placeholder="请输入修改的会员描述">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="vip-new-price-input"><span class="error-text">*</span>修改充值金额</label>
                         <div class="col-sm-10">
