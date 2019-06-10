@@ -17,6 +17,10 @@
         update hall set name = #{name}, hall_row = #{row}, hall_column = #{column} where id = #{id}
     </update>
 
+    <delete id="deleteHallById">
+        delete from hall where id = #{hallId}
+    </delete>
+
     <resultMap id="Hall" type="com.example.cinema.po.Hall">
         <id column="id" property="id"></id>
         <result column="name" property="name"></result>

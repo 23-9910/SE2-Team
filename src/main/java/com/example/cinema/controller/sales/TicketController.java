@@ -52,12 +52,8 @@ public class TicketController {
 
     /**
      * Modified by sun on 2019/05/28
+     * 2nd modified by sun on 2019/06/08: 购票方法 buyTicket & buyTicketByVIPTicket 自动添加消费记录
      */
-
-    @PostMapping("/add/record")
-    public ResponseVO addOneConsumingRecord(@RequestBody List<Integer> ticketId, @RequestParam int couponId, @RequestParam int payForm){
-        return ticketService.addOneConsumingRecord(ticketId,couponId,payForm);
-    }
 
     @PostMapping("add/recordId")
     public ResponseVO addRecordIdOnTicket(@RequestBody List<Integer> ticketId){
@@ -77,6 +73,11 @@ public class TicketController {
     @PostMapping("/refund")
     public ResponseVO refundTicket(@RequestParam int ticketId){
         return ticketService.refundTicket(ticketId);
+    }
+
+    @PostMapping("/refund/vip")
+    public ResponseVO refundTicketToVIPCard(@PathVariable int ticketId){
+        return ticketService.refundTicketToVIPCard(ticketId);
     }
 
     @GetMapping("/get/consumed/{consumingRecordId}")

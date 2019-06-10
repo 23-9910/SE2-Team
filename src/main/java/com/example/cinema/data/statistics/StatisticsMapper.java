@@ -35,4 +35,5 @@ public interface StatisticsMapper {
      * @return
      */
     List<AudiencePrice> selectAudiencePrice(@Param("date") Date date, @Param("nextDate") Date nextDate);
+
 }

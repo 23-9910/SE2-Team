@@ -51,9 +51,20 @@ public class VIPCardController {
     public ResponseVO getChargeRecordById(@RequestParam int id){
         return vipService.getChargeRecordById(id);
     }
+
+    /**
+     * By sun on 2019/06/09
+     */
+    @GetMapping("/get/consumingSum/{amount}")
+    public ResponseVO getAllVIPConsumingSumByAmount(@PathVariable double amount){
+        return vipService.getVIPByAmount(amount);
+    }
+
     //。。。
     @PostMapping("/description")
     public ResponseVO addVIPDescription(@RequestBody String description){
         return vipService.changeDescription(description);
     }
+
+
 }

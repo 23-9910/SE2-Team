@@ -30,6 +30,12 @@ public interface VIPService {
     ResponseVO getChargeRecordByUserId(int userId);
 
     ResponseVO getChargeRecordById(int id);
+
+    /**
+     * By sun on 2019/06/09
+     */
+    ResponseVO getVIPByAmount(double amount);
+
     //...
     ResponseVO changeDescription(String description);
 }

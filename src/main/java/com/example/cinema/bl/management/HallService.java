@@ -25,4 +25,10 @@ public interface HallService {
      * By sun on 2019/05/28
      */
     ResponseVO updateHall(HallVO hallVO);
+
+    /**
+     * 删除影厅
+     * By sun on 2019/06/08
+     */
+    ResponseVO deleteHall(int hallId);
 }
