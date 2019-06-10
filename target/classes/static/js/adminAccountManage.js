@@ -120,7 +120,7 @@ $('#schedule-form-btn').click(function() {
         "/add/one/manager",
         user,
         function (res) {
-            getInfo();
+            window.location.reload()
 
         },
         function(error){
@@ -135,23 +135,23 @@ $('#schedule-form-btn').click(function() {
  */
 $("#schedule-form-btn-edit").click(function(){
 //根据ID传输修改内容
-    $("#addAccount").hide;
-    var idEdit = $("#id-edit").val();
+    $("#editAccount").hide();
+    var idEdit = $("#id-edit").text();
     var userName = $("#account-edit-input").val();
-    var passWord = $("#password-edit-input").val();
-var state = $("#type-edit-input").value;
+    console.log(userName)
+    var state123 = $("#type-edit-input option:selected") .val();
+    console.log(state123)
 var user = {
     id:parseInt(idEdit),
     username:userName,
-    password:passWord,
-    state:state
+    state:parseInt(state123)
 }
 console.log(user)
 postRequest("/update/one/manager",
     user,
     function(res){
     alert("修改成功")
-    getInfo()
+        window.location.reload();
     },
     function(error){
     alert(error)
@@ -193,7 +193,7 @@ $("#account-edit-remove-btn").click(function() {
 addId = function(id2,type1,name1){
     $("#id-edit").empty();
     $("#account-edit-input").empty();
-    $("#account-edit-input").append(name1);
+    $("#account-edit-input").val(name1);
     $("#type-edit-input"). val(type1)
     $("#id-edit").append(id2);
 };
