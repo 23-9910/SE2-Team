@@ -8,6 +8,7 @@ $(document).ready(function() {
     //每个账户后都添加一个修改buttonn
     var id = window.sessionStorage.getItem('id');
     getRequest("/search/all/manager/" + id,
+
         function(res){
             if(res.success){
                 getAllAccount(res.content);
@@ -17,32 +18,53 @@ $(document).ready(function() {
             alert(error);
         }
     );
-});
 
 
 
+function getInfo(){
+    var id = window.sessionStorage.getItem('id');
+    console.log(id)
+    getRequest("/search/all/manager/" + id,
 
-function renderAccount(id){
-    postRequest("/search/all/manager",
-        {userId:id},
         function(res){
-        if(res.success){
-            getAllAccount(res.content);
-        }
+            if(res.success){
+                getAllAccount(res.content);
+            }
         },
         function (error) {
             alert(error);
         }
     );
-};
+}
 
+// function renderAccount(id){
+//     postRequest("/search/all/manager",
+//         {userId:id},
+//         function(res){
+//         if(res.success){
+//             getAllAccount(res.content);
+//         }
+//         },
+//         function (error) {
+//             alert(error);
+//         }
+//     );
+// };
+
+/**
+ * 获取账号信息并插入页面
+ * @param list
+ */
 function getAllAccount(list){
+    $('#my-tickets-table-body').empty();
+
     for(var i = 0;i < list.length;i++){
         var ticketStr = "";
         var user = list[i];
         var id1 = parseInt(user.id);
         var username1 = user.username;
         var usertypeId = user.state;
+        var username0 = "'" + username1 + "'"
         var userType = "";
         if( usertypeId == 0){
             userType = "经理";
@@ -53,21 +75,27 @@ function getAllAccount(list){
         if( usertypeId == 2){
             userType = "观众";
         }
+
+
+
         ticketStr = ticketStr += '<tr>'
             + '<th>' + id1 + '</th>'
             + '<th>' + username1 + '</th>'
             + '<th>' + userType + '</th>'
-            +  "<button type='button' class='btn btn-primary' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#editAccount' id="+ id1 + " onclick='addId("+ id1 + ")'>修改账户信息 </button>"
-            + '</tr>';
 
+            +  "<th>"+"<button type='button' class='btn btn-primary' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#editAccount' id="+ id1 + " onclick=addId("+ id1 +"," + usertypeId+ "," + username0 +  ")>修改账户信息 </button>";
+        + '</th>'+ '</tr>'
         $('#my-tickets-table-body').append(ticketStr);
     }
 
 }
 
-$("#newAdd").click(function(){
-    $("#account-input").clean();
-    $("#password-input").clean();
+    /**
+     * 自动填充修改表单
+     */
+    $('#newAdd').click(function(){
+    $('#account-input').empty();
+    $('#password-input').empty();
 })
 
 
@@ -75,20 +103,24 @@ $("#newAdd").click(function(){
  * 提交添加请求
  */
 
-$('#schedule-form-btn').click(function(){
-    $("#addAccount").modal("hide");
-    var password = ("#password-input").val();
-    var username = ("#account-input").val();
-    var state = ("#type-input").val();
+$('#schedule-form-btn').click(function() {
+    $("#addAccount").hide();
+
+    var password = $("#password-input").val();
+    var username = $("#account-input").val();
+    var state = $("#type-input").val();
+
     var user = {
         username:username,
         password:password,
         state:parseInt(state)
     }
+    console.log(user)
     postRequest(
         "/add/one/manager",
         user,
         function (res) {
+            window.location.reload()
 
         },
         function(error){
@@ -103,25 +135,65 @@ $('#schedule-form-btn').click(function(){
  */
 $("#schedule-form-btn-edit").click(function(){
 //根据ID传输修改内容
-    var idEdit = $("#id-edit").val();
+    $("#editAccount").hide();
+    var idEdit = $("#id-edit").text();
     var userName = $("#account-edit-input").val();
-    var passWord = $("#password-edit-input").val();
-
+    console.log(userName)
+    var state123 = $("#type-edit-input option:selected") .val();
+    console.log(state123)
+var user = {
+    id:parseInt(idEdit),
+    username:userName,
+    state:parseInt(state123)
+}
+console.log(user)
+postRequest("/update/one/manager",
+    user,
+    function(res){
+    alert("修改成功")
+        window.location.reload();
+    },
+    function(error){
+    alert(error)
+    }
+);
 
 });
 
-/**
- * 点击不同位置的修改时自动填充ID
- */
-function addId(id2){
-    $("#account-edit-input").clean();
-    $("#id-edit").append(id2);
-}
+
+
+
 
 /**
  * 删除改账户
  */
 $("#account-edit-remove-btn").click(function() {
     //根据Id删除
-    var idRemove = $("#id-edit").val();
+    $("#editAccount").modal("hide");
+    var idRemove = parseInt($("#id-edit").text());
+    getRequest(
+        "/delete/one/manager/"+idRemove,
+        function(res){
+            alert("删除成功！")
+            getInfo()
+        },
+        function (error) {
+            alert(error)
+
+        }
+    )
 });
+
+});
+
+/**
+ * 点击不同位置的修改时自动填充ID
+ * 用于修改账户
+ */
+addId = function(id2,type1,name1){
+    $("#id-edit").empty();
+    $("#account-edit-input").empty();
+    $("#account-edit-input").val(name1);
+    $("#type-edit-input"). val(type1)
+    $("#id-edit").append(id2);
+};

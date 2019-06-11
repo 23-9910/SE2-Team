@@ -1,17 +1,23 @@
 /**
  * By yyf on 2019/06/06
+ *
+ * 两个功能
+ * 获取历史记录
+ * 查看详情
  */
 $(document).ready(function () {
 
-    var userId = window.sessionStorage.getItem("id")
-    renderHistory(userId)
-
-})
+    var userId = (window.sessionStorage.getItem("id"));
+    renderHistory(userId);
 
 
-function renderHistory(userid) {
+    /**
+     * 获取历史列表查看
+     * @param userId
+     */
+    function renderHistory(userId) {
     getRequest(
-        "/get/user/record/"+userid,
+        "/ticket/get/user/record/"+userId,
         function (res) {
             var ticketStr = "";
             var historyList = res.content;
@@ -41,14 +47,28 @@ function renderHistory(userid) {
 
 
 }
+})
+
 
 /**
  * 根据记录ID获取详细内容
+ * 弹窗中会显示不同内容根据
+ * html中onclick调用
  * @param recordId
  */
 function addDetail(recordId){
+    $("#recordId").clean();
+    $("#userId").clean();
+    $("#payTime").clean();
+    $("#payment").clean();
+    $("#payForm").clean();
+    $("#scheduleId").clean();
+    $("#ticketAmount").clean();
+    $("#couponId").clean();
+
+
     getRequest(
-        "/get/record/" + recordId,
+        "/ticket/get/record/" + recordId,
         function(res){
             var historyItem = res.content;
             var id = historyItem.id;
@@ -59,9 +79,22 @@ function addDetail(recordId){
             var scheduleId = historyItem.shceduleId;
             var ticketAmount = historyItem.ticketAmount;
             var couponId = historyItem.couponId;
+            var payFormLine = ""
+            if(payForm == 0){
+                payFormLine = "银行卡"
+            }
+            if(payForm == 1){
+                payFormLine = "会员卡"
+            }
 
-            var detailStr = ""
-            detailStr += "2"
+            $("#recordId").append(id);
+            $("#userId").append(userId);
+            $("#payTime").append(payTime);
+            $("#payment").append(payment);
+            $("#payForm").append(payFormLine);
+            $("#scheduleId").append(scheduleId);
+            $("#ticketAmount").append(ticketAmount);
+            $("#couponId").append(couponId);
 
 
         },
@@ -70,3 +103,4 @@ function addDetail(recordId){
         }
         )
 }
+
