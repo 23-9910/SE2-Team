@@ -15,10 +15,10 @@ $(document).ready(function() {
 
 function getInfo(){
     getRequest(
-        '/activity/get',
+        '/ticket/get/strategy',
         function (res) {
-            var activities = res.content;
-            renderRefund(activities);
+            var perCent = res.content;
+            renderRefund(perCent);
         },
         function (error) {
             alert(JSON.stringify(error));
@@ -32,37 +32,23 @@ function getInfo(){
  * @param activities
  */
 
-function renderRefund(activities) {
+function renderRefund(perCent) {
     $(".content-activity").empty();
     var activitiesDomStr = "";
-
-    activities.forEach(function (activity) {
-        var movieDomStr = "";
-        if(activity.movieList.length){
-            activity.movieList.forEach(function (movie) {
-                movieDomStr += "<li class='activity-movie primary-text'>"+movie.name+"</li>";
-            });
-        }else{
-            movieDomStr = "<li class='activity-movie primary-text'>所有热映电影</li>";
-        }
-
         activitiesDomStr+=
             "<div class='activity-container'>" +
             "    <div class='activity-card card'>" +
             "       <div class='activity-line'>" +
-            "           <span class='title'>退票策略</span>" +
-            "           <span class='gray-text'>"+activity.description+"</span>" +
-            "       </div>" +
-            "       <div class='activity-line'>" +
-            "           <span>活动时间："+formatDate(new Date(activity.startTime))+"至"+formatDate(new Date(activity.endTime))+"</span>" +
+            "           <span class='gray-text'></span>" +
             "       </div>" +
             "    </div>" +
-            "    <div class='activity-coupon primary-bg'>" +
-            "        <span class='title'>退票手续费："+ "200" + "</span>" +
+            "    <div>" +
+            "        <span class='gray-text'>退票手续费比率（按订单总价收取）:</span>" +
+            "        <span class='gray-text'>"+ perCent + "%</span>" +
             "    </div>" +
             "</div>";
-    });
-    $(".content-activity").append(activitiesDomStr);
+
+    $("#refund-container").append(activitiesDomStr);
 }
 
 /**
@@ -70,7 +56,11 @@ function renderRefund(activities) {
  */
 $("#activity-form-btn").click(
     function(){
+        var rate = parseInt()
 
+        getRequest(
+            "ticket/strategy/" +
+        )
 
     }
 )
