@@ -9,7 +9,9 @@
 $(document).ready(function() {
     getInfo();
 
-
+    /**
+     * 获取当前策略
+     */
 
 function getInfo(){
     getRequest(
@@ -54,15 +56,9 @@ function renderRefund(activities) {
             "       <div class='activity-line'>" +
             "           <span>活动时间："+formatDate(new Date(activity.startTime))+"至"+formatDate(new Date(activity.endTime))+"</span>" +
             "       </div>" +
-            "       <div class='activity-line'>" +
-            "           <span>参与电影：</span>" +
-            "               <ul>"+movieDomStr+"</ul>" +
-            "       </div>" +
             "    </div>" +
             "    <div class='activity-coupon primary-bg'>" +
-            "        <span class='title'>优惠券："+activity.coupon.name+"</span>" +
-            "        <span class='title'>满"+activity.coupon.targetAmount+"减<span class='error-text title'>"+activity.coupon.discountAmount+"</span></span>" +
-            "        <span class='gray-text'>"+activity.coupon.description+"</span>" +
+            "        <span class='title'>退票手续费："+ "200" + "</span>" +
             "    </div>" +
             "</div>";
     });
@@ -74,6 +70,7 @@ function renderRefund(activities) {
  */
 $("#activity-form-btn").click(
     function(){
+
 
     }
 )

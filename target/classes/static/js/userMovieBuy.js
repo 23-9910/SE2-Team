@@ -393,6 +393,7 @@ function postVIPPayRequest() {
     //发送请求，样式变化，确认支付框消失
     var ticketId = order.ticketId;
     var couponId = order.couponId;
+    console.log(ticketId)
     postRequest(
         "/ticket/vip/buy?couponId=" + couponId,
         ticketId,
@@ -402,34 +403,32 @@ function postVIPPayRequest() {
             $('#buyModal').modal('hide');
             //addOneConsumingRecord
             //再往票内部插入记录Id  addRecordIdOnTicket
-             postRequest(
-                "/ticket/add/record?couponId=" + couponId + "&payForm=1",
-                ticketId,
-                function(res){
-                    postRequest(
-                        "/ticket/add/recordId",
-                        ticketId,
-                        function(res){
-
-                        },
-                        function(error){
-                            alert(error);
-                        }
-                    )
                 },
-                function(error){
-                    alert(error)
+        function(error){
+            alert(error)
                 }
-             )
+             );
+
+setTimeout(
+    function(){
+    addRecord(ticketId)
+    }
+    ,500
+)
+}
+
+
+function addRecord(ticketId){
+    postRequest(
+        "/ticket/add/recordId",
+        ticketId,
+        function(res){
         },
         function(error){
             alert(error);
         }
-    );
-
-
+    )
 }
-
 function postPayRequest() {
     //发送请求，样式变化，确认支付框消失
     var ticketId = order.ticketId;
