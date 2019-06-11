@@ -11,7 +11,6 @@ $(document).ready(function () {
             "/vip/showDescription",
             function (res) {
                 var des = res.content;
-                console.log(res);
                 renderDescription(des);
             },
             function (error) {
@@ -53,9 +52,8 @@ $(document).ready(function () {
         var priceNew = $("#vip-price-input").val();
         var giftNew = $("#vip-gift-input").val();
         var descriptionNew = "满"+priceNew+"送"+giftNew;
-        postRequest(
-            "vip/description",
-            descriptionNew,
+        getRequest(
+            "vip/description"+ descriptionNew,
             function (res) {
                 if(res.success){
                     getDescription();
@@ -71,6 +69,16 @@ $(document).ready(function () {
     })
     //TODO
     function renderCoupons(){
+        getRequest(
+            '/activity/get',
+            function (res) {
+                console.log(res);
+
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        )
 
     }
     //TODO

@@ -69,6 +69,20 @@ $(document).ready(function () {
     })
     //TODO
     function renderCoupons(){
+        getRequest(
+            '/activity/get',
+            function (res) {
+                var activities = res.content;
+                for(var i=0;i<activities.length;i++){
+                    var couponName = activities[i].name;
+
+                }
+
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        )
 
     }
     //TODO
