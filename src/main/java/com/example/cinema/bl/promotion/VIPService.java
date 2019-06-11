@@ -25,8 +25,6 @@ public interface VIPService {
     /**
      * Modified bsun on 2019/05/28
      */
-    ResponseVO addChargeRecord(VIPCardForm vipCardForm);
-
     ResponseVO getChargeRecordByUserId(int userId);
 
     ResponseVO getChargeRecordById(int id);
@@ -34,7 +32,7 @@ public interface VIPService {
     /**
      * By sun on 2019/06/09int
      */
-    ResponseVO getVIPByAmount(String inputAmount);
+    ResponseVO getVIPByAmount(int inputAmount);
 
     //...
     ResponseVO changeDescription(String description);

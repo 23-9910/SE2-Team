@@ -35,11 +35,6 @@ public class VIPCardController {
     /**
      * Created by sun on 2019/05/28
      */
-    @PostMapping("/add/record")
-    public ResponseVO addOneChargeRecord(@RequestBody VIPCardForm vipCardForm){
-        return vipService.addChargeRecord(vipCardForm);
-    }
-
     @GetMapping("{userId}/get/record")
     public ResponseVO getChargeRecordByUserId(@PathVariable int userId){
         return vipService.getChargeRecordByUserId(userId);
@@ -54,7 +49,7 @@ public class VIPCardController {
      * By sun on 2019/06/09
      */
     @GetMapping("/get/consumingSum/{inputAmount}")
-    public ResponseVO getAllVIPConsumingSumByAmount(@PathVariable String inputAmount){
+    public ResponseVO getAllVIPConsumingSumByAmount(@PathVariable int inputAmount){
         return vipService.getVIPByAmount(inputAmount);
     }
 

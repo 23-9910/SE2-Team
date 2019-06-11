@@ -78,20 +78,7 @@ public class VIPServiceImpl implements VIPService {
         vipCard.setBalance(vipCard.getBalance() + chargeAmount + offerAmount);
         try {
             vipCardMapper.updateCardBalance(vipCardForm.getVipId(), vipCard.getBalance());
-            return ResponseVO.buildSuccess(vipCard);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
-        }
-    }
-
-    @Override
-    public ResponseVO getCardByUserId(int userId) {
-        try {
-            VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
-            if (vipCard == null) {
-                return ResponseVO.buildFailure("用户卡不存在");
-            }
+            addChargeRecord(vipCardForm);
             return ResponseVO.buildSuccess(vipCard);
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,25 +89,29 @@ public class VIPServiceImpl implements VIPService {
     /**
      * Created by sun on 2019/05/29
      */
-    @Override
-    public ResponseVO addChargeRecord(VIPCardForm vipCardForm) {
-        try {
-            int VIPId = vipCardForm.getVipId();
-            VIPCard vipCard = vipCardMapper.selectCardById(VIPId);
-            if (vipCard == null) {
-                return ResponseVO.buildFailure("会员卡不存在");
-            }
-            int userId = vipCard.getUserId();
+    private void addChargeRecord(VIPCardForm vipCardForm) {
+        int VIPId = vipCardForm.getVipId();
+        VIPCard vipCard = vipCardMapper.selectCardById(VIPId);
+        int userId = vipCard.getUserId();
 
-            double chargeAmount = vipCardForm.getAmount();
-            double offerAmount = calculateOffer(chargeAmount);
-            VIPChargeRecord vipChargeRecord = new VIPChargeRecord();
-            vipChargeRecord.setUserId(userId);
-            vipChargeRecord.setVipId(VIPId);
-            vipChargeRecord.setChargeAmount(chargeAmount);
-            vipChargeRecord.setOfferAmount(offerAmount);
-            vipCardMapper.insertOneChargeRecord(vipChargeRecord);
-            return ResponseVO.buildSuccess();
+        double chargeAmount = vipCardForm.getAmount();
+        double offerAmount = calculateOffer(chargeAmount);
+        VIPChargeRecord vipChargeRecord = new VIPChargeRecord();
+        vipChargeRecord.setUserId(userId);
+        vipChargeRecord.setVipId(VIPId);
+        vipChargeRecord.setChargeAmount(chargeAmount);
+        vipChargeRecord.setOfferAmount(offerAmount);
+        vipCardMapper.insertOneChargeRecord(vipChargeRecord);
+    }
+
+    @Override
+    public ResponseVO getCardByUserId(int userId) {
+        try {
+            VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
+            if (vipCard == null) {
+                return ResponseVO.buildFailure("用户卡不存在");
+            }
+            return ResponseVO.buildSuccess(vipCard);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
@@ -150,9 +141,9 @@ public class VIPServiceImpl implements VIPService {
     }
 
     @Override
-    public ResponseVO getVIPByAmount(String inputAmount) {
+    public ResponseVO getVIPByAmount(int inputAmount) {
         try {
-            double amount = Double.parseDouble(inputAmount);
+            double amount = (double)inputAmount;
             List<VIPConsumingSum> vipConsumingSumList = new ArrayList<>();
             List<VIPCard> vipCards = vipCardMapper.selectAllVIPCards();
             int len = vipCards.size();
