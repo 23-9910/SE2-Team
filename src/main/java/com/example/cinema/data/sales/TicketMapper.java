@@ -44,7 +44,7 @@ public interface TicketMapper {
 
     List<Ticket> selectTicketsByConsumingRecord(int consumingRecordId);
 
-    void updateRecordId(int recordId, int ticketId);
+    void updateRecordId(@Param("recordId") int recordId, @Param("ticketId") int ticketId);
 
     /**
      * 更新退票策略；获得退票策略
