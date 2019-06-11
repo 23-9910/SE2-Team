@@ -33,8 +33,8 @@ $(document).ready(function () {
                     + '<th>' + payForm + '</th>'
                     + '<th>' + payment + '</th>'
                     + '<th>' + payTime.slice(0, 10) + " " + payTime.slice(11, 19) + '</th>'
-                    + '<button id="'+ recordId + '" class="btn btn-primary " data-backdrop="static" style="float:right" data-toggle="modal" data-target="#detailFind" onclick="addDetail('+ recordId + '")>查看详情</button>'
-                    + '</tr>';
+                    + '<th><button id="'+ recordId + '" class="btn btn-primary" data-backdrop="static" style="float:right" data-toggle="modal" data-target="#detailFind" onclick="addDetail(' + recordId + ')">查看详情</button></th>'
+                    + '</tr>'
             }
             //插入页面中即可
             $("#my-tickets-table-body").append(ticketStr);
@@ -57,14 +57,14 @@ $(document).ready(function () {
  * @param recordId
  */
 function addDetail(recordId){
-    $("#recordId").clean();
-    $("#userId").clean();
-    $("#payTime").clean();
-    $("#payment").clean();
-    $("#payForm").clean();
-    $("#scheduleId").clean();
-    $("#ticketAmount").clean();
-    $("#couponId").clean();
+    $("#recordId").empty();
+    $("#userId").empty();
+    $("#payTime").empty();
+    $("#payment").empty();
+    $("#payForm").empty();
+    $("#scheduleId").empty();
+    $("#ticketAmount").empty();
+    $("#couponId").empty();
 
 
     getRequest(
@@ -87,10 +87,14 @@ function addDetail(recordId){
                 payFormLine = "会员卡"
             }
 
+            if(couponId == 0){
+                couponId = "你没有用优惠券！"
+            }
+
             $("#recordId").append(id);
             $("#userId").append(userId);
-            $("#payTime").append(payTime);
-            $("#payment").append(payment);
+            $("#payTime").append(payTime.slice(0, 10) + " " + payTime.slice(11, 19) );
+            $("#payment").append(payment + "元");
             $("#payForm").append(payFormLine);
             $("#scheduleId").append(scheduleId);
             $("#ticketAmount").append(ticketAmount);
@@ -101,6 +105,6 @@ function addDetail(recordId){
         function(error){
             alert(error)
         }
-        )
+        );
 }
 
