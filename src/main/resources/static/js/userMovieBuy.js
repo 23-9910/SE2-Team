@@ -433,6 +433,8 @@ function postPayRequest() {
     //发送请求，样式变化，确认支付框消失
     var ticketId = order.ticketId;
     var couponId = order.couponId;
+
+    console.log(couponId)
     postRequest(
         '/ticket/buy?couponId=' + couponId,
         ticketId,

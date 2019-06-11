@@ -89,7 +89,7 @@ public class VIPServiceImpl implements VIPService {
     public ResponseVO getCardByUserId(int userId) {
         try {
             VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
-            if(vipCard==null){
+            if (vipCard == null) {
                 return ResponseVO.buildFailure("用户卡不存在");
             }
             return ResponseVO.buildSuccess(vipCard);
@@ -103,8 +103,8 @@ public class VIPServiceImpl implements VIPService {
      * Created by sun on 2019/05/29
      */
     @Override
-    public ResponseVO addChargeRecord(VIPCardForm vipCardForm){
-        try{
+    public ResponseVO addChargeRecord(VIPCardForm vipCardForm) {
+        try {
             int VIPId = vipCardForm.getVipId();
             VIPCard vipCard = vipCardMapper.selectCardById(VIPId);
             if (vipCard == null) {
@@ -121,18 +121,18 @@ public class VIPServiceImpl implements VIPService {
             vipChargeRecord.setOfferAmount(offerAmount);
             vipCardMapper.insertOneChargeRecord(vipChargeRecord);
             return ResponseVO.buildSuccess();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
     }
 
     @Override
-    public ResponseVO getChargeRecordByUserId(int userId){
-        try{
+    public ResponseVO getChargeRecordByUserId(int userId) {
+        try {
             List<VIPChargeRecord> vipChargeRecordList = vipCardMapper.selectChargeRecordByUserId(userId);
             return ResponseVO.buildSuccess(vipChargeRecordList);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
@@ -140,10 +140,10 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     public ResponseVO getChargeRecordById(int id) {
-        try{
+        try {
             VIPChargeRecord vipChargeRecord = vipCardMapper.selectChargeRecordById(id);
             return ResponseVO.buildSuccess(vipChargeRecord);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
@@ -155,7 +155,7 @@ public class VIPServiceImpl implements VIPService {
             List<VIPConsumingSum> vipConsumingSumList = new ArrayList<>();
             List<VIPCard> vipCards = vipCardMapper.selectAllVIPCards();
             int len = vipCards.size();
-            for(int i = 0;i < len;i++){
+            for (int i = 0; i < len; i++) {
                 VIPCard vipCard = vipCards.get(i);
                 int userId = vipCard.getUserId();
                 User user = accountMapper.getManagerById(userId);
@@ -163,11 +163,11 @@ public class VIPServiceImpl implements VIPService {
                 int vipId = vipCard.getId();
                 List<ConsumingRecord> consumingRecords = ticketMapper.selectConsumingRecordByUser(userId);
                 double sum = 0;
-                for(ConsumingRecord consumingRecord : consumingRecords){
+                for (ConsumingRecord consumingRecord : consumingRecords) {
                     sum += consumingRecord.getPayment();
                 }
-                if(sum >= amount){
-                    VIPConsumingSum vipConsumingSum = new VIPConsumingSum(userId,username,vipId,sum);
+                if (sum >= amount) {
+                    VIPConsumingSum vipConsumingSum = new VIPConsumingSum(userId, username, vipId, sum);
                     vipConsumingSumList.add(vipConsumingSum);
                 }
             }
@@ -180,10 +180,10 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     public ResponseVO changeDescription(String description) {
-        try{
+        try {
             vipCardMapper.updateVIPChargeDescription(description);
             return ResponseVO.buildSuccess();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
@@ -191,10 +191,10 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     public ResponseVO getChargeDescription() {
-        try{
+        try {
             String description = vipCardMapper.selectVIPChargeDescription();
             return ResponseVO.buildSuccess(description);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
@@ -208,7 +208,6 @@ public class VIPServiceImpl implements VIPService {
         String s = vipCardMapper.selectVIPChargeDescription();
         int a = Integer.parseInt(s.substring(s.indexOf('满') + 1, s.indexOf('送')));
         int b = Integer.parseInt(s.substring(s.indexOf('送') + 1));
-        return (int)(amount/a)*b;
+        return (int) (amount / a) * b;
     }
-
 }
