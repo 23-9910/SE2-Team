@@ -65,11 +65,13 @@ function addDetail(recordId){
     $("#scheduleId").empty();
     $("#ticketAmount").empty();
     $("#couponId").empty();
+    $("#seat").empty();
 
 
     getRequest(
         "/ticket/get/record/" + recordId,
         function(res){
+            console.log(res)
             var historyItem = res.content;
             var id = historyItem.id;
             var userId = historyItem.userId
@@ -79,7 +81,11 @@ function addDetail(recordId){
             var scheduleId = historyItem.shceduleId;
             var ticketAmount = historyItem.ticketAmount;
             var couponId = historyItem.couponId;
-            var payFormLine = ""
+            var payFormLine = "";
+            var movieName = "";
+            var hallId = 0;
+            var hallName = "";
+            var seatInfo = "";
             if(payForm == 0){
                 payFormLine = "银行卡"
             }
@@ -91,14 +97,49 @@ function addDetail(recordId){
                 couponId = "你没有用优惠券！"
             }
 
+
+            getRequest(
+                "/schedule/" + (scheduleId),
+                function(res1){
+                    console.log(res1)
+                    movieName = res1.content.movieName;
+                    hallId = res1.content.hallId;
+                    hallName = res1.content.hallName;
+                    $("#hallName").append(hallName);
+                    $("#hallId").append(hallId);
+                    $("#scheduleId").append(movieName);
+
+                },
+                function(error1){
+                    alert(error1)
+                }
+            )
+
+            getRequest(
+                "/ticket/get/consumed/" + (recordId),
+                function(res2){
+                    console.log(res2)
+                    var list = res2.content;
+                    for(var i=0;i<list.length;i++){
+                        var tmp = list[i];
+                        seatInfo += "<div>" + (tmp.rowIndex+1)+ "排"  + (tmp.columnIndex+1) + "列" + "</div>"
+                    }
+                    $("#seat").append(seatInfo);
+                },
+                function(error2){
+                    alert(error2)
+                }
+
+            )
+
             $("#recordId").append(id);
             $("#userId").append(userId);
             $("#payTime").append(payTime.slice(0, 10) + " " + payTime.slice(11, 19) );
             $("#payment").append(payment + "元");
             $("#payForm").append(payFormLine);
-            $("#scheduleId").append(scheduleId);
             $("#ticketAmount").append(ticketAmount);
             $("#couponId").append(couponId);
+
 
 
         },
