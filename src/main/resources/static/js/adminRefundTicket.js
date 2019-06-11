@@ -8,7 +8,7 @@
  */
 $(document).ready(function() {
     getInfo();
-})
+
 
 
 function getInfo(){
@@ -48,7 +48,7 @@ function renderRefund(activities) {
             "<div class='activity-container'>" +
             "    <div class='activity-card card'>" +
             "       <div class='activity-line'>" +
-            "           <span class='title'>"+activity.name+"</span>" +
+            "           <span class='title'>退票策略</span>" +
             "           <span class='gray-text'>"+activity.description+"</span>" +
             "       </div>" +
             "       <div class='activity-line'>" +
@@ -78,4 +78,4 @@ $("#activity-form-btn").click(
     }
 )
 
-
+})

@@ -7,17 +7,17 @@
  */
 $(document).ready(function () {
 
-
-    var userId = "0";
-    userId = (window.sessionStorage.getItem("id"))
-    renderHistory(userId)
-
-})
+    var userId = (window.sessionStorage.getItem("id"));
+    renderHistory(userId);
 
 
-function renderHistory(userid) {
+    /**
+     * 获取历史列表查看
+     * @param userId
+     */
+    function renderHistory(userId) {
     getRequest(
-        "/get/user/record/"+userid,
+        "/ticket/get/user/record/"+userId,
         function (res) {
             var ticketStr = "";
             var historyList = res.content;
@@ -47,10 +47,13 @@ function renderHistory(userid) {
 
 
 }
+})
+
 
 /**
  * 根据记录ID获取详细内容
  * 弹窗中会显示不同内容根据
+ * html中onclick调用
  * @param recordId
  */
 function addDetail(recordId){
@@ -65,7 +68,7 @@ function addDetail(recordId){
 
 
     getRequest(
-        "/get/record/" + recordId,
+        "/ticket/get/record/" + recordId,
         function(res){
             var historyItem = res.content;
             var id = historyItem.id;
@@ -100,3 +103,4 @@ function addDetail(recordId){
         }
         )
 }
+
