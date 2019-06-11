@@ -100,14 +100,16 @@ $(document).ready(function () {
      * 后端添加方法
      */
     $("#consumption-input-btn").click(function () {
-        var consumption = $("vip-history-input").val();
+        let consumption = $("#vip-history-input").val();
         getRequest(
             "/vip/get/consumingSum/"+consumption,
             function (res) {
                 var vips = res.content;
-                vips.forEach(function (vip) {
-                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>"+"";
-                    $("#my-tickets-table-body").append(VIPDomStr);
+                console.log(vips);
+                vips.forEach(function (v) {
+                    console.log(v);
+                    var vipDomStr = "<tr><th>"+v.userId+"</th>"+"<th>"+v.userName+"</th>"+"<th>"+v.consumingSum+"</th></tr>";
+                    $("#my-tickets-table-body").append(vipDomStr);
                 })
             },
             function (error) {
