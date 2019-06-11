@@ -99,12 +99,16 @@ function addDetail(recordId){
 
 
             getRequest(
-                "/schedule/" + parseInt(scheduleId),
+                "/schedule/" + (scheduleId),
                 function(res1){
                     console.log(res1)
                     movieName = res1.content.movieName;
                     hallId = res1.content.hallId;
                     hallName = res1.content.hallName;
+                    $("#hallName").append(hallName);
+                    $("#hallId").append(hallId);
+                    $("#scheduleId").append(movieName);
+
                 },
                 function(error1){
                     alert(error1)
@@ -133,11 +137,8 @@ function addDetail(recordId){
             $("#payTime").append(payTime.slice(0, 10) + " " + payTime.slice(11, 19) );
             $("#payment").append(payment + "元");
             $("#payForm").append(payFormLine);
-            $("#scheduleId").append(movieName);
             $("#ticketAmount").append(ticketAmount);
             $("#couponId").append(couponId);
-            $("#hallName").append(hallName);
-            $("#hallId").append(hallId);
 
 
 
