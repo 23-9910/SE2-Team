@@ -38,4 +38,6 @@ public interface VIPService {
 
     //...
     ResponseVO changeDescription(String description);
+
+    ResponseVO getChargeDescription();
 }

@@ -91,9 +91,15 @@ public class TicketController {
     public ResponseVO returnTickets(@RequestBody List<Integer> ticketId){
         return ticketService.returnTickets(ticketId);
     }
-    @PostMapping("/discount")
-    public ResponseVO changeDiscount(@RequestBody double discount){
-        return ticketService.changeDiscount(discount);
+
+    @GetMapping("/strategy/{strategy}")
+    public ResponseVO changeStrategy(@PathVariable int strategy){
+        return ticketService.changeStrategy(strategy);
+    }
+
+    @GetMapping("get/strategy")
+    public ResponseVO getRefundStrategy(){
+        return ticketService.getRefundStrategy();
     }
 
 }
