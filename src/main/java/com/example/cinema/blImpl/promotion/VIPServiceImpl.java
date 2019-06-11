@@ -210,6 +210,11 @@ public class VIPServiceImpl implements VIPService {
         int b = Integer.parseInt(s.substring(s.indexOf('送') + 1));
         return (int)(amount/a)*b;
     }
+//VIPCard.description
+    @Override
+    public ResponseVO showDescription() {
+        return ResponseVO.buildSuccess(VIPCard.description);
+    }
 
 
 }
