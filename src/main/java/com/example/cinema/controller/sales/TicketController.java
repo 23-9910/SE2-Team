@@ -97,7 +97,7 @@ public class TicketController {
         return ticketService.changeStrategy(strategy);
     }
 
-    @GetMapping("get/strategy")
+    @GetMapping("/get/strategy")
     public ResponseVO getRefundStrategy(){
         return ticketService.getRefundStrategy();
     }
