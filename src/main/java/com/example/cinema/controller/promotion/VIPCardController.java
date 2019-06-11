@@ -54,7 +54,7 @@ public class VIPCardController {
      * By sun on 2019/06/09
      */
     @GetMapping("/get/consumingSum/{inputAmount}")
-    public ResponseVO getAllVIPConsumingSumByAmount(@PathVariable String inputAmount){
+    public ResponseVO getAllVIPConsumingSumByAmount(@PathVariable int inputAmount){
         return vipService.getVIPByAmount(inputAmount);
     }
 
