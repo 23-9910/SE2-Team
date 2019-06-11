@@ -150,8 +150,9 @@ public class VIPServiceImpl implements VIPService {
     }
 
     @Override
-    public ResponseVO getVIPByAmount(double amount) {
+    public ResponseVO getVIPByAmount(String inputAmount) {
         try {
+            double amount = Double.parseDouble(inputAmount);
             List<VIPConsumingSum> vipConsumingSumList = new ArrayList<>();
             List<VIPCard> vipCards = vipCardMapper.selectAllVIPCards();
             int len = vipCards.size();
