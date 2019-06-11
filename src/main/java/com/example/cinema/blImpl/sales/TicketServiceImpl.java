@@ -289,7 +289,7 @@ public class TicketServiceImpl implements TicketService {
      * Modified by sun on 2019/05/28
      * 2nd modified by sun on 2019/06/08
      */
-    public void addOneConsumingRecord(List<Integer> ticketId,int couponId, int payForm){
+    private void addOneConsumingRecord(List<Integer> ticketId,int couponId, int payForm){
         double payment = getPayment(ticketId,couponId);
         ConsumingRecord consumingRecord = new ConsumingRecord();
         consumingRecord.setCouponId(couponId);
