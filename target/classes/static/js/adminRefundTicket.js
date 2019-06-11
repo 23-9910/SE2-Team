@@ -56,10 +56,17 @@ function renderRefund(perCent) {
  */
 $("#activity-form-btn").click(
     function(){
-        var rate = parseInt()
+        var rate = $("#activity-name-input").val();
+        $("#activityModal").hide();
 
         getRequest(
-            "ticket/strategy/" +
+            "ticket/strategy/" + parseInt(rate),
+            function(res){
+                getInfo
+            },
+            function(error){
+                alert(error)
+            }
         )
 
     }
