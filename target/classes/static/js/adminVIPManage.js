@@ -100,13 +100,13 @@ $(document).ready(function () {
      * 后端添加方法
      */
     $("#consumption-input-btn").click(function () {
-        var consumption = parseFloat($("vip-history-input").val());
+        var consumption = $("vip-history-input").val();
         getRequest(
             "/vip/get/consumingSum/"+consumption,
             function (res) {
                 var vips = res.content;
                 vips.forEach(function (vip) {
-                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>";
+                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>"+"";
                     $("#my-tickets-table-body").append(VIPDomStr);
                 })
             },

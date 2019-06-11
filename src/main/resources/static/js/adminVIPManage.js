@@ -106,7 +106,7 @@ $(document).ready(function () {
             function (res) {
                 var vips = res.content;
                 vips.forEach(function (vip) {
-                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>";
+                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>"+"";
                     $("#my-tickets-table-body").append(VIPDomStr);
                 })
             },
