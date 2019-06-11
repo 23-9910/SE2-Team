@@ -72,7 +72,11 @@ $(document).ready(function () {
         getRequest(
             '/activity/get',
             function (res) {
-                console.log(res);
+                var activities = res.content;
+                for(var i=0;i<activities.length;i++){
+                    var couponName = activities[i].name;
+
+                }
 
             },
             function (error) {
