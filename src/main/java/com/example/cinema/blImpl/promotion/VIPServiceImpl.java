@@ -183,6 +183,11 @@ public class VIPServiceImpl implements VIPService {
         VIPCard.description = description;
         return ResponseVO.buildSuccess();
     }
+//VIPCard.description
+    @Override
+    public ResponseVO showDescription() {
+        return ResponseVO.buildSuccess(VIPCard.description);
+    }
 
 
 }

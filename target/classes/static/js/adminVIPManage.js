@@ -1,13 +1,18 @@
 $(document).ready(function () {
     
-    getVIPs();
-    
-    function getVIPs() {
+    getDescription();
+    renderCoupons();
+    renderAllVIP();
+
+
+
+    function getDescription() {
         getRequest(
-            "",
+            "/vip/showDescription",
             function (res) {
-                var vips = res.content;
-                renderVIPs(vips);
+                var des = res.content;
+                console.log(res);
+                renderDescription(des);
             },
             function (error) {
                 alert(JSON.stringify(error));
@@ -15,42 +20,24 @@ $(document).ready(function () {
         );
     }
     
-    function renderVIPs(vips) {
-        $(".content-vip").empty();
+    function renderDescription(des) {
+        $(".description-container").empty();
         var vipDomStr="";
-
-        vips.forEach(function(vip) {
-            vipDomStr+=
-                "<div class='vip-container'>" +
-                "    <div class='vip-card card'>" +
-                "       <div class='vip-line'>" +
-                "           <span class='title'>"+vip.name+"</span>" +
-                "           <span class='gray-text'>"+vip.description+"</span>" +
-                "       </div>" +
-                "    </div>" +
-                "    <div class='vip-coupon primary-bg'>" +
-                "        <span class='title'>充值优惠："+vip.name+"</span>" +
-                "        <span class='title'>充"+vip.price+"送<span class='error-text title'>"+vip.gift+"</span></span>" +
-                "    </div>" +
-                "</div>";
-        });
-        $(".content-vip").append(vipDomStr);
+        console.log(des)
+        vipDomStr+= "<span class='title'>充值优惠：</span>" +des;
+        $(".description-container").append(vipDomStr);
     }
 
     $("#vip-form-btn").click(function () {
-        var form = {
-            name: $("#vip-name-input").val(),
-            description: $("#vip-description-input").val(),
-            price: $("#vip-price-input").val(),
-            gift: $("#vip-gift-input").val()
-        };
+        var price = $("#vip-price-input").val();
+        var gift = $("#vip-gift-input").val();
+        var description = "满"+price+"送"+gift;
 
-        postRequest(
-            "",
-            form,
+        getRequest(
+            "/vip/description/" + description,
             function (res) {
                 if(res.success){
-                    getVIPs();
+                    getDescription();
                     $("#VIPModal").modal('hide');
                 } else {
                     alert(res.message);
@@ -63,19 +50,15 @@ $(document).ready(function () {
     })
 
     $("#vip-change-btn").click(function(){
-        var change = {
-            name: $("#vip-new-name-input").val(),
-            description: $("#vip-new-description-input").val(),
-            price: $("#vip-price-input").val(),
-            gift: $("#vip-gift-input").val()
-        };
-
+        var priceNew = $("#vip-price-input").val();
+        var giftNew = $("#vip-gift-input").val();
+        var descriptionNew = "满"+priceNew+"送"+giftNew;
         postRequest(
-            "",
-            change,
+            "vip/description",
+            descriptionNew,
             function (res) {
                 if(res.success){
-                    getVIPs();
+                    getDescription();
                     $("#VIPChangeModal").modal('hide');
                 } else {
                     alert(res.message);
@@ -85,6 +68,33 @@ $(document).ready(function () {
                 alert(JSON.stringify(error));
             }
         );
-
     })
+    //TODO
+    function renderCoupons(){
+
+    }
+    //TODO
+    function renderAllVIP(){
+        getRequest(
+            '/vip/',
+            function (res) {
+
+
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            }
+        )
+    }
+    //TODO
+    /**
+     * 获取符合条件的会员
+     * 后端添加方法
+     */
+    //TODO
+    /**
+     * 点击确认按钮，会将优惠卷赠送
+     */
+
+
 })

@@ -61,8 +61,13 @@ public class VIPCardController {
     }
 
     //。。。
-    @PostMapping("/description")
-    public ResponseVO addVIPDescription(@RequestBody String description){
+    @GetMapping("/showDescription")
+    public ResponseVO addVIPDescription(){
+        return vipService.showDescription();
+    }
+
+    @GetMapping("/description/{description}")
+    public ResponseVO addVIPDescription(@PathVariable String description){
         return vipService.changeDescription(description);
     }
 
