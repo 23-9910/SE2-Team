@@ -25,8 +25,6 @@ public interface VIPService {
     /**
      * Modified bsun on 2019/05/28
      */
-    ResponseVO addChargeRecord(VIPCardForm vipCardForm);
-
     ResponseVO getChargeRecordByUserId(int userId);
 
     ResponseVO getChargeRecordById(int id);
