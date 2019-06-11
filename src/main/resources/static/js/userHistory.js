@@ -98,18 +98,18 @@ function addDetail(recordId){
             }
 
 
-            // getRequest(
-            //     "/schedule/" + parseInt(scheduleId),
-            //     function(res1){
-            //         console.log(res1)
-            //         movieName = res1.content.movieName;
-            //         hallId = res1.content.hallId;
-            //         hallName = res1.content.hallName;
-            //     },
-            //     function(error1){
-            //         alert(error1)
-            //     }
-            // )
+            getRequest(
+                "/schedule/" + parseInt(scheduleId),
+                function(res1){
+                    console.log(res1)
+                    movieName = res1.content.movieName;
+                    hallId = res1.content.hallId;
+                    hallName = res1.content.hallName;
+                },
+                function(error1){
+                    alert(error1)
+                }
+            )
 
             getRequest(
                 "/ticket/get/consumed/" + (recordId),
