@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     function getDescription() {
         getRequest(
-            "/vip/showDescription",
+            "/vip/get/description",
             function (res) {
                 var des = res.content;
                 renderDescription(des);
@@ -67,26 +67,26 @@ $(document).ready(function () {
             }
         );
     })
-    //TODO
+
     function renderCoupons(){
         getRequest(
             '/activity/get',
             function (res) {
-                console.log(res);
-
+                var coupons = res.content;
+                coupons.forEach(function(coupon){
+                   $('#coupon-select').append("<option value="+coupon.id+">"+coupon.name+"</option>");
+                });
             },
             function (error) {
                 alert(JSON.stringify(error));
             }
         )
-
     }
     //TODO
     function renderAllVIP(){
         getRequest(
             '/vip/',
             function (res) {
-
 
             },
             function(error){
@@ -99,6 +99,19 @@ $(document).ready(function () {
      * 获取符合条件的会员
      * 后端添加方法
      */
+    $("#consumption-input-btn").click(function () {
+        var consumption = $("vip-history-input").val();
+        getRequest(
+            "/vip/get/consumingSum/{amount}"+consumption,
+            function (res) {
+                var vips = res.content;
+                console.log(res);
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+            }
+        )
+    })
     //TODO
     /**
      * 点击确认按钮，会将优惠卷赠送
