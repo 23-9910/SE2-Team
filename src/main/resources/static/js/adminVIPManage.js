@@ -49,11 +49,11 @@ $(document).ready(function () {
     })
 
     $("#vip-change-btn").click(function(){
-        var priceNew = $("#vip-price-input").val();
-        var giftNew = $("#vip-gift-input").val();
+        var priceNew = $("#vip-new-price-input").val();
+        var giftNew = $("#vip-new-gift-input").val();
         var descriptionNew = "满"+priceNew+"送"+giftNew;
         getRequest(
-            "vip/description"+ descriptionNew,
+            "/vip/description/"+ descriptionNew,
             function (res) {
                 if(res.success){
                     getDescription();
@@ -102,10 +102,13 @@ $(document).ready(function () {
     $("#consumption-input-btn").click(function () {
         var consumption = $("vip-history-input").val();
         getRequest(
-            "/vip/get/consumingSum/{amount}"+consumption,
+            "/vip/get/consumingSum/"+consumption,
             function (res) {
                 var vips = res.content;
-                console.log(res);
+                vips.forEach(function (vip) {
+                    var VIPDomStr ="<tr>"+vip.userId+"</tr>"+"<tr>"+vip.userName+"</tr>"+"<tr>"+vip.consumingSum+"</tr>";
+                    $("#my-tickets-table-body").append(VIPDomStr);
+                })
             },
             function (error) {
                 alert(JSON.stringify(error));
