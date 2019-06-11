@@ -65,7 +65,7 @@
 
     <insert id="insertOneConsumingRecord" parameterType="com.example.cinema.po.ConsumingRecord">
         insert into consuming_record(user_id,payment,pay_form,ticket_amount,coupon_id)
-        values(#{userId},#{payment},#{payForm},#{ticketAmount},#{counponId})
+        values(#{userId},#{payment},#{payForm},#{ticketAmount},#{couponId})
     </insert>
 
     <select id="selectConsumingRecordByUser" resultMap="ConsumingRecord">
