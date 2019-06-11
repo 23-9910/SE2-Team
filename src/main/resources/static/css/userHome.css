@@ -64,3 +64,29 @@
     height: 400px;
     padding: 10px 20px;
 }
+/**
+
+ */
+*{
+    margin: 0;
+    padding: 0;
+}
+#div1{
+    width: 712px;
+    height: 108px;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden;
+}
+#div1 ul{
+    position:absolute;
+    left: 0;
+    top: 0;
+}
+#div1 ul li {
+    float: left;
+    width: 178px;
+    height: 108px;
+    list-style: none;
+    margin-left: 10px;
+}
