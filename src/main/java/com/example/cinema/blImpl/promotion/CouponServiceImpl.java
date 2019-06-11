@@ -2,11 +2,16 @@ package com.example.cinema.blImpl.promotion;
 
 import com.example.cinema.bl.promotion.CouponService;
 import com.example.cinema.data.promotion.CouponMapper;
+import com.example.cinema.data.promotion.VIPCardMapper;
+import com.example.cinema.data.sales.TicketMapper;
+import com.example.cinema.data.user.AccountMapper;
+import com.example.cinema.po.ConsumingRecord;
 import com.example.cinema.po.Coupon;
 import com.example.cinema.vo.CouponForm;
 import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  * Created by liying on 2019/4/17.

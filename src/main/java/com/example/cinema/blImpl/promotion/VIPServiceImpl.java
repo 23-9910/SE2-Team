@@ -2,14 +2,20 @@ package com.example.cinema.blImpl.promotion;
 
 import com.example.cinema.bl.promotion.VIPService;
 import com.example.cinema.data.promotion.VIPCardMapper;
+import com.example.cinema.data.sales.TicketMapper;
+import com.example.cinema.data.user.AccountMapper;
+import com.example.cinema.po.ConsumingRecord;
+import com.example.cinema.po.User;
 import com.example.cinema.po.VIPChargeRecord;
 import com.example.cinema.vo.VIPCardForm;
 import com.example.cinema.po.VIPCard;
 import com.example.cinema.vo.ResponseVO;
+import com.example.cinema.vo.VIPConsumingSum;
 import com.example.cinema.vo.VIPInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,6 +26,10 @@ import java.util.List;
 public class VIPServiceImpl implements VIPService {
     @Autowired
     VIPCardMapper vipCardMapper;
+    @Autowired
+    TicketMapper ticketMapper;
+    @Autowired
+    AccountMapper accountMapper;
 
     @Override
     public ResponseVO addVIPCard(int userId) {
@@ -134,6 +144,35 @@ public class VIPServiceImpl implements VIPService {
             VIPChargeRecord vipChargeRecord = vipCardMapper.selectChargeRecordById(id);
             return ResponseVO.buildSuccess(vipChargeRecord);
         } catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO getVIPByAmount(double amount) {
+        try {
+            List<VIPConsumingSum> vipConsumingSumList = new ArrayList<>();
+            List<VIPCard> vipCards = vipCardMapper.selectAllVIPCards();
+            int len = vipCards.size();
+            for(int i = 0;i < len;i++){
+                VIPCard vipCard = vipCards.get(i);
+                int userId = vipCard.getUserId();
+                User user = accountMapper.getManagerById(userId);
+                String username = user.getUsername();
+                int vipId = vipCard.getId();
+                List<ConsumingRecord> consumingRecords = ticketMapper.selectConsumingRecordByUser(userId);
+                double sum = 0;
+                for(ConsumingRecord consumingRecord : consumingRecords){
+                    sum += consumingRecord.getPayment();
+                }
+                if(sum >= amount){
+                    VIPConsumingSum vipConsumingSum = new VIPConsumingSum(userId,username,vipId,sum);
+                    vipConsumingSumList.add(vipConsumingSum);
+                }
+            }
+            return ResponseVO.buildSuccess(vipConsumingSumList);
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
