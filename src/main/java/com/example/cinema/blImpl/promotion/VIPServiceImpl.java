@@ -58,7 +58,7 @@ public class VIPServiceImpl implements VIPService {
     @Override
     public ResponseVO getVIPInfo() {
         VIPInfoVO vipInfoVO = new VIPInfoVO();
-        vipInfoVO.setDescription(VIPCard.description);
+        vipInfoVO.setDescription(vipCardMapper.selectVIPChargeDescription());
         vipInfoVO.setPrice(VIPCard.price);
         return ResponseVO.buildSuccess(vipInfoVO);
     }
@@ -74,7 +74,7 @@ public class VIPServiceImpl implements VIPService {
             return ResponseVO.buildFailure("会员卡不存在");
         }
         double chargeAmount = vipCardForm.getAmount();
-        double offerAmount = vipCard.calculateOffer(chargeAmount);
+        double offerAmount = calculateOffer(chargeAmount);
         vipCard.setBalance(vipCard.getBalance() + chargeAmount + offerAmount);
         try {
             vipCardMapper.updateCardBalance(vipCardForm.getVipId(), vipCard.getBalance());
@@ -113,7 +113,7 @@ public class VIPServiceImpl implements VIPService {
             int userId = vipCard.getUserId();
 
             double chargeAmount = vipCardForm.getAmount();
-            double offerAmount = vipCard.calculateOffer(chargeAmount);
+            double offerAmount = calculateOffer(chargeAmount);
             VIPChargeRecord vipChargeRecord = new VIPChargeRecord();
             vipChargeRecord.setUserId(userId);
             vipChargeRecord.setVipId(VIPId);
@@ -180,8 +180,35 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     public ResponseVO changeDescription(String description) {
-        VIPCard.description = description;
-        return ResponseVO.buildSuccess();
+        try{
+            vipCardMapper.updateVIPChargeDescription(description);
+            return ResponseVO.buildSuccess();
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    @Override
+    public ResponseVO getChargeDescription() {
+        try{
+            String description = vipCardMapper.selectVIPChargeDescription();
+            return ResponseVO.buildSuccess(description);
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+    }
+
+    /**
+     * 计算充值赠送的金额,VIP优惠政策发生变动,本方法也发生变动
+     * Modified by sun in 2019/05/28
+     */
+    public double calculateOffer(double amount) {
+        String s = vipCardMapper.selectVIPChargeDescription();
+        int a = Integer.parseInt(s.substring(s.indexOf('满') + 1, s.indexOf('送')));
+        int b = Integer.parseInt(s.substring(s.indexOf('送') + 1));
+        return (int)(amount/a)*b;
     }
 
 

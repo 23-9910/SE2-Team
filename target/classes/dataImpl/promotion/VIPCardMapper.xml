@@ -37,6 +37,14 @@
         select * from vip_charge_record where id = #{id}
     </select>
 
+    <update id="updateVIPChargeDescription">
+        update vip_charge_description set description = #{description} where id = 1
+    </update>
+
+    <select id="selectVIPChargeDescription" resultType="java.lang.String">
+        select description from vip_charge_description where id = 1
+    </select>
+
     <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
         <result column="join_time" property="joinDate"></result>
         <result column="id" property="id"></result>

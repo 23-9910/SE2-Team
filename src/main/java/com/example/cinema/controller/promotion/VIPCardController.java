@@ -30,9 +30,7 @@ public class VIPCardController {
     }
 
     @PostMapping("/charge")
-    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm){
-        return vipService.charge(vipCardForm);
-    }
+    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm){ return vipService.charge(vipCardForm); }
 
     /**
      * Created by sun on 2019/05/28
@@ -61,9 +59,14 @@ public class VIPCardController {
     }
 
     //。。。
-    @PostMapping("/description")
-    public ResponseVO addVIPDescription(@RequestBody String description){
+    @GetMapping("/description/{description}")
+    public ResponseVO changeVIPDescription(@PathVariable String description){
         return vipService.changeDescription(description);
+    }
+
+    @GetMapping("/get/description")
+    public ResponseVO getChargeDescription(){
+        return vipService.getChargeDescription();
     }
 
 
