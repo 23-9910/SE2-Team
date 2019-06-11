@@ -43,7 +43,10 @@
 </div>
 <div class="content-container">
     <div id="movie-list" style="margin: 20px 50px;background-color: white">
-        <div style="font-size: 25px; margin: 20px">我的电影票</div>
+        <div class="content-header">
+            <span class="title">我的电影票</span>
+            <button type="button" class="btn btn-primary" id="user-refund-btn" style="margin-left: 1000px;" onclick="window.location.href='/user/refund'">退票</button>
+        </div>
         <div>
             <table class="table" id="my-tickets-table" style="margin:0 auto">
                 <thead id="my-tickets-table-head" style="text-align: center">
