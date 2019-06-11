@@ -80,6 +80,14 @@
         alter table ticket alter discount set default #{discount}
     </update>
 
+    <update id="updateRefundStrategy">
+        update refund_strategy set strategy = #{strategy} where id = 1
+    </update>
+
+    <select id="selectRefundStrategy" resultType="java.lang.Integer">
+        select strategy from refund_strategy where id = 1
+    </select>
+
     <resultMap id="ConsumingRecord" type="com.example.cinema.po.ConsumingRecord">
         <id column="id" property="id"></id>
         <result column="user_id" property="userId"></result>

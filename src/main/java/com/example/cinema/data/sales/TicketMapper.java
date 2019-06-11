@@ -46,6 +46,12 @@ public interface TicketMapper {
 
     void updateRecordId(int recordId, int ticketId);
 
-    void changeDiscount(double discount);
+    /**
+     * 更新退票策略；获得退票策略
+     */
+    void updateRefundStrategy(int strategy);
+
+    int selectRefundStrategy();
+
 }
 

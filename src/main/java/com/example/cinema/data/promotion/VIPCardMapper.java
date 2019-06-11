@@ -34,4 +34,8 @@ public interface VIPCardMapper {
      * By sun on 2019/06/09
      */
     List<VIPCard> selectAllVIPCards();
+
+    int updateVIPChargeDescription(String description);
+
+    String selectVIPChargeDescription();
 }

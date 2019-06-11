@@ -415,6 +415,51 @@ INSERT INTO `vip_charge_record` VALUES (1,1,1,0,0,'2019-05-28 20:29:00');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `vip_charge_description`
+--
+
+DROP TABLE IF EXISTS `vip_charge_description`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vip_charge_description`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `description` varchar(50) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `vip_charge_description`
+--
+LOCK TABLES `vip_charge_description` WRITE;
+/*!40000 ALTER TABLE `vip_charge_description` DISABLE KEYS */;
+INSERT INTO `vip_charge_description` VALUES (1,'满200送30');
+/*!40000 ALTER TABLE `vip_charge_description` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `refund_strategy`
+--
+DROP TABLE IF EXISTS `refund_strategy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `refund_strategy`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `strategy` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for tale `refund_strategy`
+--
+LOCK TABLES `refund_strategy` WRITE;
+/*!40000 ALTER TABLE `refund_strategy` DISABLE KEYS */;
+INSERT INTO `refund_strategy` VALUES (1,60);
+/*!40000 ALTER TABLE `refund_strategy` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'cinema'
 --
 

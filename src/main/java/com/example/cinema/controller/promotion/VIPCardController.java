@@ -1,4 +1,4 @@
-package com.example.cinema.controller.promotion;
+﻿package com.example.cinema.controller.promotion;
 
 import com.example.cinema.bl.promotion.VIPService;
 import com.example.cinema.vo.VIPCardForm;
@@ -30,9 +30,7 @@ public class VIPCardController {
     }
 
     @PostMapping("/charge")
-    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm){
-        return vipService.charge(vipCardForm);
-    }
+    public ResponseVO charge(@RequestBody VIPCardForm vipCardForm){ return vipService.charge(vipCardForm); }
 
     /**
      * Created by sun on 2019/05/28
@@ -61,14 +59,14 @@ public class VIPCardController {
     }
 
     //。。。
-    @GetMapping("/showDescription")
-    public ResponseVO addVIPDescription(){
-        return vipService.showDescription();
+    @GetMapping("/description/{description}")
+    public ResponseVO changeVIPDescription(@PathVariable String description){
+        return vipService.changeDescription(description);
     }
 
-    @GetMapping("/description/{description}")
-    public ResponseVO addVIPDescription(@PathVariable String description){
-        return vipService.changeDescription(description);
+    @GetMapping("/get/description")
+    public ResponseVO getChargeDescription(){
+        return vipService.getChargeDescription();
     }
 
 

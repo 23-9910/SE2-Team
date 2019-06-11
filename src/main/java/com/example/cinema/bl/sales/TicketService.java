@@ -103,6 +103,8 @@ public interface TicketService {
      */
     ResponseVO returnTickets(List<Integer> ticketId);
 
-    ResponseVO changeDiscount(double discount);
+    ResponseVO changeStrategy(int strategy);
+
+    ResponseVO getRefundStrategy();
 }
 
