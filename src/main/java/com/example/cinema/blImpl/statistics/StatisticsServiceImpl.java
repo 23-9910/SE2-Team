@@ -99,26 +99,26 @@ public class StatisticsServiceImpl implements StatisticsService {
                 int movieId = movie.getId();
                 String movieName = movie.getName();
                 List<ScheduleItem> scheduleItemList = scheduleMapper.selectScheduleByMovieId(movieId);
-                System.out.println(scheduleItemList);
                 for(ScheduleItem scheduleItem : scheduleItemList){
                     int scheduleId = scheduleItem.getId();
                     int hallId = scheduleItem.getHallId();
                     Hall hallOnSchedule = hallMapper.selectHallById(hallId);
                     int hallSeats = hallOnSchedule.getColumn() * hallOnSchedule.getRow();
-                    String startTime = scheduleItem.getStartTime().toString().substring(0,10);
+
+                    Date startTimeDate = scheduleItem.getStartTime();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String startTime = simpleDateFormat.format(startTimeDate);
                     if(date == startTime){
                         List<Ticket> ticketList = ticketMapper.selectTicketsBySchedule(scheduleId);
                         List<Ticket> completedTickets = new ArrayList<>();
                         for(Ticket ticket1 : ticketList){
+                            System.out.println(ticket1.getColumnIndex() + " " + ticket1.getRowIndex());
                             if(ticket1.getState()== 1){
                                 completedTickets.add(ticket1);
                             }
                         }
                         audienceNum += completedTickets.size();
                         allSeats += hallSeats;
-                    }else{
-                        audienceNum += 0;
-                        allSeats += 0;
                     }
                 }
                 double placingRate;

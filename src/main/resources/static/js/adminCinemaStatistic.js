@@ -209,7 +209,7 @@ function getPlacingRate() {
     //             alert(JSON.stringify(error));
     //         }
     //     );
-    var date = getDate().toString();
+    var date = getDate();
     console.log(date);
     getRequest(
         '/statistics/placingRate?date=' + date,
