@@ -28,6 +28,9 @@
 
     </select>
 
+    <select id="selectAllCouponsCanBeUsed" resultMap="Coupon">
+        select * from coupon where CURRENT_TIMESTAMP between start_time and end_time
+    </select>
     <resultMap id="Coupon" type="com.example.cinema.po.Coupon">
         <result column="description" property="description"></result>
         <result column="id" property="id"></result>

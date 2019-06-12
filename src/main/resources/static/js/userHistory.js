@@ -99,7 +99,7 @@ function addDetail(recordId){
 
 
             getRequest(
-                "/schedule/" + (scheduleId),
+                "/schedule/" + scheduleId,
                 function(res1){
                     console.log(res1)
                     movieName = res1.content.movieName;
