@@ -20,6 +20,7 @@ $(document).ready(function () {
                     )
                 })
                 renderRefundTicket(refundList);
+
             },
             function (error) {
                 alert(error);

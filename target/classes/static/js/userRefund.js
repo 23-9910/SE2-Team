@@ -6,12 +6,14 @@ $(document).ready(function () {
             '/ticket/get/user/record/'+sessionStorage.getItem('id'),
             function(res){
                 let consumingRecordList = res.content;
+                console.log(consumingRecordList);
                 let refundList = [];
                 consumingRecordList.forEach(function (cr) {
                     getRequest(
                         '/ticket/get/consumed/'+cr.id,
                         function (newRes) {
                             let ticket = newRes.content;
+                            console.log(ticket);
                             refundList.push(ticket);
                         },
                         function (newError) {
@@ -19,7 +21,9 @@ $(document).ready(function () {
                         }
                     )
                 })
+                console.log(refundList);
                 renderRefundTicket(refundList);
+
             },
             function (error) {
                 alert(error);
