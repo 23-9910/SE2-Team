@@ -1,10 +1,12 @@
 $(document).ready(function () {
     getVIP();
     getCoupon();
+    getCharge();
 });
 
 var isBuyState = true;
 var vipCardId;
+
 
 function getVIP() {
     getRequest(
@@ -54,6 +56,41 @@ function buyClick() {
     isBuyState = true;
 }
 
+/**
+ * yyf on 2019/06/11
+ */
+function getCharge(){
+    $("#my-tickets-table-body").empty();
+    getRequest(
+        '/vip/' + sessionStorage.getItem('id') + '/get/record',
+        function(res){
+            var list = res.content;
+            var info = "";
+            for(var i=0;i<list.length;i++){
+                var payment = list[i].chargeAmount;
+                var freepay = list[i].offerAmount;
+                var paytime = list[i].chargeTime;
+                var chargeId = list[i].id;
+                var chargVIP = list[i].vipId;
+
+                info +=
+                    '<tr>'
+                    + '<th>' + chargeId + '</th>'
+                    + '<th>' + chargVIP + '</th>'
+                    + '<th>' + paytime.slice(0,10) + " " + paytime.slice(11,19) + '</th>'
+                    + '<th>' + payment + '</th>'
+                    + '<th>' + freepay + '</th>'
+
+                    + '</tr>';
+            }
+            $("#my-tickets-table-body").append(info)
+        },
+
+        function(error){
+            alert(error)
+        }
+        )
+}
 function chargeClick() {
     clearForm();
     $('#buyModal').modal('show')
@@ -78,6 +115,7 @@ function confirmCommit() {
                         $('#buyModal').modal('hide');
                         alert("购买会员卡成功");
                         getVIP();
+                        getCharge()
                     },
                     function (error) {
                         alert(error);
@@ -90,6 +128,7 @@ function confirmCommit() {
                         $('#buyModal').modal('hide');
                         alert("充值成功");
                         getVIP();
+                        getCharge()
                     },
                     function (error) {
                         alert(error);
