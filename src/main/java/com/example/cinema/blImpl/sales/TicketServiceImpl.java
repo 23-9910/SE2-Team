@@ -399,7 +399,7 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public ResponseVO returnTickets(List<Integer> ticketId) {
         try {
-            List<Integer> ticketId1=null;
+            List<Integer> ticketId1 = new ArrayList<>();
             //电影开始前两小时可以退票
             for(int i = 0;i < ticketId.size();i++){
                 Ticket ticket = ticketMapper.selectTicketById(ticketId.get(i));
@@ -407,10 +407,12 @@ public class TicketServiceImpl implements TicketService {
                     continue;
                 }else{
                     ScheduleItem scheduleItem=scheduleMapper.selectScheduleById(ticket.getScheduleId());
-                    //比较电影开始时间与现在时间，在比较电影开始时间与实际购买时间
+                    //比较电影开始时间与现在时间
                     Timestamp filmStart = new Timestamp(scheduleItem.getStartTime().getTime());
+                    Date now = new Date();
+                    Timestamp nowTime = new Timestamp(now.getTime());
                     if(filmStart.before(new Timestamp(new Date().getTime()))){
-                        long k =(filmStart.getTime()-ticket.getTime().getTime())/(1000*60*60);
+                        long k =(nowTime.getTime() - filmStart.getTime())/(1000*60*60);
                         if (k>2){
                             ticketId1.add(ticket.getId());
                         }
