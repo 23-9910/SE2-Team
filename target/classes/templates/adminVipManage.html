@@ -76,7 +76,7 @@
                         <th>是否赠送优惠券</th>
                     </tr>
                     </thead>
-                    <tbody style="text-align: center" id="my-tickets-table-body">
+                    <tbody class="vips-table-container" style="text-align: center" id="my-tickets-table-body">
                         <!-- 此处插入符合条件的会员-->
 
                     </tbody>
@@ -87,13 +87,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <div class="modal fade" id="VIPModal" tabindex="-1" role="dialog" aria-labelledby="VIPModalLabel">
     <div class="modal-dialog" role="document">
@@ -156,13 +149,17 @@
     </div>
 </div>
 <div class="modal fade" id="couponGiveModal" tabindex="-1" role="dialog" aria-labelledby="couponGiveModalLabel">
-    <span class="title">确认赠送名单</span>
-    <div class="coupon-id-container">
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="coupon-give-btn">确认</button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span> </button>
+                <h4 class="modal-title" id="couponGiveModalLabel">确认赠送</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="coupon-give-btn">确认</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>

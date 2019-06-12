@@ -22,7 +22,6 @@ $(document).ready(function () {
     function renderDescription(des) {
         $(".description-container").empty();
         var vipDomStr="";
-        console.log(des)
         vipDomStr+= "<span class='title'>充值优惠：</span>" +des;
         $(".description-container").append(vipDomStr);
     }
@@ -84,10 +83,16 @@ $(document).ready(function () {
     }
     //TODO
     function renderAllVIP(){
+        let initialConsumption = "0";
         getRequest(
-            '/vip/',
+            '/vip/get/consumingSum/'+initialConsumption,
             function (res) {
-
+                var allVips = res.content;
+                $(".vips-table-container").empty();
+                allVips.forEach(function (v) {
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value=v.userId/></th></tr>";
+                    $("#my-tickets-table-body").append(vipDomStr);
+                })
             },
             function(error){
                 alert(JSON.stringify(error));
@@ -105,10 +110,9 @@ $(document).ready(function () {
             "/vip/get/consumingSum/"+consumption,
             function (res) {
                 var vips = res.content;
-                console.log(vips);
+                $(".vips-table-container").empty();
                 vips.forEach(function (v) {
-                    console.log(v);
-                    var vipDomStr = "<tr><th>"+v.userId+"</th>"+"<th>"+v.userName+"</th>"+"<th>"+v.consumingSum+"</th></tr>";
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value=v.userId/></th></tr>";
                     $("#my-tickets-table-body").append(vipDomStr);
                 })
             },
@@ -121,6 +125,8 @@ $(document).ready(function () {
     /**
      * 点击确认按钮，会将优惠卷赠送
      */
+    $("#coupon-give-btn").click(function(){
 
+    })
 
 })
