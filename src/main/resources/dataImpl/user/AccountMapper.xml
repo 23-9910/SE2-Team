@@ -27,7 +27,7 @@
     </delete>
 
     <update id="updateOneManager" parameterType="com.example.cinema.po.User">
-        update user set username=#{username}, password=#{username},state=#{state} where id=#{id}
+        update user set username=#{username}, password=#{password},state=#{state} where id=#{id}
     </update>
 
     <resultMap id="User" type="com.example.cinema.po.User">

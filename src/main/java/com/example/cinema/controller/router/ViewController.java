@@ -87,11 +87,11 @@ public class ViewController {
     @RequestMapping(value = "user/history")
     public String getUserHistory(){ return "userHistory";}
 
-
     @RequestMapping(value = "/admin/refund/manage")
     public String getAdminRefund(){ return "adminRefundTicket";}
 
-
+    @RequestMapping(value = "/user/refund")
+    public String getUserRefund(){ return "userRefund";}
 
 
 

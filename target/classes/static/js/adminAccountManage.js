@@ -1,12 +1,17 @@
 /**
  * by yyf on 2019/06/04
  */
-
+var infoV = []
 $(document).ready(function() {
     //加载时会向后端请求所有的用户内容
     //获取账户信息
     //每个账户后都添加一个修改buttonn
     var id = window.sessionStorage.getItem('id');
+    var z = window.sessionStorage.getItem('role')
+    if(z !='root'){
+        alert("你没有权限访问");
+        window.location.href = "/admin/movie/manage";
+    }
     getRequest("/search/all/manager/" + id,
 
         function(res){
@@ -15,7 +20,8 @@ $(document).ready(function() {
             }
         },
         function (error) {
-            alert(error);
+            alert("你没有权限访问");
+            window.location.href = "/admin/movie/manage";
         }
     );
 
@@ -56,6 +62,7 @@ function getInfo(){
  * @param list
  */
 function getAllAccount(list){
+    infoV = list
     $('#my-tickets-table-body').empty();
 
     for(var i = 0;i < list.length;i++){
@@ -135,22 +142,32 @@ $('#schedule-form-btn').click(function() {
  */
 $("#schedule-form-btn-edit").click(function(){
 //根据ID传输修改内容
+    var password = "";
+
     $("#editAccount").hide();
     var idEdit = $("#id-edit").text();
     var userName = $("#account-edit-input").val();
+    for(var i=0; i <infoV.length;i++){
+        var tmp = infoV[i];
+        if(tmp.id == idEdit){
+            password = tmp.password;
+            break;
+        }
+    }
     console.log(userName)
     var state123 = $("#type-edit-input option:selected") .val();
     console.log(state123)
 var user = {
     id:parseInt(idEdit),
     username:userName,
+    password:password,
     state:parseInt(state123)
 }
 console.log(user)
 postRequest("/update/one/manager",
     user,
     function(res){
-    alert("修改成功")
+    alert("修改成功");
         window.location.reload();
     },
     function(error){

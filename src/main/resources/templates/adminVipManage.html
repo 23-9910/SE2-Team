@@ -66,6 +66,7 @@
                         <button type="button" class="btn btn-primary" id="consumption-input-btn">确认</button>
                     </div>
                 </div>
+                <div>
                 <table class="table" id="my-tickets-table" style="margin:0 auto">
                     <thead id="my-tickets-table-head" style="text-align: center">
                     <tr>
@@ -75,22 +76,17 @@
                         <th>是否赠送优惠券</th>
                     </tr>
                     </thead>
-                    <tbody id="my-tickets-table-body" style="text-align: center">
-                    <!-- 此处插入符合条件的会员-->
+                    <tbody class="vips-table-container" style="text-align: center" id="my-tickets-table-body">
+                        <!-- 此处插入符合条件的会员-->
+
                     </tbody>
                 </table>
+                </div>
                 <button type="button" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#couponGiveModal">发放优惠券</button>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <div class="modal fade" id="VIPModal" tabindex="-1" role="dialog" aria-labelledby="VIPModalLabel">
     <div class="modal-dialog" role="document">
@@ -153,13 +149,17 @@
     </div>
 </div>
 <div class="modal fade" id="couponGiveModal" tabindex="-1" role="dialog" aria-labelledby="couponGiveModalLabel">
-    <span class="title">确认赠送名单</span>
-    <div class="coupon-id-container">
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="coupon-give-btn">确认</button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span> </button>
+                <h4 class="modal-title" id="couponGiveModalLabel">确认赠送</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="coupon-give-btn">确认</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>

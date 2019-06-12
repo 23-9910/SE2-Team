@@ -5,7 +5,6 @@ $(document).ready(function () {
     renderAllVIP();
 
 
-
     function getDescription() {
         getRequest(
             "/vip/get/description",
@@ -22,7 +21,6 @@ $(document).ready(function () {
     function renderDescription(des) {
         $(".description-container").empty();
         var vipDomStr="";
-        console.log(des)
         vipDomStr+= "<span class='title'>充值优惠：</span>" +des;
         $(".description-container").append(vipDomStr);
     }
@@ -49,11 +47,11 @@ $(document).ready(function () {
     })
 
     $("#vip-change-btn").click(function(){
-        var priceNew = $("#vip-price-input").val();
-        var giftNew = $("#vip-gift-input").val();
+        var priceNew = $("#vip-new-price-input").val();
+        var giftNew = $("#vip-new-gift-input").val();
         var descriptionNew = "满"+priceNew+"送"+giftNew;
         getRequest(
-            "vip/description"+ descriptionNew,
+            "/vip/description/"+ descriptionNew,
             function (res) {
                 if(res.success){
                     getDescription();
@@ -70,9 +68,9 @@ $(document).ready(function () {
 
     function renderCoupons(){
         getRequest(
-            '/activity/get',
+            '/coupon/all',
             function (res) {
-                var coupons = res.content;
+                let coupons = res.content;
                 coupons.forEach(function(coupon){
                    $('#coupon-select').append("<option value="+coupon.id+">"+coupon.name+"</option>");
                 });
@@ -84,10 +82,16 @@ $(document).ready(function () {
     }
     //TODO
     function renderAllVIP(){
+        let initialConsumption = "0";
         getRequest(
-            '/vip/',
+            '/vip/get/consumingSum/'+initialConsumption,
             function (res) {
-
+                var allVips = res.content;
+                $(".vips-table-container").empty();
+                allVips.forEach(function (v) {
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value=v.userId/></th></tr>";
+                    $("#my-tickets-table-body").append(vipDomStr);
+                })
             },
             function(error){
                 alert(JSON.stringify(error));
@@ -100,12 +104,16 @@ $(document).ready(function () {
      * 后端添加方法
      */
     $("#consumption-input-btn").click(function () {
-        var consumption = $("vip-history-input").val();
+        let consumption = $("#vip-history-input").val();
         getRequest(
-            "/vip/get/consumingSum/{amount}"+consumption,
+            "/vip/get/consumingSum/"+consumption,
             function (res) {
                 var vips = res.content;
-                console.log(res);
+                $(".vips-table-container").empty();
+                vips.forEach(function (v) {
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value="+v.userId+"/></th></tr>";
+                    $("#my-tickets-table-body").append(vipDomStr);
+                })
             },
             function (error) {
                 alert(JSON.stringify(error));
@@ -117,5 +125,26 @@ $(document).ready(function () {
      * 点击确认按钮，会将优惠卷赠送
      */
 
+    $("#coupon-give-btn").click(function(){
+        var checkedName = document.getElementsByName('chooseVip');
+        var userIds = [];
+        for(var i = 0; i<checkedName.length;i++){
+            if(checkedName[i].checked())
+                userIds.push(checkedName[i].value);
+        }
+        var couponId =$("#coupon-select option:selected").val();
+        userIds.forEach(function (userId) {
+            postRequest(
+                '/coupon/issue?userId='+userId+'&couponId='+couponId,
+                {},
+                function () {
+                    $("#couponGiveModal").hide();
+                },
+                function (error) {
+                    JSON.stringify(error);
+                }
+            )
+        })
+    })
 
 })

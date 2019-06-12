@@ -403,18 +403,19 @@ function postVIPPayRequest() {
             $('#buyModal').modal('hide');
             //addOneConsumingRecord
             //再往票内部插入记录Id  addRecordIdOnTicket
+            setTimeout(
+                function(){
+                    addRecord(ticketId)
+                }
+                ,500
+            )
                 },
         function(error){
             alert(error)
                 }
              );
 
-setTimeout(
-    function(){
-    addRecord(ticketId)
-    }
-    ,500
-)
+
 }
 
 
@@ -442,6 +443,12 @@ function postPayRequest() {
             $('#order-state').css("display", "none");
             $('#success-state').css("display", "");
             $('#buyModal').modal('hide');
+            setTimeout(
+                function(){
+                    addRecord(ticketId)
+                }
+                ,500
+            )
         },
         function (error) {
             alert(error);
