@@ -13,7 +13,7 @@ import java.util.*;
 public interface AccountMapper {
 
     /**
-     * 创建一个新的账号
+     * 创建一个新的账号(用户,state=2)
      * @param username
      * @param password
      * @return

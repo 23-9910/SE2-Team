@@ -1,7 +1,5 @@
 package com.example.cinema.vo;
 
-import java.util.Date;
-
 public class MoviePlacingRate {
     /**
      * 电影Id
@@ -21,9 +19,9 @@ public class MoviePlacingRate {
     /**
      * 日期
      */
-    private Date date;
+    private String date;
 
-    public MoviePlacingRate(int movieId, String movieName, double placingRate, Date date) {
+    public MoviePlacingRate(int movieId, String movieName, double placingRate, String date) {
         this.movieId = movieId;
         this.movieName = movieName;
         this.placingRate = placingRate;
@@ -54,11 +52,11 @@ public class MoviePlacingRate {
         this.placingRate = placingRate;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

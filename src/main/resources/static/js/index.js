@@ -11,14 +11,18 @@ $(document).ready(function () {
             formData,
             function (res) {
                 if (res.success) {
+                    var state = res.content.state
                     sessionStorage.setItem('username', formData.username);
                     sessionStorage.setItem('id', res.content.id);
-                    if (formData.username == "root") {
-                        sessionStorage.setItem('role', 'admin');
+                    if (state == 0) {
+                        sessionStorage.setItem('role', 'root');
                         window.location.href = "/admin/movie/manage"
-                    } else {
+                    } else if(state == 2) {
                         sessionStorage.setItem('role', 'user');
                         window.location.href = "/user/home"
+                    }else if(state == 1){
+                        sessionStorage.setItem('role','admin');
+                        window.location.href = "/admin/movie/manage"
                     }
                 } else {
                     alert(res.message);

@@ -66,6 +66,8 @@ function addDetail(recordId){
     $("#ticketAmount").empty();
     $("#couponId").empty();
     $("#seat").empty();
+    $("#hallId").empty();
+    $("#hallName").empty();
 
 
     getRequest(
@@ -78,7 +80,8 @@ function addDetail(recordId){
             var payment= historyItem.payment;
             var payForm = historyItem.payForm;
             var payTime = historyItem.payTime;
-            var scheduleId = historyItem.shceduleId;
+            var scheduleId = parseInt(historyItem.scheduleId);
+            console.log(scheduleId)
             var ticketAmount = historyItem.ticketAmount;
             var couponId = historyItem.couponId;
             var payFormLine = "";
@@ -99,38 +102,37 @@ function addDetail(recordId){
 
 
             getRequest(
-                "/schedule/" + scheduleId,
-                function(res1){
-                    console.log(res1)
-                    movieName = res1.content.movieName;
-                    hallId = res1.content.hallId;
-                    hallName = res1.content.hallName;
-                    $("#hallName").append(hallName);
-                    $("#hallId").append(hallId);
-                    $("#scheduleId").append(movieName);
-
-                },
-                function(error1){
-                    alert(error1)
-                }
-            )
-
-            getRequest(
-                "/ticket/get/consumed/" + (recordId),
+                "/ticket/get/consumed/" + recordId,
                 function(res2){
                     console.log(res2)
+                    console.log(recordId)
+                    var scheduleId1 = 0
                     var list = res2.content;
+                    console.log(list)
                     for(var i=0;i<list.length;i++){
                         var tmp = list[i];
+                        scheduleId1 = list[i].scheduleId;
                         seatInfo += "<div>" + (tmp.rowIndex+1)+ "排"  + (tmp.columnIndex+1) + "列" + "</div>"
                     }
                     $("#seat").append(seatInfo);
-                },
-                function(error2){
-                    alert(error2)
-                }
+                    getRequest(
+                        "/schedule/" + scheduleId,
+                        function(res1){
+                            console.log(res1)
+                            movieName = res1.content.movieName;
+                            hallId = res1.content.hallId;
+                            hallName = res1.content.hallName;
+                            $("#hallName").append(hallName);
+                            $("#hallId").append(hallId);
+                            $("#scheduleId").append(movieName);
 
-            )
+                        },
+                        function(error1){
+                            alert(error1)
+                        }
+                    )
+
+
 
             $("#recordId").append(id);
             $("#userId").append(userId);
@@ -143,9 +145,17 @@ function addDetail(recordId){
 
 
         },
-        function(error){
+                function(error){
+            alert(error)
+                }
+
+                );
+
+},
+        function(error) {
             alert(error)
         }
-        );
+        )
+
 }
 
