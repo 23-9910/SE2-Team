@@ -76,6 +76,10 @@
         select * from consuming_record where id = #{id}
     </select>
 
+    <update id="changeDiscount">
+        alter table ticket alter discount set default #{discount}
+    </update>
+
     <update id="updateRefundStrategy">
         update refund_strategy set strategy = #{strategy} where id = 1
     </update>

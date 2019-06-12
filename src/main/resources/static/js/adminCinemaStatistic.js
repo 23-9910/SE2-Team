@@ -146,189 +146,120 @@ $(document).ready(function() {
     }
 
 });
+    function getPlacingRate() {
+        // todo
+        // 传过来得是一个float数字
+        var date = getDate();
+        getRequest(
+            'statistics/PlacingRate?date=' + date,
+            function(res) {
+                var data = res.content || 0;
+                var option = {
+                    title : {
+                        text: '上座率',
+                        subtext: date,
+                        x:'center'
+                    },
+                    legend: {
+                        orient : 'vertical',
+                        x : 'left',
+                        data:['上座率','未上座率']
+                    },
+                    calculable : true,
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            magicType : {
+                                show: true,
+                                type: ['pie', 'funnel'],
+                                option: {
+                                    funnel: {
+                                        x: '25%',
+                                        width: '50%',
+                                        funnelAlign: 'left',
+                                        max: 1548
+                                    }
+                                }
+                            },
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    series : [
+                        {
+                            name:'上座率',
+                            type:'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:[
+                                {value:data, name:'上座率'},
+                                {value:(1-data), name:'未上座率'},
+                            ]
+                        }
+                    ]
 
-function getPlacingRate() {
-    //     // todo
-    //     // 传过来得是一个float数字
-    //     var date = getDate();
-    //     getRequest(
-    //         'statistics/PlacingRate?date=' + date,
-    //         function(res) {
-    //             var data = res.content || 0;
-    //             var option = {
-    //                 title : {
-    //                     text: '上座率',
-    //                     subtext: date,
-    //                     x:'center'
-    //                 },
-    //                 legend: {
-    //                     orient : 'vertical',
-    //                     x : 'left',
-    //                     data:['上座率','未上座率']
-    //                 },
-    //                 calculable : true,
-    //                 toolbox: {
-    //                     show : true,
-    //                     feature : {
-    //                         mark : {show: true},
-    //                         dataView : {show: true, readOnly: false},
-    //                         magicType : {
-    //                             show: true,
-    //                             type: ['pie', 'funnel'],
-    //                             option: {
-    //                                 funnel: {
-    //                                     x: '25%',
-    //                                     width: '50%',
-    //                                     funnelAlign: 'left',
-    //                                     max: 1548
-    //                                 }
-    //                             }
-    //                         },
-    //                         restore : {show: true},
-    //                         saveAsImage : {show: true}
-    //                     }
-    //                 },
-    //                 series : [
-    //                     {
-    //                         name:'上座率',
-    //                         type:'pie',
-    //                         radius : '55%',
-    //                         center: ['50%', '60%'],
-    //                         data:[
-    //                             {value:data, name:'上座率'},
-    //                             {value:(1-data), name:'未上座率'},
-    //                         ]
-    //                     }
-    //                 ]
-    //
-    //             };
-    //             var placingRateChart = echarts.init($('#place-rate-container')[0]);
-    //             placingRateChart.setOption(option);
-    //         },
-    //         function(error){
-    //             alert(JSON.stringify(error));
-    //         }
-    //     );
-    var date = getDate().toString();
-    console.log(date);
-    getRequest(
-        '/statistics/placingRate?date=' + date,
-        function (res) {
-            var data = res.content||[];
-            var tableData = data.map(function (item) {
-                return item.placingRate;
-            });
-            var nameList = data.map(function (item) {
-                return item.movieName;
-            });
-            var option= {
-                title: {
-                    text: '所有电影的上座率',
-                    subtext: '日期:' + date,
-                    x:'center'
-                },
-                xAxis:{
-                    type:'category',
-                    data:nameList
-                },
-                yAxis:{
-                    type:'value'
-                },
-                series:[{
-                    data: tableData,
-                    type: 'bar'
-                }]
-            };
-            var scheduleRateChart = echarts.init($("#place-rate-container")[0]);
-            scheduleRateChart.setOption(option);
-        }
+                };
+                var placingRateChart = echarts.init($('#place-rate-container')[0]);
+                placingRateChart.setOption(option);
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            }
+        );
+    }
 
-    )
-}
+    function getPolularMovie() {
+        // todo
+        var days = getDays();
+        var movieNum = getNums();
+        var rankBox = []; //传过来的是movieName的排名，我们要找出对应得box，来定量体现其排序方式。
+        getRequest(
+            'statistics/popular/movie?days=' + days + '&movieNum=' + movieNum,
+            function(res) {
+                var movieNameList = res.content || [];
+                for(var x = 1; x < movieNameList.length; x = x + 1){
+                    rankBox.push[x + 1];
+                }
+                var option = {
+                    title:{
+                        text: days + '天内最受欢迎的' + movieNum + '部电影',
+                        x: 'center'
+                    },
+                    xAxis:{
+                        type: 'category',
+                        data: movieNameList
+                    },
+                    yAxis:{
+                        type: 'value',
 
-function getPopularMovie() {
-    // // todo
-    // var days = getDays();
-    // var movieNum = getNums();
-    // var rankBox = []; //传过来的是movieName的排名，我们要找出对应得box，来定量体现其排序方式。
-    // getRequest(
-    //     'statistics/popular/movie?days=' + days + '&movieNum=' + movieNum,
-    //     function(res) {
-    //         var movieNameList = res.content || [];
-    //         for(var x = 1; x < movieNameList.length; x = x + 1){
-    //             rankBox.push[x + 1];
-    //         }
-    //         var option = {
-    //             title:{
-    //                 text: days + '天内最受欢迎的' + movieNum + '部电影',
-    //                 x: 'center'
-    //             },
-    //             xAxis:{
-    //                 type: 'category',
-    //                 data: movieNameList
-    //             },
-    //             yAxis:{
-    //                 type: 'value',
-    //
-    //             },
-    //             series:[{
-    //                 data:rankBox,
-    //                 type:'bar'
-    //             }]
-    //         };
-    //         var popularMovieChart = echarts.init($('#popular-movie-container')[0]);
-    //         popularMovieChart.setOption(option);
-    //     },
-    //     function(error){
-    //         alert(JSON.stringify(error));
-    //     }
-    // );
-    var days = parseInt(getDays());
-    var movieNum = parseInt(getNums());
-    getRequest(
-        '/statistics/popular/movie?days=' + days + '&movieNum=' + movieNum,
-        function (res) {
-            var data = res.content||[];
-            var tableData = data.map(function (item) {
-                return item.box;
-            });
-            var nameList = data.map(function (item) {
-                return item.movieName;
-            });
-            var option= {
-                title: {
-                    text: days + '天内最受欢迎的' + movieNum + '部电影及其票房',
-                    x:'center'
-                },
-                xAxis:{
-                    type:'category',
-                    data:nameList
-                },
-                yAxis:{
-                    type:'value'
-                },
-                series:[{
-                    data: tableData,
-                    type: 'bar'
-                }]
-            };
-            var scheduleRateChart = echarts.init($("#popular-movie-container")[0]);
-            scheduleRateChart.setOption(option);
-        }
-    )
+                    },
+                    series:[{
+                        data:rankBox,
+                        type:'bar'
+                    }]
+                };
+                var popularMovieChart = echarts.init($('#popular-movie-container')[0]);
+                popularMovieChart.setOption(option);
+            },
+            function(error){
+                alert(JSON.stringify(error));
+            }
+        );
+    }
 
-}
 
-function getDate() {
-    return $('#placing-rate-date').val();
-}
+    function getDate() {
+        return $('#placing-rate-date').val();
+    }
 
-function getDays(){
-    return $('#popular-movie-days').val();
-}
+    function getDays(){
+        return $('#popular-movie-days').val();
+    }
 
-function getNums(){
-    return $('#popular-movie-num').val();
-}
+    function getNums(){
+        return $('#popular-movie-num').val();
+    }
 
 

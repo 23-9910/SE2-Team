@@ -87,24 +87,24 @@ public class StatisticsServiceImpl implements StatisticsService {
      * 上座率计算：该天某电影的所有售出票数量(audienceNum)/该天所有排片的影厅座位数之和(allSeats)
      */
     @Override
-    public ResponseVO getMoviePlacingRateByDate(String date) {
+    public ResponseVO getMoviePlacingRateByDate(Date date) {
         try{
             List<MoviePlacingRate> moviePlacingRateList = new ArrayList<>();
             List<Movie> movieList = movieMapper.selectAllMovie();
+            int audienceNum = 0;
+            int allSeats = 0;
 
             for(int i = 0;i < movieList.size();i++){
-                int audienceNum = 0;
-                int allSeats = 0;
                 Movie movie = movieList.get(i);
                 int movieId = movie.getId();
                 String movieName = movie.getName();
+
                 List<ScheduleItem> scheduleItemList = scheduleMapper.selectScheduleByMovieId(movieId);
-                for(ScheduleItem scheduleItem : scheduleItemList){
+                for(int j = 0;j < scheduleItemList.size();j++){
+                    ScheduleItem scheduleItem = scheduleItemList.get(j);
                     int scheduleId = scheduleItem.getId();
                     int hallId = scheduleItem.getHallId();
-                    Hall hallOnSchedule = hallMapper.selectHallById(hallId);
-                    int hallSeats = hallOnSchedule.getColumn() * hallOnSchedule.getRow();
-                    String startTime = scheduleItem.getStartTime().toString().substring(0,10);
+                    Date startTime = scheduleItem.getStartTime();
                     if(date == startTime){
                         List<Ticket> ticketList = ticketMapper.selectTicketsBySchedule(scheduleId);
                         List<Ticket> completedTickets = new ArrayList<>();
@@ -114,18 +114,14 @@ public class StatisticsServiceImpl implements StatisticsService {
                             }
                         }
                         audienceNum += completedTickets.size();
-                        allSeats += hallSeats;
+                        Hall hallOnSchedule = hallMapper.selectHallById(hallId);
+                        allSeats += hallOnSchedule.getColumn() * hallOnSchedule.getRow();
                     }else{
                         audienceNum += 0;
                         allSeats += 0;
                     }
                 }
-                double placingRate;
-                if(allSeats == 0){
-                    placingRate = 0.00;
-                }else{
-                    placingRate = (double) (Math.round(audienceNum/allSeats * 100)/100);
-                }
+                double placingRate = (double)Math.round(audienceNum/allSeats * 100)/100;
                 MoviePlacingRate moviePlacingRate = new MoviePlacingRate(movieId,movieName,placingRate,date);
                 moviePlacingRateList.add(moviePlacingRate);
             }

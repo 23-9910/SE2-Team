@@ -97,7 +97,7 @@ function addDetail(recordId){
                 couponId = "你没有用优惠券！"
             }
 
-            
+
 
             getRequest(
                 "/ticket/get/consumed/" + (recordId),

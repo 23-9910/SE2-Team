@@ -248,6 +248,7 @@ CREATE TABLE `ticket` (
   `row_index` int(11) DEFAULT NULL,
   `state` tinyint(4) DEFAULT NULL,
   `consuming_record_id` int(11) DEFAULT NULL,
+  `discount` double DEFAULT 0.6,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -260,12 +261,12 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (12,50,5,3,2,1,1,'2019-04-23 13:50:52'),
-                            (12,50,5,3,2,1,2,'2019-04-23 13:50:52'),
-                            (12,50,5,3,2,1,3,'2019-04-23 13:50:52'),
-                            (12,50,5,3,2,1,4,'2019-04-23 13:50:52'),
-                            (12,50,5,3,1,1,5,'2019-04-23 13:50:52'),
-                            (15,50,4,3,0,1,6,'2019-05-28 20:00:00');
+INSERT INTO `ticket` VALUES (12,50,5,3,2,1,0.6,1,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,2,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,3,'2019-04-23 13:50:52'),
+                            (12,50,5,3,2,1,0.6,4,'2019-04-23 13:50:52'),
+                            (12,50,5,3,1,1,0.6,5,'2019-04-23 13:50:52'),
+                            (15,50,4,3,0,1,0.6,6,'2019-05-28 20:00:00');
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,15 +294,15 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'testname','123456',2),
-                          (3,'test','123456',2),
-                          (5,'test1','123456',2),
-                          (7,'test121','123456',2),
+INSERT INTO `user` VALUES (1,'testname','123456',1),
+                          (3,'test','123456',1),
+                          (5,'test1','123456',1),
+                          (7,'test121','123456',1),
                           (8,'root','123456',0),
-                          (10,'roottt','123123',2),
-                          (12,'zhourui','123456',2),
-                          (13,'abc123','abc123',2),
-                          (15,'dd','123',2);
+                          (10,'roottt','123123',1),
+                          (12,'zhourui','123456',1),
+                          (13,'abc123','abc123',1),
+                          (15,'dd','123',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

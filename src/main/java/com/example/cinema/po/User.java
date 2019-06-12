@@ -8,9 +8,6 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    /**
-     * 0:root,1:管理员,2:用户
-     */
     private int state;
 
     public Integer getId() {

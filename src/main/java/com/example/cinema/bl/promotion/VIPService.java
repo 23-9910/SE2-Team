@@ -23,14 +23,14 @@ public interface VIPService {
     ResponseVO getCardByUserId(int userId);
 
     /**
-     * Modified by sun on 2019/05/28
+     * Modified bsun on 2019/05/28
      */
     ResponseVO getChargeRecordByUserId(int userId);
 
     ResponseVO getChargeRecordById(int id);
 
     /**
-     * By sun on 2019/06/09
+     * By sun on 2019/06/09int
      */
     ResponseVO getVIPByAmount(int inputAmount);
 

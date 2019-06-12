@@ -2,15 +2,16 @@ package com.example.cinema.blImpl.promotion;
 
 import com.example.cinema.bl.promotion.CouponService;
 import com.example.cinema.data.promotion.CouponMapper;
+import com.example.cinema.data.promotion.VIPCardMapper;
+import com.example.cinema.data.sales.TicketMapper;
+import com.example.cinema.data.user.AccountMapper;
+import com.example.cinema.po.ConsumingRecord;
 import com.example.cinema.po.Coupon;
 import com.example.cinema.vo.CouponForm;
 import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 /**
  * Created by liying on 2019/4/17.
@@ -59,16 +60,5 @@ public class CouponServiceImpl implements CouponService {
             return ResponseVO.buildFailure("失败");
         }
 
-    }
-
-    @Override
-    public ResponseVO getAllCoupons() {
-        try {
-            List<Coupon> coupons = couponMapper.selectAllCouponsCanBeUsed();
-            return ResponseVO.buildSuccess(coupons);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
-        }
     }
 }
