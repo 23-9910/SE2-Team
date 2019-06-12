@@ -70,13 +70,13 @@ public class TicketController {
         return ticketService.getConsumingRecordById(id);
     }
 
-    @GetMapping("/refund")
-    public ResponseVO refundTicket(@PathVariable int ticketId){
+    @PostMapping("/refund")
+    public ResponseVO refundTicket(@RequestParam int ticketId){
         return ticketService.refundTicket(ticketId);
     }
 
-    @GetMapping("/refund/vip")
-    public ResponseVO refundTicketToVIPCard(@PathVariable int ticketId){
+    @PostMapping("/refund/vip")
+    public ResponseVO refundTicketToVIPCard(@RequestParam int ticketId){
         return ticketService.refundTicketToVIPCard(ticketId);
     }
 

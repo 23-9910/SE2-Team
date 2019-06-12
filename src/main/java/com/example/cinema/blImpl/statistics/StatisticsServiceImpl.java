@@ -99,6 +99,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 int movieId = movie.getId();
                 String movieName = movie.getName();
                 List<ScheduleItem> scheduleItemList = scheduleMapper.selectScheduleByMovieId(movieId);
+                System.out.println(scheduleItemList);
                 for(ScheduleItem scheduleItem : scheduleItemList){
                     int scheduleId = scheduleItem.getId();
                     int hallId = scheduleItem.getHallId();
