@@ -1,29 +1,27 @@
 $(document).ready(function () {
-    getRefundList();
+    getMovieList();
 
-    function getRefundList() {
+    function getMovieList() {
         getRequest(
-            '/ticket/get/user/record/'+sessionStorage.getItem('id'),
-            function(res){
-                let consumingRecordList = res.content;
-                console.log(consumingRecordList);
-                let refundList = [];
-                consumingRecordList.forEach(function (cr) {
-                    getRequest(
-                        '/ticket/get/consumed/'+cr.id,
-                        function (newRes) {
-                            let ticket = newRes.content;
-                            console.log(ticket);
-                            refundList.push(ticket);
-                        },
-                        function (newError) {
-                            alert(newError);
-                        }
-                    )
-                })
-                console.log(refundList);
-                renderRefundTicket(refundList);
+            '/ticket/get/' + sessionStorage.getItem('id'),
+            function (res) {
+                getRefundList(res.content);
+            },
+            function (error) {
+                alert(error);
+            });
+    }
 
+    function getRefundList(list) {
+        var idList = [];
+        for(var i=0;i<list.length;i++){
+            idList.push(list[i].id);
+        }
+        postRequest(
+            '/ticket/return',
+            idList,
+            function (res) {
+                renderRefundTicket(res.content);
             },
             function (error) {
                 alert(error);
@@ -43,7 +41,7 @@ $(document).ready(function () {
             var row = ticketWithScheduleVO.rowIndex;
             var column = ticketWithScheduleVO.columnIndex;
             var stateStr = ticketWithScheduleVO.state;
-
+            var ticketId = ticketWithScheduleVO.id;
             ticketStr += '<tr>'
                 + '<th>' + movieName + '</th>'
                 + '<th>' + hallName + '</th>'
@@ -51,12 +49,48 @@ $(document).ready(function () {
                 + '<th>' + startTime.slice(0,10) + " " + startTime.slice(11,19) + '</th>'
                 + '<th>' + endTime.slice(0,10) + " " + endTime.slice(11,19) + '</th>'
                 + '<th>' + stateStr + '</th>'
+                +'<th>'+"<button type='button' class='btn btn-primary' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#refundModal' id = " + ticketId + " onclick = addId("+ ticketId +")>退票</button>"
                 + '</tr>';
             if(stateStr !== "未完成"){
-
-
                 $('#refund-tickets-table-body').append(ticketStr);
             }
         }
+    }
+
+    $("#refund-confirm-btn").click(function () {
+        $("#refundModal").hide();
+        var ticketId = Number($("#ticket-id-input").val());
+        var buyMethod = $("#buy-method-choose option:selected").val();
+        if(buyMethod=="0"){
+            postRequest(
+                '/ticket/refund?ticketId='+ticketId,
+                {},
+                function () {
+                    alert("退票成功！");
+                    window.location.reload();
+                },
+                function (error) {
+                    alert(error);
+                }
+            )
+        }
+        else{
+            postRequest(
+                '/ticket/refund/vip?ticketId='+ticketId,
+                {},
+                function () {
+                    alert("退票成功！");
+                    window.location.reload();
+                },
+                function (error) {
+                    alert(error);
+                }
+            )
+        }
+    })
+
+    addId = function (id) {
+        $("#ticket-id-input").empty();
+        $("#ticket-id-input").append(id);
     }
 })

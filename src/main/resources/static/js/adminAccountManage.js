@@ -150,7 +150,7 @@ console.log(user)
 postRequest("/update/one/manager",
     user,
     function(res){
-    alert("修改成功")
+    alert("修改成功");
         window.location.reload();
     },
     function(error){

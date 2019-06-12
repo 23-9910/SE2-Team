@@ -76,7 +76,7 @@ public class TicketController {
     }
 
     @PostMapping("/refund/vip")
-    public ResponseVO refundTicketToVIPCard(@PathVariable int ticketId){
+    public ResponseVO refundTicketToVIPCard(@RequestParam int ticketId){
         return ticketService.refundTicketToVIPCard(ticketId);
     }
 
