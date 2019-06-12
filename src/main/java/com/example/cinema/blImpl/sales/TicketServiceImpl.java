@@ -1,4 +1,4 @@
-package com.example.cinema.blImpl.sales;
+﻿package com.example.cinema.blImpl.sales;
 
 import com.example.cinema.bl.sales.TicketService;
 import com.example.cinema.blImpl.management.hall.HallServiceForBl;
@@ -399,7 +399,6 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public ResponseVO returnTickets(List<Integer> ticketId) {
         try {
-            List<Integer> ticketId1 = new ArrayList<>();
             List<Ticket> ticket1=new ArrayList<>();
             List<TicketWithScheduleVO> ticket2 = new ArrayList<>();
             //电影开始前两小时可以退票
@@ -407,10 +406,12 @@ public class TicketServiceImpl implements TicketService {
                 Ticket ticket = ticketMapper.selectTicketById(ticketId.get(i));
                 if (ticket.getState()==1) {
                     ScheduleItem scheduleItem=scheduleMapper.selectScheduleById(ticket.getScheduleId());
-                    //比较电影开始时间与现在时间，在比较电影开始时间与实际购买时间
+                    //比较电影开始时间与现在时间
                     Timestamp filmStart = new Timestamp(scheduleItem.getStartTime().getTime());
-                    if((new Timestamp(new Date().getTime()).before(filmStart))){
-                        long k =(filmStart.getTime()-ticket.getTime().getTime())/(1000*60*60);
+                    Date now = new Date();
+                    Timestamp nowTime = new Timestamp(now.getTime());
+                    if(filmStart.before(new Timestamp(new Date().getTime()))){
+                        long k =(nowTime.getTime() - filmStart.getTime())/(1000*60*60);
                         if (k>2){
                             ticketId1.add(ticket.getId());
                         }
