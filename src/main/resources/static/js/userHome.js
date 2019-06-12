@@ -1,8 +1,66 @@
+
+var picCount = 0;
 $(document).ready(function() {
 
     //
     getMovieList();
+    getBoxOff();
+    renderPopular();
 
+
+    /**
+     * 获取最受欢迎的电影们
+     */
+    function renderPopular(){
+        getRequest(
+            "/statistics/popular/movie?days=7&movieNum=10",
+            function (res) {
+                console.log(res)
+                var list = res.content
+                var infoStr = ""
+                for (var i=0;i<list.length;i++){
+                    infoStr += '<div class="statistic-item">' +
+                        '<span class="title">' + (i+1)+'</span>' +
+                        '<span>' + list[i].movieName+ '</span>' +
+                        '<span class="error-text">' + list[i].box + '</span>'+
+                        '</div>'
+                }
+
+                $("#popular").append(infoStr)
+            },
+            function (error) {
+                alert(error)
+            }
+        )
+    }
+
+    /**
+     * 获得票房成员
+     */
+    function getBoxOff(){
+        var infoStr = "";
+        getRequest(
+            "/statistics/boxOffice/total",
+
+            function(res) {
+                console.log(res)
+         var list = res.content;
+         for(var i=0; i < list.length && i < 10; i++) {
+             infoStr += '<div class="statistic-item">'
+                 + '<span class="title">' + (i+1) +'</span>'
+                 +'<span>' +  list[i].name + '</span>'
+                 +'<span class="error-text">' + (list[i].boxOffice||0)  +'</span>'+
+                 '</div> ';
+         }
+         $("#boxOffInfo").append(infoStr);
+    },
+        function(error){
+    alert(error)
+
+    }
+    )
+
+    }
 
     function getMovieList(){
         getRequest(
@@ -17,27 +75,25 @@ $(document).ready(function() {
     }
 
     function renderMovieList(list){
-        $('.movie-on-list').empty();
+        $('.movie-list').empty();
         var movieDomStr = '';
-        list.forEach(function (movie) {
-            movie.description = movie.description || '';
-            movieDomStr +=
-                "<li class='movie-item card'>" +
-                "<img class='movie-img' src='" + (movie.posterUrl || "../images/defaultAvatar.jpg") + "'/>" +
-                "<div class='movie-info'>" +
-                "<div class='movie-title'>" +
-                "<span class='primary-text'>" + movie.name + "</span>" +
-                "<span class='label "+(!movie.status ? 'primary-bg' : 'error-bg')+"'>" + (movie.status ? '已下架' : (new Date(movie.startDate)>=new Date()?'未上映':'热映中')) + "</span>" +
-                "<span class='movie-want'><i class='icon-heart error-text'></i>" + (movie.likeCount || 0) + "人想看</span>" +
-                "</div>" +
-                "<div class='movie-description dark-text'><span>" + movie.description + "</span></div>" +
-                "<div>类型：" + movie.type + "</div>" +
-                "<div style='display: flex'><span>导演：" + movie.director + "</span><span style='margin-left: 30px;'>主演：" + movie.starring + "</span>" +
-                "<div class='movie-operation'><a href='/admin/movieDetail?id="+ movie.id +"'>详情</a></div></div>" +
-                "</div>"+
-                "</li>";
-        });
-        $('.movie-on-list').append(movieDomStr);
+            for(var x=0;x<list.length  ;x++){
+                var movie = list[x]
+                picCount = picCount + 1;
+                movie.description = movie.description || '';
+                movieDomStr +=
+                    '<dd>'+
+                    '<div class="movie-item">' +
+                    "<a href='/user/movieDetail?id="+ movie.id +"'>" +
+                    "<img class='movie-img' src='" + (movie.posterUrl || "../images/defaultAvatar.jpg")  + "' alt='" + (x+1) + "'/>"+
+                    '</a>' +
+                    "<a href='/user/movieDetail?id="+ movie.id +"' class='buyButton'><p text-align:'center'>购 票</p></a>"+
+                    '</div>'+
+                '</dd>'
+            }
+        $('#movie-list').append(movieDomStr);
+
     }
 
-}
+})
+
