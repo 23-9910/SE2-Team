@@ -4,6 +4,7 @@ import com.example.cinema.po.Coupon;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface CouponMapper {
     void deleteCouponUser(@Param("couponId") int couponId,@Param("userId")int userId);
 
     List<Coupon> selectCouponByUserAndAmount(@Param("userId") int userId,@Param("amount") double amount);
+
+    List<Coupon> selectAllCouponsCanBeUsed();
 }
