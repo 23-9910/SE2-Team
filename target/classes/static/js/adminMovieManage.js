@@ -87,4 +87,20 @@ $(document).ready(function(){
         });
         $('.movie-on-list').append(movieDomStr);
     }
+$("#if-to-go").click(
+    function() {
+        $('#movie-name-input').val("");
+        $('#movie-date-input').val("");
+        $('#movie-img-input').val("");
+        $('#movie-description-input').val("");
+        $('#movie-type-input').val("");
+        $('#movie-length-input').val("");
+        $('#movie-country-input').val("");
+        $('#movie-star-input').val("");
+        $('#movie-director-input').val("");
+        $('#movie-writer-input').val("");
+        $('#movie-language-input').val("");
+    }
+
+)
 });

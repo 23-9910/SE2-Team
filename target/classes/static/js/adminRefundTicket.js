@@ -14,6 +14,7 @@ $(document).ready(function() {
      */
 
 function getInfo(){
+    $("#refund-container").empty();
     getRequest(
         '/ticket/get/strategy',
         function (res) {
@@ -60,9 +61,10 @@ $("#activity-form-btn").click(
         $("#activityModal").hide();
 
         getRequest(
-            "ticket/strategy/" + parseInt(rate),
+            "/ticket/strategy/" + rate ,
             function(res){
-                getInfo
+                alert("成功！")
+                window.location.reload()
             },
             function(error){
                 alert(error)
