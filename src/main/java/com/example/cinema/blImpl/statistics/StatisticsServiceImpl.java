@@ -124,7 +124,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 if(allSeats == 0){
                     placingRate = 0.00;
                 }else{
-                    placingRate = (double) (Math.round(audienceNum/allSeats * 100)/100);
+                    placingRate = (double) (Math.round((audienceNum/allSeats) * 100)/100);
                 }
                 MoviePlacingRate moviePlacingRate = new MoviePlacingRate(movieId,movieName,placingRate,date);
                 moviePlacingRateList.add(moviePlacingRate);
