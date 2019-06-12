@@ -1,3 +1,4 @@
+var refundId;
 $(document).ready(function () {
     getMovieList();
 
@@ -59,11 +60,11 @@ $(document).ready(function () {
 
     $("#refund-confirm-btn").click(function () {
         $("#refundModal").hide();
-        var ticketId = Number($("#ticket-id-input").val());
+        var ticketId = Number($("#ticket-id-input").innerHTML);
         var buyMethod = $("#buy-method-choose option:selected").val();
         if(buyMethod=="0"){
             postRequest(
-                '/ticket/refund?ticketId='+ticketId,
+                '/ticket/refund?ticketId='+refundId,
                 {},
                 function () {
                     alert("退票成功！");
@@ -76,7 +77,7 @@ $(document).ready(function () {
         }
         else{
             postRequest(
-                '/ticket/refund/vip?ticketId='+ticketId,
+                '/ticket/refund/vip?ticketId='+refundId,
                 {},
                 function () {
                     alert("退票成功！");
@@ -91,6 +92,7 @@ $(document).ready(function () {
 
     addId = function (id) {
         $("#ticket-id-input").empty();
-        $("#ticket-id-input").append(id);
-    }
+        $("#ticket-id-input").html(id);
+        refundId = id;
+    };
 })
