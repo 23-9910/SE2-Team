@@ -89,7 +89,7 @@ $(document).ready(function () {
                 var allVips = res.content;
                 $(".vips-table-container").empty();
                 allVips.forEach(function (v) {
-                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value=v.userId/></th></tr>";
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value = " + v.userId + " /></th></tr>";
                     $("#my-tickets-table-body").append(vipDomStr);
                 })
             },
@@ -111,7 +111,7 @@ $(document).ready(function () {
                 var vips = res.content;
                 $(".vips-table-container").empty();
                 vips.forEach(function (v) {
-                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value="+v.userId+"/></th></tr>";
+                    var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value = "+  v.userId + " /></th></tr>";
                     $("#my-tickets-table-body").append(vipDomStr);
                 })
             },
@@ -129,7 +129,7 @@ $(document).ready(function () {
         var checkedName = document.getElementsByName('chooseVip');
         var userIds = [];
         for(var i = 0; i<checkedName.length;i++){
-            if(checkedName[i].checked())
+            if(checkedName[i].checked)
                 userIds.push(checkedName[i].value);
         }
         var couponId =$("#coupon-select option:selected").val();
@@ -139,6 +139,7 @@ $(document).ready(function () {
                 {},
                 function () {
                     $("#couponGiveModal").hide();
+                    window.location.reload();
                 },
                 function (error) {
                     JSON.stringify(error);
