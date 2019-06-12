@@ -98,7 +98,6 @@ function addDetail(recordId){
             }
 
 
-
             getRequest(
                 "/ticket/get/consumed/" + (recordId),
                 function(res2){

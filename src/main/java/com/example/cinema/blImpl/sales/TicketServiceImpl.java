@@ -80,12 +80,13 @@ public class TicketServiceImpl implements TicketService {
     @Transactional
     public ResponseVO completeTicket(List<Integer> id, int couponId) {
         try {
-            double finalTotal = 0;
+            //支付成功
+            for(int i = 0;i < id.size();i++){
+                ticketMapper.updateTicketState(id.get(i),1);
+            }
             Date date = new Date();
             Timestamp timestamp = new Timestamp(date.getTime());
             int userId = ticketMapper.selectTicketById(id.get(0)).getUserId();
-
-            finalTotal = getPayment(id,couponId);
 
             Ticket ticket = ticketMapper.selectTicketById(id.get(0));
             int scheduleId = ticket.getScheduleId();
