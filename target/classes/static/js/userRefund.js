@@ -1,7 +1,10 @@
 var refundId;
 $(document).ready(function () {
     getMovieList();
-
+    findUser();
+    function findUser() {
+        $("#user-tag").text(window.sessionStorage.getItem('username'));
+    }
     function getMovieList() {
         getRequest(
             '/ticket/get/' + sessionStorage.getItem('id'),

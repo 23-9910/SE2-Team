@@ -18,6 +18,10 @@ $(document).ready(function () {
 
     getInfo();
 
+    findUser();
+    function findUser() {
+        $("#user-tag").text(window.sessionStorage.getItem('username'));
+    }
     function getInfo() {
         getRequest(
             '/ticket/get/occupiedSeats?scheduleId=' + scheduleId,

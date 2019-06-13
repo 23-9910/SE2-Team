@@ -6,6 +6,10 @@ $(document).ready(function() {
     getBoxOffice();
 
     getAudiencePrice();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     function getScheduleRate() {
 

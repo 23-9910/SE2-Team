@@ -10,7 +10,10 @@ $(document).ready(function () {
     var userId = (window.sessionStorage.getItem("id"));
     renderHistory(userId);
 
-
+    findUser();
+    function findUser() {
+        $("#user-tag").text(window.sessionStorage.getItem('username'));
+    }
     /**
      * 获取历史列表查看
      * @param userId
@@ -47,8 +50,14 @@ $(document).ready(function () {
 
 
 }
-})
 
+
+$("#schedule-form-btn-edit").onclick(
+    function(){
+        $("#detailFind").modal("hide")
+
+})
+})
 
 /**
  * 根据记录ID获取详细内容
@@ -157,5 +166,8 @@ function addDetail(recordId){
         }
         )
 
+
+
 }
+
 

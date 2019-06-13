@@ -5,7 +5,10 @@ $(document).ready(function () {
     movieId = parseInt(window.location.href.split('?')[1].split('&')[0].split('=')[1]);
 
     getSchedule();
-
+    findUser();
+    function findUser() {
+        $("#user-tag").text(window.sessionStorage.getItem('username'));
+    }
     function getSchedule() {
         getRequest(
             '/schedule/search/audience?movieId=' + movieId,

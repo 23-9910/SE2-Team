@@ -3,6 +3,10 @@ $(document).ready(function () {
     getDescription();
     renderCoupons();
     renderAllVIP();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
 
     function getDescription() {

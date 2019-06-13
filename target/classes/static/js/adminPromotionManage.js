@@ -3,6 +3,10 @@ $(document).ready(function() {
     getAllMovies();
 
     getActivities();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     function getActivities() {
         getRequest(
