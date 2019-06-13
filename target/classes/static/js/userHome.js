@@ -15,26 +15,31 @@ $(document).ready(function() {
      * 获取最受欢迎的电影们
      */
     function renderPopular(){
-        getRequest(
-            "/statistics/popular/movie?days=7&movieNum=10",
-            function (res) {
-                console.log(res)
-                var list = res.content
-                var infoStr = ""
-                for (var i=0;i<list.length;i++){
-                    infoStr += '<div class="statistic-item">' +
-                        '<span class="title">' + (i+1)+'</span>' +
-                        '<span>' + list[i].movieName+ '</span>' +
-                        '<span class="error-text">' + list[i].box + '</span>'+
-                        '</div>'
-                }
 
-                $("#popular").append(infoStr)
+        var infoStr = "";
+        getRequest(
+            "/statistics/boxOffice/total",
+
+            function(res) {
+                console.log(res)
+                var list = res.content;
+                for(var i=0; i < list.length && i < 10; i++) {
+                    var data1 = (list[i].boxOffice||0);
+                    var hotrate = (data1/4)+2;
+                    infoStr += '<div class="statistic-item">'
+                        + '<span class="title">' + (i+1) +'</span>'
+                        +'<span>' +  list[i].name + '</span>'
+                        +'<span class="error-text">' + (hotrate)  +'</span>'+
+                        '</div> ';
+                }
+                $("#popular").append(infoStr);
             },
-            function (error) {
+            function(error){
                 alert(error)
+
             }
         )
+
     }
 
     /**

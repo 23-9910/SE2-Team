@@ -76,14 +76,6 @@
         select * from consuming_record where id = #{id}
     </select>
 
-    <update id="updateRefundStrategy">
-        update refund_strategy set strategy = #{strategy} where id = 1
-    </update>
-
-    <select id="selectRefundStrategy" resultType="java.lang.Integer">
-        select strategy from refund_strategy where id = 1
-    </select>
-
     <resultMap id="ConsumingRecord" type="com.example.cinema.po.ConsumingRecord">
         <id column="id" property="id"></id>
         <result column="user_id" property="userId"></result>
@@ -93,5 +85,19 @@
         <result column="schedule_id" property="scheduleId"></result>
         <result column="ticket_amount" property="ticketAmount"></result>
         <result column="coupon_id" property="couponId"></result>
+    </resultMap>
+
+
+    <update id="updateRefundStrategy">
+        update refund_strategy set strategy = #{strategy} where id = 1
+    </update>
+
+    <select id="selectRefundStrategy" resultMap="RefundStrategy">
+        select * from refund_strategy where id = 1
+    </select>
+
+    <resultMap id="RefundStrategy" type="com.example.cinema.po.RefundStrategy">
+        <id column="id" property="id"></id>
+        <result column="strategy" property="strategy"></result>
     </resultMap>
 </mapper>

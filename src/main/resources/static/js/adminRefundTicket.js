@@ -49,7 +49,7 @@ function renderRefund(perCent) {
             "    </div>" +
             "    <div>" +
             "        <span class='gray-text'>退票手续费比率（按订单总价收取）:</span>" +
-            "        <span class='gray-text'>"+ perCent + "%</span>" +
+            "        <span class='gray-text'>"+ (perCent*100) + "%</span>" +
             "    </div>" +
             "</div>";
 
