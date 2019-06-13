@@ -1,4 +1,4 @@
-package com.example.cinema.blImpl.sales;
+﻿package com.example.cinema.blImpl.sales;
 
 import com.example.cinema.bl.sales.TicketService;
 import com.example.cinema.blImpl.management.hall.HallServiceForBl;
@@ -407,11 +407,9 @@ public class TicketServiceImpl implements TicketService {
                 if (ticket.getState()==1) {
                     ScheduleItem scheduleItem=scheduleMapper.selectScheduleById(ticket.getScheduleId());
                     //比较电影开始时间与现在时间
-                    Timestamp filmStart = new Timestamp(scheduleItem.getStartTime().getTime());
                     Date now = new Date();
-                    Timestamp nowTime = new Timestamp(now.getTime());
-                    long k =(nowTime.getTime() - filmStart.getTime())/(1000*60*60);
-                    if (k>2){
+                    long k = scheduleItem.getStartTime().getTime() - now.getTime();
+                    if((k/(1000*60*60))>2){
                         ticket1.add(ticket);
                     }
                 }

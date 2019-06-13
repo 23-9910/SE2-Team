@@ -1,6 +1,10 @@
 $(document).ready(function(){
 
     getMovieList();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     $("#movie-form-btn").click(function () {
         var formData = getMovieForm();

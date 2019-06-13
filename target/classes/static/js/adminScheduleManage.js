@@ -12,6 +12,10 @@ $(document).ready(function() {
     var hallId,
         scheduleDate = formatDate(new Date()),
         schedules = [];
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     initSelectAndDate();
 
