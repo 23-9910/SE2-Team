@@ -5,9 +5,21 @@ $(document).ready(function(){
     var isLike = false;
 
     getMovie();
-    if(sessionStorage.getItem('role') === 'admin')
+    if(sessionStorage.getItem('role') === 'root')
         getMovieLikeChart();
 
+
+if(window.sessionStorage.getItem('role') === 'user'){
+    findUser1()
+}else{
+    findUser2()
+}
+    function findUser1() {
+        $("#user-tag").text(window.sessionStorage.getItem('username'));
+    }
+    function findUser2() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
     function getMovieLikeChart() {
        getRequest(
            '/movie/' + movieId + '/like/date',

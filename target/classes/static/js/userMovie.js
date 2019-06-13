@@ -2,6 +2,10 @@ $(document).ready(function(){
 
     getMovieList('');
 
+    findUser();
+    function findUser() {
+        $("#user-tag").innerText = (window.sessionStorage.getItem('username'));
+    }
     function getMovieList(keyword) {
         getRequest(
             '/movie/search?keyword='+keyword,

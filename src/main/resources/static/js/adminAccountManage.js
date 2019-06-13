@@ -6,6 +6,11 @@ $(document).ready(function() {
     //加载时会向后端请求所有的用户内容
     //获取账户信息
     //每个账户后都添加一个修改buttonn
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
+
     var id = window.sessionStorage.getItem('id');
     var z = window.sessionStorage.getItem('role')
     if(z !='root'){

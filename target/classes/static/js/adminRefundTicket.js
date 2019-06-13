@@ -8,6 +8,10 @@
  */
 $(document).ready(function() {
     getInfo();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     /**
      * 获取当前策略

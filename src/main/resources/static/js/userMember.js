@@ -2,8 +2,12 @@ $(document).ready(function () {
     getVIP();
     getCoupon();
     getCharge();
-});
+    findUser();
 
+});
+function findUser() {
+    $("#user-tag").text(window.sessionStorage.getItem('username'));
+}
 var isBuyState = true;
 var vipCardId;
 

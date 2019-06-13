@@ -4,6 +4,10 @@ $(document).ready(function() {
 
     getCanSeeDayNum();
     getCinemaHalls();
+    findUser();
+    function findUser() {
+        $("#user-tag").html(window.sessionStorage.getItem('username'));
+    }
 
     function getCinemaHalls() {
         var halls = [];
