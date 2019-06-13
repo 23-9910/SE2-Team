@@ -399,27 +399,28 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public ResponseVO returnTickets(List<Integer> ticketId) {
         try {
-            List<Integer> ticketId1 = new ArrayList<>();
+            List<Ticket> ticket1=new ArrayList<>();
+            List<TicketWithScheduleVO> ticket2 = new ArrayList<>();
             //电影开始前两小时可以退票
             for(int i = 0;i < ticketId.size();i++){
                 Ticket ticket = ticketMapper.selectTicketById(ticketId.get(i));
-                if (ticket.getState()!=1) {
-                    continue;
-                }else{
+                if (ticket.getState()==1) {
                     ScheduleItem scheduleItem=scheduleMapper.selectScheduleById(ticket.getScheduleId());
                     //比较电影开始时间与现在时间
-                    Timestamp filmStart = new Timestamp(scheduleItem.getStartTime().getTime());
                     Date now = new Date();
-                    Timestamp nowTime = new Timestamp(now.getTime());
-                    if(filmStart.before(new Timestamp(new Date().getTime()))){
-                        long k =(nowTime.getTime() - filmStart.getTime())/(1000*60*60);
-                        if (k>2){
-                            ticketId1.add(ticket.getId());
-                        }
+                    long k = scheduleItem.getStartTime().getTime() - now.getTime();
+                    if((k/(1000*60*60))>2){
+                        ticket1.add(ticket);
                     }
                 }
             }
-            return ResponseVO.buildSuccess(ticketId1);
+            for(int i = 0;i < ticket1.size();i++){
+                TicketWithScheduleVO ticketWithScheduleVO = ticket1.get(i).getWithScheduleVO();
+                ScheduleItem scheduleItem = scheduleService.getScheduleItemById(ticket1.get(i).getScheduleId());
+                ticketWithScheduleVO.setSchedule(scheduleItem);
+                ticket2.add(ticketWithScheduleVO);
+            }
+            return ResponseVO.buildSuccess(ticket2);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
