@@ -343,7 +343,7 @@ public class TicketServiceImpl implements TicketService {
             double fare = scheduleItem.getFare();
             VIPCard vipCard = vipCardMapper.selectCardByUserId(userId);
             double balance = vipCard.getBalance();
-            double strategy = ticketMapper.selectRefundStrategy()/100;
+            double strategy = (double)getRefundStrategy().getContent();
             vipCardMapper.updateCardBalance(vipCard.getId(),balance + fare * strategy);
             ticketMapper.updateTicketState(ticketId,3);
             return ResponseVO.buildSuccess("退票成功！");
@@ -441,8 +441,9 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public ResponseVO getRefundStrategy() {
         try {
-            int refundPercent = ticketMapper.selectRefundStrategy();
-            return ResponseVO.buildSuccess(refundPercent);
+            RefundStrategy refundPercent = ticketMapper.selectRefundStrategy();
+            double percent = (double)refundPercent.getStrategy()/100;
+            return ResponseVO.buildSuccess(percent);
         }catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");

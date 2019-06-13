@@ -63,9 +63,8 @@ $(document).ready(function () {
         var ticketId = Number($("#ticket-id-input").innerHTML);
         var buyMethod = $("#buy-method-choose option:selected").val();
         if(buyMethod=="0"){
-            postRequest(
-                '/ticket/refund?ticketId='+refundId,
-                {},
+            getRequest(
+                '/ticket/refund/'+refundId,
                 function () {
                     alert("退票成功！");
                     window.location.reload();
@@ -76,9 +75,8 @@ $(document).ready(function () {
             )
         }
         else{
-            postRequest(
-                '/ticket/refund/vip?ticketId='+refundId,
-                {},
+            getRequest(
+                '/ticket/refund/vip/'+refundId,
                 function () {
                     alert("退票成功！");
                     window.location.reload();

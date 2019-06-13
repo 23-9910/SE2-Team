@@ -1,6 +1,7 @@
 package com.example.cinema.data.sales;
 
 import com.example.cinema.po.ConsumingRecord;
+import com.example.cinema.po.RefundStrategy;
 import com.example.cinema.po.Ticket;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -51,7 +52,7 @@ public interface TicketMapper {
      */
     void updateRefundStrategy(int strategy);
 
-    int selectRefundStrategy();
+    RefundStrategy selectRefundStrategy();
 
 }
 
