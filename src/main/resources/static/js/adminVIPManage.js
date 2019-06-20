@@ -8,18 +8,13 @@ $(document).ready(function () {
         $("#user-tag").html(window.sessionStorage.getItem('username'));
     }
 
-    /**
-     *判断输入是否为空
-     */
-    function isEmpty(obj){
-        if(typeof obj == "undefined" || obj == null || obj == ""){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     function getDescription() {
+        // res={
+        //     content:"充100送1000";
+        // };
+        // renderDescription(res.content);
+
         getRequest(
             "/vip/get/description",
             function (res) {
@@ -96,6 +91,11 @@ $(document).ready(function () {
     })
 
     function renderCoupons(){
+        // res={content:[{id:10,name:"第一优惠券"},{id:20,name:"第二优惠券"}]};
+        // coupons=res.content;
+        // coupons.forEach(function(coupon){
+        //     $('#coupon-select').append("<option value="+coupon.id+">"+coupon.name+"</option>");
+        // });
         getRequest(
             '/coupon/all',
             function (res) {
@@ -109,8 +109,15 @@ $(document).ready(function () {
             }
         )
     }
-    //TODO
+
     function renderAllVIP(){
+        // res={content:[{userId:1,userName:"user1",consumingSum:100},{userId:2,userName:"user2",consumingSum:200}]};
+        // var allVips = res.content;
+        // $(".vips-table-container").empty();
+        // allVips.forEach(function (v) {
+        //     var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value = " + v.userId + " /></th></tr>";
+        //     $("#my-tickets-table-body").append(vipDomStr);
+        // })
         let initialConsumption = 0;
         getRequest(
             '/vip/get/consumingSum/'+initialConsumption,
@@ -127,7 +134,7 @@ $(document).ready(function () {
             }
         )
     }
-    //TODO
+
     /**
      * 获取符合条件的会员
      * 后端添加方法
@@ -142,6 +149,13 @@ $(document).ready(function () {
             alert("消费额度应大于等于0！");
             return;
         }
+        // res={content:[{userId:1,userName:"user1",consumingSum:100},{userId:2,userName:"user2",consumingSum:200}]};
+        // var allVips = res.content;
+        // $(".vips-table-container").empty();
+        // allVips.forEach(function (v) {
+        //     var vipDomStr = "<tr><th>No."+v.userId+"</th><th>"+v.userName+"</th><th>￥"+v.consumingSum+"</th><th><input type='checkbox' name='chooseVip' value = " + v.userId + " /></th></tr>";
+        //     $("#my-tickets-table-body").append(vipDomStr);
+        // })
         getRequest(
             "/vip/get/consumingSum/"+consumption,
             function (res) {
@@ -157,7 +171,7 @@ $(document).ready(function () {
             }
         )
     })
-    //TODO
+
     /**
      * 点击确认按钮，会将优惠卷赠送
      */
