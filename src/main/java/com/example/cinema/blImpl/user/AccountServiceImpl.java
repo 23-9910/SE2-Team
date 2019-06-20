@@ -72,7 +72,7 @@ public class AccountServiceImpl implements AccountService {
             return ResponseVO.buildSuccess();
         }catch (Exception e){
             e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
+            return ResponseVO.buildFailure(ACCOUNT_EXIST );
         }
     }
 
@@ -94,7 +94,7 @@ public class AccountServiceImpl implements AccountService {
             return ResponseVO.buildSuccess();
         }catch (Exception e){
             e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
+            return ResponseVO.buildFailure(ACCOUNT_EXIST );
         }
     }
 
