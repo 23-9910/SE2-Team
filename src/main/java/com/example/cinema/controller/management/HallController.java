@@ -33,7 +33,7 @@ public class HallController {
         return hallService.updateHall(hallVO);
     }
 
-    @RequestMapping(value = "hall/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "hall/delete/{hallId}", method = RequestMethod.GET)
     public ResponseVO deleteHall(@PathVariable int hallId){
         return hallService.deleteHall(hallId);
     }

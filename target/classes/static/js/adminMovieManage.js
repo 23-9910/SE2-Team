@@ -9,6 +9,8 @@ $(document).ready(function(){
     $("#movie-form-btn").click(function () {
         var formData = getMovieForm();
         if(!validateMovieForm(formData)) {
+            alert("请填写必填项！")
+            $("#movieModal").modal('hide');
             return;
         }
         postRequest(

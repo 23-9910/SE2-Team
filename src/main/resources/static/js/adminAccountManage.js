@@ -107,7 +107,16 @@ function getAllAccount(list){
     $('#password-input').empty();
 })
 
-
+    /**
+     *判断输入是否为空
+     */
+    function isEmpty(obj){
+        if(typeof obj == "undefined" || obj == null || obj == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
 /**
  * 提交添加请求
  */
@@ -118,6 +127,16 @@ $('#schedule-form-btn').click(function() {
     var password = $("#password-input").val();
     var username = $("#account-input").val();
     var state = $("#type-input").val();
+
+    if(isEmpty(username)){
+        alert("请输入账户名！")
+        return;
+    }
+    if(isEmpty(password)){
+        alert("请输入账户密码！")
+        return;
+    }
+
 
     var user = {
         username:username,

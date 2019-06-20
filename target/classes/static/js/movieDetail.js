@@ -5,13 +5,13 @@ $(document).ready(function(){
     var isLike = false;
 
     getMovie();
-    if(sessionStorage.getItem('role') === 'root')
-        getMovieLikeChart();
+
 
 
 if(window.sessionStorage.getItem('role') === 'user'){
     findUser1()
 }else{
+    getMovieLikeChart();
     findUser2()
 }
     function findUser1() {
