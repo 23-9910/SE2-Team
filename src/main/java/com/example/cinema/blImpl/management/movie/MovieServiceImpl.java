@@ -94,12 +94,11 @@ public class MovieServiceImpl implements MovieService, MovieServiceForBl {
                 return responseVO;
             }
             movieMapper.updateMovieStatusBatch(movieIdList);
-            return ResponseVO.buildSuccess();
 
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
+        return ResponseVO.buildSuccess();
     }
 
     @Override

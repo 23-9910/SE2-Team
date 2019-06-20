@@ -69,11 +69,10 @@ public class AccountServiceImpl implements AccountService {
     public ResponseVO updateOneManager(User user) {
         try {
             accountMapper.updateOneManager(user);
-            return ResponseVO.buildSuccess();
         }catch (Exception e){
-            e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
+            return ResponseVO.buildFailure(ACCOUNT_EXIST );
         }
+        return ResponseVO.buildSuccess();
     }
 
     @Override
@@ -91,11 +90,11 @@ public class AccountServiceImpl implements AccountService {
     public ResponseVO addOneManager(User user) {
         try {
             accountMapper.insertOneManager(user);
-            return ResponseVO.buildSuccess();
         }catch (Exception e){
-            e.printStackTrace();
-            return ResponseVO.buildFailure("失败");
+            System.out.println("????");
+            return ResponseVO.buildFailure(ACCOUNT_EXIST );
         }
+        return ResponseVO.buildSuccess();
     }
 
 

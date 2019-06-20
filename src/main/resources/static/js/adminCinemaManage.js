@@ -247,8 +247,13 @@ $(document).ready(function() {
             "/hall/delete/"+deleteId,
 
             function (res) {
-                getCinemaHalls();
-                alert("删除成功！")
+                if(res.success){
+                    getCinemaHalls();
+                    $("#scheduleModalEdit").modal('hide');
+                    alert("修改成功！")
+                } else {
+                    alert(res.message);
+                }
             },
             function (error) {
                 alert(JSON.stringify(error))

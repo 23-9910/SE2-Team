@@ -10,7 +10,8 @@ spring:
   thymeleaf:
      cache: false
   jackson:
-    time-zone: GMT+8
+
+​     time-zone: GMT+8
 
 mybatis:
   mapper-locations: classpath:dataImpl/*/*Mapper.xml

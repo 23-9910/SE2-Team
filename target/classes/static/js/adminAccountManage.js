@@ -103,8 +103,8 @@ function getAllAccount(list){
      * 自动填充修改表单
      */
     $('#newAdd').click(function(){
-    $('#account-input').empty();
-    $('#password-input').empty();
+    $('#account-input').val("");
+    $('#password-input').val("");
 })
 
     /**
@@ -130,29 +130,36 @@ $('#schedule-form-btn').click(function() {
 
     if(isEmpty(username)){
         alert("请输入账户名！")
+        window.location.reload();
         return;
     }
     if(isEmpty(password)){
         alert("请输入账户密码！")
+        window.location.reload();
         return;
     }
 
 
     var user = {
-        username:username,
-        password:password,
-        state:parseInt(state)
+        username: username,
+        password: password,
+        state: parseInt(state)
     }
-    console.log(user)
     postRequest(
         "/add/one/manager",
         user,
         function (res) {
+            console.log(res)
             window.location.reload()
+            if(res.message === "账号已存在"){
+                alert("账号已存在!");
+            }
 
         },
         function(error){
-            alert(error)
+            console.log(error.message)
+            alert(error.message)
+            window.location.reload();
         }
     )
 
@@ -169,9 +176,7 @@ $("#schedule-form-btn-edit").click(function(){
     var idEdit = $("#id-edit").text();
     var userName = $("#account-edit-input").val();
     var password = $("#password-edit-input").val();
-    console.log(userName)
     var state123 = $("#type-edit-input option:selected") .val();
-    console.log(state123)
 var user = {
     id:parseInt(idEdit),
     username:userName,
@@ -182,11 +187,18 @@ console.log(user)
 postRequest("/update/one/manager",
     user,
     function(res){
-    alert("修改成功");
+        if(res.message === "账号已存在"){
+            alert("账号已存在!");
+        }else{
+            alert("修改成功");
+        }
+
         window.location.reload();
     },
     function(error){
-    alert(error)
+
+    alert(error.message)
+        window.location.reload();
     }
 );
 
@@ -211,6 +223,7 @@ $("#account-edit-remove-btn").click(function() {
         },
         function (error) {
             alert(error)
+            window.location.reload();
 
         }
     )
