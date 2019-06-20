@@ -18,25 +18,46 @@ public interface AccountMapper {
      * @param password
      * @return
      */
-    public int createNewAccount(@Param("username") String username, @Param("password") String password);
+    int createNewAccount(@Param("username") String username, @Param("password") String password);
 
     /**
      * 根据用户名查找账号
      * @param username
      * @return
      */
-    public User getAccountByName(@Param("username") String username);
+    User getAccountByName(@Param("username") String username);
 
     /**
      * Modified by sun on 2019/06/03
+     * 获得所有除了经理外的用户信息
      */
     List<User> getAllManagers();
 
+    /**
+     * 通过userId获得用户信息
+     * @param userId
+     * @return
+     */
     User getManagerById(int userId);
 
+    /**
+     * 更新一个用户信息
+     * @param user
+     * @return
+     */
     int updateOneManager(User user);
 
+    /**
+     * 删除一个用户信息
+     * @param userId
+     * @return
+     */
     int deleteOneManager(int userId);
 
+    /**
+     * 加入一个用户信息
+     * @param user
+     * @return
+     */
     int insertOneManager(User user);
 }
