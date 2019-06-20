@@ -13,10 +13,6 @@ $(document).ready(function() {
 
     var id = window.sessionStorage.getItem('id');
     var z = window.sessionStorage.getItem('role')
-    if(z !='root'){
-        alert("你没有权限访问");
-        window.location.href = "/admin/movie/manage";
-    }
     getRequest("/search/all/manager/" + id,
 
         function(res){
@@ -76,6 +72,7 @@ function getAllAccount(list){
         var id1 = parseInt(user.id);
         var username1 = user.username;
         var usertypeId = user.state;
+        var password = user.password;
         var username0 = "'" + username1 + "'"
         var userType = "";
         if( usertypeId == 0){
@@ -94,7 +91,7 @@ function getAllAccount(list){
             + '<th>' + id1 + '</th>'
             + '<th>' + username1 + '</th>'
             + '<th>' + userType + '</th>'
-
+            + '<th>' + password + '</th>'
             +  "<th>"+"<button type='button' class='btn btn-primary' data-backdrop='static' style='float:right' data-toggle='modal' data-target='#editAccount' id="+ id1 + " onclick=addId("+ id1 +"," + usertypeId+ "," + username0 +  ")>修改账户信息 </button>";
         + '</th>'+ '</tr>'
         $('#my-tickets-table-body').append(ticketStr);
@@ -110,7 +107,16 @@ function getAllAccount(list){
     $('#password-input').empty();
 })
 
-
+    /**
+     *判断输入是否为空
+     */
+    function isEmpty(obj){
+        if(typeof obj == "undefined" || obj == null || obj == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
 /**
  * 提交添加请求
  */
@@ -121,6 +127,16 @@ $('#schedule-form-btn').click(function() {
     var password = $("#password-input").val();
     var username = $("#account-input").val();
     var state = $("#type-input").val();
+
+    if(isEmpty(username)){
+        alert("请输入账户名！")
+        return;
+    }
+    if(isEmpty(password)){
+        alert("请输入账户密码！")
+        return;
+    }
+
 
     var user = {
         username:username,
@@ -152,13 +168,7 @@ $("#schedule-form-btn-edit").click(function(){
     $("#editAccount").hide();
     var idEdit = $("#id-edit").text();
     var userName = $("#account-edit-input").val();
-    for(var i=0; i <infoV.length;i++){
-        var tmp = infoV[i];
-        if(tmp.id == idEdit){
-            password = tmp.password;
-            break;
-        }
-    }
+    var password = $("#password-edit-input").val();
     console.log(userName)
     var state123 = $("#type-edit-input option:selected") .val();
     console.log(state123)
@@ -218,4 +228,15 @@ addId = function(id2,type1,name1){
     $("#account-edit-input").val(name1);
     $("#type-edit-input"). val(type1)
     $("#id-edit").append(id2);
+
+    for(var i=0; i <infoV.length;i++){
+        var tmp = infoV[i];
+        if(tmp.id == id2){
+            var password1= tmp.password;
+            $("#password-edit-input").empty();
+            $("#password-edit-input").val(password1);
+            break;
+        }
+    }
+
 };
