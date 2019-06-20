@@ -215,7 +215,11 @@ if(window.sessionStorage.getItem('role') === 'user'){
             "/movie/off/batch",
             batchOffMovie,
             function(res) {
-                alert("成功下架电影！")
+                if(res.success) {
+                    alert("成功下架电影！")
+                }else{
+                    alert("无法下架该电影！")
+                }
             },
             function(error){
                 alert(error)

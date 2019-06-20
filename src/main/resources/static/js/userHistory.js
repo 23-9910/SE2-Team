@@ -51,7 +51,7 @@ $(document).ready(function () {
 }
 
 
-$("#schedule-form-btn-edit").onclick(
+$("#schedule-form-btn-edit").click(
     function(){
         $("#detailFind").modal("hide")
 

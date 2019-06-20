@@ -157,11 +157,11 @@ $(document).ready(function() {
             alert("请输入影厅名称！")
             return;
         }
-        if(isNaN(row) && (row%1 != 0)){
+        if(isNaN(row) || (row%1 != 0)){
             alert("请填写正确信息！")
             return;
         }
-        if(isNaN(column) && (column%1 != 0)){
+        if(isNaN(column) || (column%1 != 0)){
             alert("请填写正确信息！")
             return;
         }
@@ -245,8 +245,13 @@ $(document).ready(function() {
             "/hall/delete/"+deleteId,
 
             function (res) {
-                getCinemaHalls();
-                alert("删除成功！")
+                if(res.success){
+                    getCinemaHalls();
+                    $("#scheduleModalEdit").modal('hide');
+                    alert("修改成功！")
+                } else {
+                    alert(res.message);
+                }
             },
             function (error) {
                 alert(JSON.stringify(error))

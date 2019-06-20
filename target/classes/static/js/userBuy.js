@@ -24,7 +24,6 @@ $(document).ready(function () {
             var ticketStr = "";
             var ticketWithScheduleVO = list[i];
             var schedule = ticketWithScheduleVO.schedule;
-
             var movieName = schedule.movieName;
             var hallName = schedule.hallName;
             var startTime = schedule.startTime;
