@@ -69,6 +69,9 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
     @Override
     public ResponseVO updateHall(HallVO hallVO){
         try {
+            if( !preCheck(hallVO).getSuccess()){
+                return ResponseVO.buildFailure("该影厅无法修改！");
+            }
             int hallId = hallVO.getId();
             Hall hall = hallMapper.selectHallById(hallId);
             if(hallVO.getColumn() != hall.getColumn() || hallVO.getRow() != hall.getRow()) {

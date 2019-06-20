@@ -16,7 +16,7 @@ $(document).ready(function () {
                     sessionStorage.setItem('id', res.content.id);
                     if (state == 0) {
                         sessionStorage.setItem('role', 'root');
-                        window.location.href = "/admin/movie/manage"
+                        window.location.href = "/admin/account/manage"
                     } else if(state == 2) {
                         sessionStorage.setItem('role', 'user');
                         window.location.href = "/user/home"

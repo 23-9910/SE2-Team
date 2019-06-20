@@ -86,7 +86,7 @@ $(document).ready(function () {
     }
     //TODO
     function renderAllVIP(){
-        let initialConsumption = "0";
+        let initialConsumption = 0;
         getRequest(
             '/vip/get/consumingSum/'+initialConsumption,
             function (res) {

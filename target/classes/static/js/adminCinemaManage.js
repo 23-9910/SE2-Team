@@ -23,6 +23,17 @@ $(document).ready(function() {
         );
     }
 
+
+    /**
+     *判断输入是否为空
+     */
+    function isEmpty(obj){
+        if(typeof obj == "undefined" || obj == null || obj == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
     /**
      * By yyf on 2019/05/30
      * 在每个影厅后添加了修改按键
@@ -53,6 +64,16 @@ $(document).ready(function() {
         });
         $('#hall-card').append(hallDomStr);
     }
+
+
+    $("#addIcon").click(
+        function(){
+            $("#hall-name-input").empty();
+            $("#hall-row-input").empty();
+            $("#hall-column-input").empty();
+        }
+    )
+
 
     function getCanSeeDayNum() {
         getRequest(
@@ -132,6 +153,18 @@ $(document).ready(function() {
         var row = $("#hall-row-input").val();
         var column = $("#hall-column-input").val();
         //这里需要做表单验证
+        if(isEmpty(hallName)){
+            alert("请输入影厅名称！")
+            return;
+        }
+        if(isNaN(row) && (row%1 != 0)){
+            alert("请填写正确信息！")
+            return;
+        }
+        if(isNaN(column) && (column%1 != 0)){
+            alert("请填写正确信息！")
+            return;
+        }
         var form = {
             name:hallName,
             row : parseInt(row),
@@ -165,6 +198,18 @@ $(document).ready(function() {
         var column = $("#hall-column-edit-input").val();
         var id = $("#edit-film-id").text();
         //这里需要做表单验证
+        if(isEmpty(hallName)){
+            alert("请输入影厅名称！")
+            return;
+        }
+        if(isNaN(row) && (row%1 != 0)){
+            alert("请填写正确信息！")
+            return;
+        }
+        if(isNaN(column) && (column%1 != 0)){
+            alert("请填写正确信息！")
+            return;
+        }
         var form = {
             name: hallName,
             row : parseInt(row),
@@ -195,6 +240,18 @@ $(document).ready(function() {
      */
     $("#schedule-edit-remove-btn").click( function(){
         var deleteId = $("#edit-film-id").text();
+        $("#scheduleModalEdit").modal('hide');
+        getRequest(
+            "/hall/delete/"+deleteId,
+
+            function (res) {
+                getCinemaHalls();
+                alert("删除成功！")
+            },
+            function (error) {
+                alert(JSON.stringify(error))
+            }
+        )
 
     })
 });
