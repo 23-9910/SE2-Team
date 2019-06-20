@@ -2,6 +2,7 @@ spring:
   datasource:
      url: jdbc:mysql://localhost:3306/cinema?serverTimezone=CTT&characterEncoding=UTF-8&useSSL=false
      username: root
+
      password: Jyt88888
      driver-class-name: com.mysql.cj.jdbc.Driver
      max-active: 200
@@ -10,7 +11,8 @@ spring:
   thymeleaf:
      cache: false
   jackson:
-    time-zone: GMT+8
+
+​     time-zone: GMT+8
 
 mybatis:
   mapper-locations: classpath:dataImpl/*/*Mapper.xml
