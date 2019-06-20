@@ -8,6 +8,16 @@ $(document).ready(function () {
         $("#user-tag").html(window.sessionStorage.getItem('username'));
     }
 
+    /**
+     *判断输入是否为空
+     */
+    function isEmpty(obj){
+        if(typeof obj == "undefined" || obj == null || obj == ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     function getDescription() {
         getRequest(
@@ -33,7 +43,14 @@ $(document).ready(function () {
         var price = $("#vip-price-input").val();
         var gift = $("#vip-gift-input").val();
         var description = "满"+price+"送"+gift;
-
+        if(isNaN(price)){
+            alert("请填写正确信息！");
+            return;
+        }
+        if(isNaN(gift)){
+            alert("请填写正确信息！");
+            return;
+        }
         getRequest(
             "/vip/description/" + description,
             function (res) {
@@ -54,6 +71,14 @@ $(document).ready(function () {
         var priceNew = $("#vip-new-price-input").val();
         var giftNew = $("#vip-new-gift-input").val();
         var descriptionNew = "满"+priceNew+"送"+giftNew;
+        if(isNaN(priceNew)){
+            alert("请填写正确信息！");
+            return;
+        }
+        if(isNaN(giftNew)){
+            alert("请填写正确信息！");
+            return;
+        }
         getRequest(
             "/vip/description/"+ descriptionNew,
             function (res) {
@@ -109,6 +134,14 @@ $(document).ready(function () {
      */
     $("#consumption-input-btn").click(function () {
         let consumption = $("#vip-history-input").val();
+        if(isNaN(consumption)){
+            alert("请正确输入信息！");
+            return;
+        }
+        if(consumption<0){
+            alert("消费额度应大于等于0！");
+            return;
+        }
         getRequest(
             "/vip/get/consumingSum/"+consumption,
             function (res) {

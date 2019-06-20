@@ -63,7 +63,6 @@ $(document).ready(function () {
 
     $("#refund-confirm-btn").click(function () {
         $("#refundModal").hide();
-        var ticketId = Number($("#ticket-id-input").innerHTML);
         var buyMethod = $("#buy-method-choose option:selected").val();
         if(buyMethod=="0"){
             getRequest(
