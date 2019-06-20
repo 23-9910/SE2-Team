@@ -19,6 +19,9 @@ $(document).ready(function() {
 
 function getInfo(){
     $("#refund-container").empty();
+    // res={content:50};
+    // var perCent = res.content;
+    // renderRefund(perCent);
     getRequest(
         '/ticket/get/strategy',
         function (res) {
@@ -63,7 +66,6 @@ $("#activity-form-btn").click(
     function(){
         var rate = $("#activity-name-input").val();
         $("#activityModal").hide();
-
         getRequest(
             "/ticket/strategy/" + rate ,
             function(res){

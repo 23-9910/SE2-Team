@@ -59,6 +59,8 @@ $(document).ready(function(){
     }
 
     function getMovieList() {
+        // res={content:[{id:1,name:"movie1",posterUrl: "url1",director: "director1",screenWriter: "sw1",starring:"star1",type:"type1",country:"china",language: "chinese",startDate: 2018-9-14,length: 120,description:"description1",status:0,islike:1,likeCount:10}]};
+        // renderMovieList(res.content);
         getRequest(
             '/movie/all',
             function (res) {
