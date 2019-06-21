@@ -12,8 +12,13 @@ $(document).ready(function() {
     }
 
     var id = window.sessionStorage.getItem('id');
-    var z = window.sessionStorage.getItem('role')
-    getRequest("/search/all/manager/" + id,
+    var z = window.sessionStorage.getItem('role');
+
+    // res={content:[{id:1,username:"user1",state:1,password:"123456"},{id:2,username:"user2",state:2,password:"123456"}]};
+    // getAllAccount(res.content);
+
+    getRequest(
+        "/search/all/manager/" + id,
 
         function(res){
             if(res.success){
@@ -30,8 +35,11 @@ $(document).ready(function() {
 
 function getInfo(){
     var id = window.sessionStorage.getItem('id');
-    console.log(id)
-    getRequest("/search/all/manager/" + id,
+    console.log(id);
+    // res={content:[{id:1,username:"user1",state:1,password:"123456"},{id:2,username:"user2",state:2,password:"123456"}]};
+    // getAllAccount(res.content);
+    getRequest(
+        "/search/all/manager/" + id,
 
         function(res){
             if(res.success){
@@ -63,7 +71,7 @@ function getInfo(){
  * @param list
  */
 function getAllAccount(list){
-    infoV = list
+    infoV = list;
     $('#my-tickets-table-body').empty();
 
     for(var i = 0;i < list.length;i++){

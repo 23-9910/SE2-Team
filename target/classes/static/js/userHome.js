@@ -19,9 +19,8 @@ $(document).ready(function() {
         var infoStr = "";
         getRequest(
             "/statistics/boxOffice/total",
-
             function(res) {
-                console.log(res)
+                console.log(res);
                 var list = res.content;
                 for(var i=0; i < list.length && i < 10; i++) {
                     var data1 = (list[i].boxOffice||0);

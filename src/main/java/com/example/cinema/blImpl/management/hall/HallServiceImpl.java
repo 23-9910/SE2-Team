@@ -69,7 +69,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
     @Override
     public ResponseVO updateHall(HallVO hallVO){
         try {
-            if( preCheck(hallVO).getSuccess()){
+            if(!preCheck(hallVO).getSuccess()){
                 return ResponseVO.buildFailure("该影厅无法修改！");
             }else {
                 int hallId = hallVO.getId();
@@ -97,7 +97,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
     public ResponseVO deleteHall(int hallId) {
         try {
             Hall hallVO =getHallById(hallId);
-            if( preCheck1(hallVO).getSuccess()){
+            if(!preCheck1(hallVO).getSuccess()){
                 return ResponseVO.buildFailure("该影厅无法修改！");
             }else {
                 hallMapper.deleteHallById(hallId);
@@ -131,7 +131,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
             Date today = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
             Date endDate = getNumDayAfterDate(today, view);
             List<ScheduleItem> scheduleItems = scheduleMapper.selectSchedule(hallId,today,endDate);
-            if(scheduleItems.size() != 0){
+            if(scheduleItems.size() == 0){
                 return ResponseVO.buildSuccess();
             }else {
                 return ResponseVO.buildFailure("此影厅无法修改！");
@@ -150,7 +150,7 @@ public class HallServiceImpl implements HallService, HallServiceForBl {
             Date today = simpleDateFormat.parse(simpleDateFormat.format(new Date()));
             Date endDate = getNumDayAfterDate(today, view);
             List<ScheduleItem> scheduleItems = scheduleMapper.selectSchedule(hallId,today,endDate);
-            if(scheduleItems.size() != 0){
+            if(scheduleItems.size() == 0){
                 return ResponseVO.buildSuccess();
             }else {
                 return ResponseVO.buildFailure("此影厅无法修改！");

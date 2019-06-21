@@ -80,7 +80,5 @@ public class TicketServiceTest {
         Assert.assertEquals(12,lastRecord.getUserId());
         Assert.assertEquals(71,lastRecord.getScheduleId());
 
-        //Test add consumingRecordId on ticket
-
     }
 }

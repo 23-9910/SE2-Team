@@ -12,7 +12,6 @@ $(document).ready(function() {
     }
 
     function getScheduleRate() {
-
         getRequest(
             '/statistics/scheduleRate',
             function (res) {
