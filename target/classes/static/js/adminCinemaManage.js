@@ -10,6 +10,8 @@ $(document).ready(function() {
     }
 
     function getCinemaHalls() {
+        // res={content:[{id:1,name:"hall1",row:5,column:5},{id:2,name:"hall2",row:6,column:5}]};
+        // renderHall(res.content);
         var halls = [];
         getRequest(
             '/hall/all',
@@ -157,11 +159,11 @@ $(document).ready(function() {
             alert("请输入影厅名称！")
             return;
         }
-        if(isNaN(row) && (row%1 != 0)){
+        if(isNaN(row) || (row%1 != 0)){
             alert("请填写正确信息！")
             return;
         }
-        if(isNaN(column) && (column%1 != 0)){
+        if(isNaN(column) || (column%1 != 0)){
             alert("请填写正确信息！")
             return;
         }

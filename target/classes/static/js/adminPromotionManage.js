@@ -9,6 +9,9 @@ $(document).ready(function() {
     }
 
     function getActivities() {
+        // res={content:[{id:1,name:"activity1",description:"description",startTime:2019-6-20,endTime:2019-6-30,movieList: [],coupon:{}}]};
+        // var activities = res.content;
+        // renderActivities(activities);
         getRequest(
             '/activity/get',
             function (res) {
